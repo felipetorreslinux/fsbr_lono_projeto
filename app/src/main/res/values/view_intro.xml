@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textview_intro">Cadastre nomes ou termos e pesquise automaticamente em sites e publicações</string>
+    <string name="button_intro_login">Entrar</string>
+    <string name="button_intro_register">Cadastre-se</string>
+</resources>

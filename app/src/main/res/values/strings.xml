@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Lono</string>
+    <string name="erro_email_empty">Email não pode ficar vazio</string>
+</resources>
