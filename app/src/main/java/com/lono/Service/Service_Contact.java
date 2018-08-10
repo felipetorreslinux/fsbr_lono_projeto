@@ -13,6 +13,7 @@ import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Utils.Alerts;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +23,32 @@ public class Service_Contact {
     public Service_Contact(Activity activity){
         this.activity = activity;
         builder = new AlertDialog.Builder(activity);
+    }
+
+    public void distanceRota(String origem, String destino){
+        AndroidNetworking.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="+origem+"&destinations="+destino+"&key=AIzaSyBlWhMjgZxACUYhCbwXYF30wysdFJx7_dk")
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try{
+                        String status = response.getString("status");
+                        switch (status){
+                            case "OK":
+                                JSONArray jsonArray = response.getJSONArray("rows");
+                                JSONObject el = jsonArray.getJSONObject(0).getJSONObject("elements");
+                                System.out.println(el);
+                                break;
+                        }
+                    }catch (JSONException e){}
+                    System.out.println(response);
+                }
+
+                @Override
+                public void onError(ANError anError) {
+
+                }
+            });
     }
 
     public void sendEmail (String name, String email, String message){

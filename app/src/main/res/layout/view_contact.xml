@@ -10,4 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/message_contact"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:src="@drawable/ic_mail_fab"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/call_contact"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="82dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:src="@drawable/ic_phone_fab"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/drive_contact"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:src="@drawable/ic_drive_fab"
+            android:clickable="true"
+            android:background="@drawable/ripple_blue"/>
+
 </RelativeLayout>
