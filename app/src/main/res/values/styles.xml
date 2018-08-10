@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
 
     <style name="Splash" parent="android:Theme.DeviceDefault.NoActionBar.Fullscreen">
         <item name="android:background">@drawable/splash_background</item>
@@ -18,6 +18,12 @@
     <style name="NewAccountPF" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="Contact" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">13dp</item>
     </style>
 
     <style name="NewCreditCard" parent="@style/Theme.AppCompat.Light.NoActionBar">

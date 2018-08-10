@@ -23,8 +23,8 @@ public class Server {
     public static String tokenCard = null;
 
     public static String payment (){
-        return "http://179.188.38.70:8888";
-//        return "http://192.168.15.220";
+//        return "http://179.188.38.70:8888";
+        return "http://192.168.15.220";
     }
 
     public static String token (Activity activity){
@@ -33,8 +33,8 @@ public class Server {
     }
 
     public static String URL (){
-        String url_p = "http://179.188.38.70:8888/";
-//        String url_p = "http://192.168.15.220:80/";
+//        String url_p = "http://179.188.38.70:8888/";
+        String url_p = "http://192.168.15.220:80/";
         return url_p;
     };
 
