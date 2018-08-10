@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lono</string>
+    <string name="success">success</string>
+    <string name="status">status</string>
+    <string name="not_connected">Aparelho sem conexão com a internet.</string>
+    <string name="lono_pagamento_utils_route">/services/lono-pagamento-html-request</string>
+</resources>

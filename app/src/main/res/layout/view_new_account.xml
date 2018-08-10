@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFundo">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/imageview_back_new_account"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/colorWhite"
+            android:padding="13dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/title_new_account"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/roboto"
+            android:textSize="19dp"
+            android:layout_marginLeft="5dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:padding="16dp"
+                android:background="@color/colorPrimary"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_weight="0.9"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/plans_new_account"
+                        android:textColor="@color/colorWhite"/>
+
+                    <TextView
+                        android:id="@+id/name_plan_new_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:textColor="@color/colorWhite"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_view_change_plan"
+                    android:layout_weight="0.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/label_change_plan"/>
+
+            </LinearLayout>
+
+            <!-- BUTTONS TYPE PERSONAL -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginHorizontal="10dp">
+
+                <Button
+                    android:id="@+id/button_physical_person"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_checkbox_physical_person__new_account"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_check_gray"
+                    android:layout_marginRight="2.5dp"/>
+
+                <Button
+                    android:id="@+id/button_legal_person"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_checkbox_legal_person__new_account"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_check_gray"
+                    android:layout_marginLeft="2.5dp"/>
+
+            </LinearLayout>
+
+            <!--BOX PERSON PHYSICAL-->
+
+            <LinearLayout
+                android:id="@+id/box_physical_person"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/input_view_login">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+                    <TextView
+                        android:id="@+id/name_document_new_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_cpf_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/document_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:fontFamily="@font/roboto"
+                        android:textSize="16dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_razao_social_new_account"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_razao_cocial_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/razao_social_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="14"
+                        android:fontFamily="@font/roboto"
+                        android:textSize="16dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_name_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/name_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:fontFamily="@font/roboto"
+                        android:textSize="16dp"/>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_email_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/email_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_cellphone_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/cellphone_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_password_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/password_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_password_conf_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <EditText
+                        android:id="@+id/conf_password_new_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_genre_new_account"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_genre_new_account"
+                        android:layout_marginBottom="5dp"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <CheckBox
+                            android:id="@+id/check_box_genre_men"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorPrimary"
+                            android:text="@string/label_checkbox_new_account_men"
+                            android:fontFamily="@font/roboto"
+                            android:checked="false"/>
+
+                        <CheckBox
+                            android:id="@+id/check_box_genre_girl"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorPrimary"
+                            android:text="@string/label_checkbox_new_account_girl"
+                            android:fontFamily="@font/roboto"
+                            android:checked="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- BOX PAYMENT -->
+
+            <LinearLayout
+                android:id="@+id/box_payment_new_account"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_check_gray"
+                android:layout_marginHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/label_type_payment"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/roboto"/>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_layout_payment_new_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    app:tabSelectedTextColor="@color/colorPrimary"
+                    app:tabTextColor="@color/colorGray"
+                    app:tabIndicatorColor="@color/colorPrimary"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Boleto"/>
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Crédito"/>
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Débito"/>
+
+                </android.support.design.widget.TabLayout>
+
+
+                <!-- BOX BOLETO -->
+
+                <LinearLayout
+                    android:id="@+id/box_payment_boleto"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/ic_boleto"
+                        android:layout_gravity="center"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_info_payment_boleto"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ripple_blue"
+                        android:fontFamily="@font/roboto"
+                        android:textAllCaps="false"
+                        android:text="Gerar Boleto"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginVertical="10dp"/>
+
+
+                </LinearLayout>
+
+                <!-- BOX CRÉDITO -->
+
+                <LinearLayout
+                    android:id="@+id/box_payment_credit"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/creditcard"/>
+
+
+
+                </LinearLayout>
+
+                <!-- BOX DÉBITO -->
+
+                <LinearLayout
+                    android:id="@+id/box_payment_debit"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/creditcard"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!-- BUTTON SEND NEW ACCOUNT -->
+            <Button
+                android:id="@+id/button_send_new_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_blue"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="16dp"
+                android:text="@string/label_button_send_new_account"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

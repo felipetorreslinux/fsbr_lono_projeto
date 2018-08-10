@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_info_view_check_cellphone">Informe abaixo o seu número de telefone para validação.</string>
+    <string name="button_view_check_cellphone">Validar Telefone</string>
+    <string name="hint_edit_text_view_check_cellphone">00 00000-0000</string>
+    <string name="error_number_cellphone_check">Este telefone não está cadastrado para você.</string>
+</resources>

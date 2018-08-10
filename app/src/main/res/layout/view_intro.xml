@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+            <ImageView
+                android:layout_height="120dp"
+                android:layout_width="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_icon_app_intro"
+                android:tint="@color/colorWhite"
+                android:padding="16dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/textview_intro"
+                android:padding="10dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/textview_intro"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:fontFamily="@font/roboto"/>
+
+
+            <Button
+                android:id="@+id/button_intro_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_login"
+                android:text="@string/button_intro_login"
+                android:textColor="@color/colorDarkGray"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_intro_register"
+                android:background="@drawable/ripple_login"
+                android:text="@string/button_intro_register"
+                android:textColor="@color/colorDarkGray"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/button_quem_somos"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_persons"
+                android:tint="@color/colorWhite"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_quem_somos_intro"
+                android:textSize="12dp"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_contact"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mail_outline"
+                android:layout_marginRight="10dp"
+                android:tint="@color/colorWhite"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/label_contact_intro"
+                android:textSize="12dp"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

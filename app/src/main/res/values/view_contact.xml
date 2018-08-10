@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_contact">Contato</string>
+    <string name="info_view_contact">Dúvidas? Sugestões?\n\nDeixe uma mensagem que teremos o prazer de responder no menor tempo possível.</string>
+    <string name="label_button_send_contact">Enviar</string>
+    <string name="error_name_empty_send_contact">Informe seu nome</string>
+    <string name="error_email_empty_send_contact">Informe seu email</string>
+    <string name="error_email_invalid_send_contact">Email informado não é válido</string>
+    <string name="error_message_empty_send_contact">Messagem não pode ser enviada vazia</string>
+    <string name="info2_view_contact">Nós existimos!\nConsulte abaixo nossos dados de contato:</string>
+</resources>

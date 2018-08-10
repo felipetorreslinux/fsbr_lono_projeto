@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_payment_plan_plus">Período</string>
+    <string name="label_boleto_payment">Boleto Bancário</string>
+    <string name="info_boleto_payment">Pagamento com boleto bancário </string>
+    <string name="label_card_payment">Cartão de Crédito / Débito</string>
+    <string name="info_card_payment">Pague com seu cartão de crédito ou débito</string>
+    <string name="info_time_payment_user">Escolha a duração de seu plano</string>
+    <string name="title_payment">Pagamento</string>
+    <string name="info_payment_boleto_dialog">O boleto será gerado automaticamente e será enviado para seu email informado.</string>
+    <string name="positive_payment_boleto_button_dialog">Gerar e Finalizar</string>
+    <string name="negative_button_dialog_payment_boleto">Voltar</string>
+    <string name="title_payment_credit_card">Cartão de Crédito</string>
+    <string name="info_not_periodo_unselected">Escolha um período antes de prosseguir</string>
+    <string name="info_plan_anual_text">Parcele em até 05 (cinco) vezes.\nCaso pague com seu cartão de crédito, todos os recursos de nossos serviços estarão disponíveis de imediato.\nNo caso de boleto bancário tem um prazo de 03 (três) dias úteis para compensação do pagamento</string>
+    <string name="info_plan_mensal_text">Escolhendo o tipo de pagamento mensal você será avisado para renovação do seu plano via SMS ou por email.\nPodendo pagar por cartão de crédito ou boleto bancário.</string>
+</resources>

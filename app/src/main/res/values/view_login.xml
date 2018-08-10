@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_pass_login">senha</string>
+    <string name="hint_email_login">email</string>
+    <string name="button_login">Acessar</string>
+    <string name="erro_email_empty">Informe seu email</string>
+    <string name="forget_pass_login">Esqueci minha senha</string>
+    <string name="erro_valid_email">Email inválido</string>
+    <string name="erro_email_invalid">Email informado é inválido</string>
+    <string name="erro_pass_empty">Informe sua senha</string>
+    <string name="erro_pass_length">Senha formato incorreto</string>
+    <string name="login_ok_access">Dados Aceitos. Aguarde...</string>
+    <string name="title_view_login">Login</string>
+    <string name="login_error_access">Email e senha inválidos</string>
+    <string name="progress_dialog_login">Autorizando...</string>
+    <string name="info_label_login">Informe seus dados de acesso</string>
+</resources>

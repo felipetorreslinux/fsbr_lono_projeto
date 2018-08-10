@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_header_list_plans">O LONO vai buscar os nome cadastrados em jornais e publicações, ao encontrar resultados nas buscas ele separa a matéria e envia por email ou em seu smartphone, através do nosso aplicativo.</string>
+    <string name="title_list_plans">Planos</string>
+    <string name="button_list_plans">Contratar</string>
+    <string name="label_button_add_plan">Entre em contato</string>
+    <string name="label_price_plan_free">Grátis</string>
+    <string name="label_price_anual_plan">/anual</string>
+    <string name="erro_count_qtd_terns_plan_plus">Mínimo são 10 termos para este plano</string>
+    <string name="label_terms_plan_plus_one">Apartir de</string>
+    <string name="label_terms_plan_plus_two">termos</string>
+    <string name="label_send_email_plan_200">Tem interesse em obter nosso plano +200</string>
+    <string name="hint_email_send_email">Seu email</string>
+    <string name="hint_name_send_email">Seu nome e sobrenome</string>
+    <string name="hint_cellphone_send_email">Seu telefone</string>
+    <string name="hint_comment_send_email">Observações</string>
+    <string name="send_email_plans_200">Enviar</string>
+    <string name="label_send_email_progress">Enviando email...</string>
+    <string name="title_plan_200">Solicitar Plano +200</string>
+    <string name="info_solicita_plan_200">Para solicitar nosso plano +200 é simples. Preencha as informações abaixo e entraremos em contato com você o mais breve possível.</string>
+    <string name="label_checkbox_physical_person__new_account">Pessoa Física</string>
+    <string name="button_list_plans_pj">Pessoa Jurídica</string>
+</resources>

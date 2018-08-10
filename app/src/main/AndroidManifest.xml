@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lono">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
+    <application
+        android:name=".Firebase.FireApp"
+        android:allowBackup="true"
+        android:icon="@drawable/icon_app"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon_app"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".Splash"
+            android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Views.View_Intro"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Check_Cellphone"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".Views.View_Recovery_Pass"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_Intro_Slide"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_QuemSomos"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Contact"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+        <activity android:name=".Views.View_Plans_List"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_Send_Mail_Plan_200"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_New_Account_Free"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".Views.View_New_Account_PF_Plus"
+            android:theme="@style/NewAccountPF"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_New_Account_PJ_Plus"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".Views.View_Payment"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".Views.View_Type_Payment"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".Views.View_New_CreditCard"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/NewCreditCard"/>
+
+        <activity android:name=".Views.View_New_Account"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".Views.View_Principal"
+            android:screenOrientation="portrait"/>
+
+    </application>
+
+</manifest>

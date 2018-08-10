@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_recovery_pass">Recuperar senha</string>
+    <string name="text_info_recovery_pass">Informe seu email de cadastro.\nAssim, será possível gerar uma nova senha de acesso.</string>
+    <string name="hint_email_recovery_pass">Informe seu email aqui...</string>
+    <string name="button_recovery_pass">Lembrar</string>
+    <string name="erro_email_recovery_pass_invalid">Email inválido</string>
+    <string name="erro_email_recovery_pass_empty">Email não pode ficar vazio</string>
+    <string name="progress_recovery_pass">Validando email</string>
+    <string name="label_email_recovery_pass">Email</string>
+    <string name="label_positive_alert">Ok</string>
+</resources>

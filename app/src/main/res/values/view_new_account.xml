@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_info_new_account">Preencha todas as informações abaixo e crie sua conta</string>
+    <string name="label_name_new_account">Nome</string>
+    <string name="label_email_new_account">Email</string>
+    <string name="label_password_new_account">Senha</string>
+    <string name="label_password_conf_new_account">Confirmar senha</string>
+    <string name="label_genre_new_account">Gênero</string>
+    <string name="label_type_new_account">Tipo</string>
+    <string name="label_checkbox_new_account_men">Masculino</string>
+    <string name="label_checkbox_new_account_girl">Feminino</string>
+    <string name="label_checkbox_legal_person__new_account">Pessoa Jurídica</string>
+    <string name="title_new_account">Novo Usuário</string>
+    <string name="label_plans_new_account">Planos</string>
+    <string name="label_cpf_new_account">CPF</string>
+    <string name="plans_new_account">Plano</string>
+    <string name="label_change_plan">Alterar</string>
+    <string name="label_type_payment">Formas de Pagamento</string>
+    <string name="label_info_payment_boleto">Para pagar com boleto é bem simples. Basta pressionar o botão abaixo "Gerar Boleto". Seu boleto bancário será enviado para o email informado acima em seu cadastro.</string>
+    <string name="label_button_send_new_account">Cadastrar</string>
+    <string name="label_cellphone_new_account">Telefone</string>
+    <string name="label_cnpj_new_account">CNPJ</string>
+    <string name="label_razao_cocial_new_account">Razão Social</string>
+    <string name="label_button_send_new_account_pf_plus">Próximo</string>
+    <string name="button_list_plans_pf">Pessoa Física</string>
+    <string name="label_info_new_account_pj_plus">Informe seus dados abaixo</string>
+    <string name="title_new_account_pj_plus">Pessoa Jurídica</string>
+    <string name="title_new_acoount_pf_plus">Pessoa Física</string>
+    <string name="label_info_new_account_pf_plus">Informe seus dados abaixo</string>
+    <string name="info_cfp_new_account">Informe seu cpf para que possamos validar seus dados</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_bottom_viem">Inicio</string>
+    <string name="search_bottom_viem">Buscar</string>
+    <string name="alerts_bottom_viem">Alertas</string>
+    <string name="person_bottom_viem">Perfil</string>
+</resources>
