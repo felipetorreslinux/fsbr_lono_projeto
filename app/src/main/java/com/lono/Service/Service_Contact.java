@@ -51,7 +51,7 @@ public class Service_Contact {
             });
     }
 
-    public void sendEmail (String name, String email, String message){
+    public void sendEmail (String name, String email, String message, final AlertDialog alertDialog){
         try{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("nome", name);
@@ -63,32 +63,19 @@ public class Service_Contact {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println(response);
                         Alerts.progress_clode();
+                        alertDialog.dismiss();
                         builder.setTitle(R.string.app_name);
-                        builder.setMessage("Email enviado com sucesso.\nEm breve entraremos em contato.");
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                activity.finish();
-                            }
-                        });
+                        builder.setMessage("Obrigado.\nEm breve entraremos em contato.");
+                        builder.setPositiveButton("Ok", null);
                         builder.create().show();
                     }
 
                     @Override
                     public void onError(ANError anError) {
                         Alerts.progress_clode();
-                        System.out.println(anError.getMessage());
-                        builder.setTitle(R.string.app_name);
-                        builder.setMessage("Não foi possível enviar seu email neste momento.\nTente mais tarde");
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                activity.finish();
-                            }
-                        });
-                        builder.create().show();
+                        alertDialog.dismiss();
+                        Server.ErrorServer(activity, anError.getErrorCode());
                     }
                 });
         }catch (JSONException e){}

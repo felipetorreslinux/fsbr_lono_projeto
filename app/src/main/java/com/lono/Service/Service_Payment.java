@@ -19,6 +19,7 @@ import com.lono.R;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskCPF;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -76,7 +77,7 @@ public class Service_Payment {
                 });
     };
 
-    public void addCard(String token, final String number, final String month, final String year, final String document, final String name){
+    public void addCard(String token, final String number, final String month, final String year, final String document, final String name, final String price){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         try {
             JSONObject jsonObject = new JSONObject(  );
@@ -84,6 +85,11 @@ public class Service_Payment {
             jsonObject.put( "numero_cartao", number );
             jsonObject.put( "validade_mes", month );
             jsonObject.put( "validade_ano", year );
+            jsonObject.put("valor", price);
+            jsonObject.put("nome_titular", name);
+
+            System.out.println(jsonObject);
+
             AndroidNetworking.post( Server.URL()+"services/adicionar-cartao-usuario" )
                     .addJSONObjectBody( jsonObject )
                     .build()
@@ -95,12 +101,15 @@ public class Service_Payment {
                                 switch (status){
                                     case "success":
                                         Alerts.progress_clode();
+                                        JSONArray array = response.getJSONArray("parcelas");
+                                        System.out.println(array);
                                         Intent intent = activity.getIntent();
                                         intent.putExtra( "number", number );
                                         intent.putExtra( "month", month );
                                         intent.putExtra( "year", year );
                                         intent.putExtra( "document", document);
                                         intent.putExtra( "name", name );
+                                        intent.putExtra("array_parcelas", array.toString());
                                         activity.setResult( Activity.RESULT_OK, intent );
                                         activity.finish();
                                         break;

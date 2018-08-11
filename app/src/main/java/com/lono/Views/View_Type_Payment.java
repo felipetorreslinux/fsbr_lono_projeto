@@ -23,6 +23,13 @@ import com.lono.Service.Service_Payment;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskNumberCreditCard;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class View_Type_Payment extends Activity implements View.OnClickListener {
 
     ImageView imageview_back_type_payment;
@@ -153,6 +160,7 @@ public class View_Type_Payment extends Activity implements View.OnClickListener 
                 TYPE_PAY = 2;
                 button_pay.setText("Pagar");
                 Intent intent = new Intent( this, View_New_CreditCard.class );
+                intent.putExtra("price_plan", PRICE_PLAM);
                 startActivityForResult( intent, 1000);
                 break;
 
@@ -219,16 +227,20 @@ public class View_Type_Payment extends Activity implements View.OnClickListener 
 
                     if(TYPE_PLAN.equals("Anual")){
                         card_parcells.setVisibility(View.VISIBLE);
-                        String[] parcells = {
-                                "1 - ",
-                                "2 - ",
-                                "3 - ",
-                                "4 - ",
-                                "5 - ",
-                        };
-                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, parcells);
-                        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        parcelas_credit_card.setAdapter(arrayAdapter);
+                        String parcelas = data.getExtras().getString("array_parcelas");
+                        try {
+                            JSONArray jsonArray = new JSONArray(parcelas);
+                            for (int i= 0; i < jsonArray.length(); i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            }
+//                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, parcells);
+//                            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                            parcelas_credit_card.setAdapter(arrayAdapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
                     }
 
                 }

@@ -46,6 +46,8 @@ public class View_New_CreditCard extends AppCompatActivity {
     LonoPagamentoUtils lonoPagamentoUtils;
     Service_Payment servicePayment;
 
+    String PRICE_PLAN;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -55,6 +57,8 @@ public class View_New_CreditCard extends AppCompatActivity {
         lonoPagamentoUtils = new LonoPagamentoUtils( this, Server.payment());
 
         createToolbar(toolbar);
+
+        PRICE_PLAN = getIntent().getExtras().getString("price_plan").replace("R$","").replace(" ","");
 
         layout_number_creditcard = (TextInputLayout) findViewById(R.id.layout_number_creditcard);
         layout_date_validate_creditcard = (TextInputLayout) findViewById(R.id.layout_date_validate_creditcard);
@@ -210,7 +214,7 @@ public class View_New_CreditCard extends AppCompatActivity {
             String token = Server.token(this);
             if(!token.equals("")){
                 Alerts.progress_open(this, null, "Analisando informações", false);
-                servicePayment.addCard( token, number, String.valueOf(month), String.valueOf(year), document, name);
+                servicePayment.addCard( token, number, String.valueOf(month), String.valueOf(year), document, name, PRICE_PLAN);
                 lonoPagamentoUtils.GenerateCardToken( number, cvv, month, year, new LonoPagamentoUtils.GenerateCardTokenListener() {
                     @Override
                     public void onSuccess(String cardToken) {
