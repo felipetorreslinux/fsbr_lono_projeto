@@ -47,6 +47,7 @@ public class Splash extends Activity {
     @Override
     public void onResume(){
         super.onResume();
+        Permissions.request(this);
         loadView();
     };
 

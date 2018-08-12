@@ -27,30 +27,20 @@ public class Server {
 //        return "http://192.168.15.220";
     }
 
-    public static String token (Activity activity){
-        SharedPreferences sharedPreferences = activity.getSharedPreferences( "profile", Context.MODE_PRIVATE );
-        return sharedPreferences.getString( "token", "" );
-    }
-
     public static String URL (){
         String url_p = "http://179.188.38.70:8888/";
 //        String url_p = "http://192.168.15.220:80/";
         return url_p;
     };
 
+    public static String token (Activity activity){
+        SharedPreferences sharedPreferences = activity.getSharedPreferences( "profile", Context.MODE_PRIVATE );
+        return sharedPreferences.getString( "token", "" );
+    }
+
     public static String cpf(){
         return "http://api.cliksocial.com/";
     };
-
-    public static boolean conexao (Activity activity) {
-        ConnectivityManager connectivityManager = (ConnectivityManager)
-                activity.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected())
-            return true;
-        else
-            return false;
-    }
 
     public static void ErrorServer (Activity activity, int code){
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);

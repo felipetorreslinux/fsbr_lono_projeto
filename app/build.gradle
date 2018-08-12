@@ -39,6 +39,9 @@ dependencies {
     implementation('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
         transitive = true
     }
+
+    implementation 'com.jaeger.statusbarutil:library:1.4.0'
+
     implementation 'com.amitshekhar.android:android-networking:1.0.1'
     implementation 'com.squareup.picasso:picasso:2.3.2'
     implementation 'jp.wasabeef:picasso-transformations:2.2.1'

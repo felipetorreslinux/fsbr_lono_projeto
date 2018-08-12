@@ -1,31 +1,37 @@
 package com.lono.Views;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.ComponentName;
+import android.content.ContentProviderOperation;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.content.OperationApplicationException;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.RemoteException;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -34,75 +40,88 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.maps.android.SphericalUtil;
+import com.google.maps.android.geometry.Bounds;
+import com.lono.Adapter.Adapter_InfoWindow;
 import com.lono.R;
 import com.lono.Service.Service_Contact;
 import com.lono.Utils.Alerts;
 
 import com.lono.Utils.ValidGPS;
 import com.lono.Utils.Valitations;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-public class View_Contact extends AppCompatActivity implements View.OnClickListener {
+
+public class View_Contact extends AppCompatActivity implements View.OnClickListener{
 
 
     MapView mapView;
     private GoogleMap googleMap;
     FusedLocationProviderClient mFusedLocationClient;
-    Geocoder geocoder;
-    List<Address> addresses;
-    List<LatLng> decodedPath = new ArrayList<LatLng>();
-
     TextView info_location;
+    TextView info_location_user;
 
-    FloatingActionButton message_contact;
-    FloatingActionButton call_contact;
-    FloatingActionButton drive_contact;
+    LinearLayout item_call_lono;
+    LinearLayout item_chat_lono;
+    LinearLayout item_mail_lono;
+    LinearLayout item_drive_lono;
 
     Service_Contact serviceContact;
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_contact);
 
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+
         ValidGPS.enable(this);
-        serviceContact = new Service_Contact(this);
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.WRITE_CONTACTS,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        }, 1);
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
 
         info_location = (TextView) findViewById(R.id.info_location);
-        info_location.setText("Carregando informações...");
-        message_contact = (FloatingActionButton) findViewById(R.id.message_contact);
-        call_contact = (FloatingActionButton) findViewById(R.id.call_contact);
-        drive_contact = (FloatingActionButton) findViewById(R.id.drive_contact);
-        message_contact.setOnClickListener(this);
-        call_contact.setOnClickListener(this);
-        drive_contact.setOnClickListener(this);
+        info_location_user = (TextView) findViewById(R.id.info_location_user);
+        info_location.setText("Carregando local do Lono");
+        info_location_user.setText("Carregando sua localização");
+
+        item_call_lono = (LinearLayout) findViewById(R.id.item_call_lono);
+        item_call_lono.setOnClickListener(this);
+        item_chat_lono = (LinearLayout) findViewById(R.id.item_chat_lono);
+        item_chat_lono.setOnClickListener(this);
+        item_mail_lono = (LinearLayout)findViewById(R.id.item_mail_lono);
+        item_mail_lono.setOnClickListener(this);
+        item_drive_lono = (LinearLayout) findViewById(R.id.item_drive_lono);
+        item_drive_lono.setOnClickListener(this);
 
         try {
+            mapView.setVisibility(View.GONE);
             MapsInitializer.initialize(getApplicationContext());
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -110,33 +129,10 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                     localeProfile();
                 }
             }, 1000);
+            serviceContact = new Service_Contact(this);
         } catch (Exception e) {}
 
-        mapView.setVisibility(View.GONE);
-    }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.message_contact:
-                openMessageContact();
-                break;
-
-            case R.id.call_contact:
-                Alerts.progress_open(this, null, "Ligando para Lono", false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        callContactPhone();
-                        Alerts.progress_clode();
-                    }
-                }, 2000);
-                break;
-
-            case R.id.drive_contact:
-                comoChegarMaps();
-                break;
-        }
     }
 
     private void openMessageContact() {
@@ -162,7 +158,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                 String mail = email.getText().toString().trim();
                 String msg = message.getText().toString().trim();
 
-                if(nome.isEmpty()){
+                if (nome.isEmpty()) {
 
                     layout_name.setErrorEnabled(true);
                     layout_email.setErrorEnabled(false);
@@ -170,7 +166,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                     layout_name.setError("Infome seu nome e sobrenome");
                     name.requestFocus();
 
-                }else if(mail.isEmpty()){
+                } else if (mail.isEmpty()) {
 
                     layout_name.setErrorEnabled(false);
                     layout_email.setErrorEnabled(true);
@@ -178,7 +174,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                     layout_email.setError("Infome seu email");
                     email.requestFocus();
 
-                }else if(Valitations.email(mail) == false){
+                } else if (Valitations.email(mail) == false) {
 
                     layout_name.setErrorEnabled(false);
                     layout_email.setErrorEnabled(true);
@@ -186,7 +182,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                     layout_email.setError("Email inválido");
                     email.requestFocus();
 
-                }else if(msg.isEmpty()){
+                } else if (msg.isEmpty()) {
 
                     layout_name.setErrorEnabled(false);
                     layout_email.setErrorEnabled(false);
@@ -194,7 +190,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                     layout_message.setError("Escreva algo para gente");
                     message.requestFocus();
 
-                }else {
+                } else {
 
                     Alerts.progress_open(View_Contact.this, null, "Enviando...", false);
                     serviceContact.sendEmail(nome, mail, msg, alertDialog);
@@ -203,50 +199,6 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-    };
-
-    @SuppressLint("MissingPermission")
-    private void callContactPhone(){
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:81 3132-0664"));
-        startActivity(callIntent);
-    }
-
-    private void comoChegarMaps(){
-        Uri uri = Uri.parse("google.navigation:q=-8.0458145,-34.8895672");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        intent.setPackage("com.google.android.apps.maps");
-        startActivity(intent);
-    }
-
-    @SuppressLint("MissingPermission")
-    private void localeProfile() {
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        mFusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(final Location location) {
-                        if (location != null) {
-                            mapReady(location);
-                            geocoder = new Geocoder(View_Contact.this, Locale.getDefault());
-                            try {
-                                addresses = geocoder.getFromLocation(-8.0459254,-34.8891508, 1);
-                                String address = addresses.get(0).getAddressLine(0);
-                                String logradouro = addresses.get(0).getThoroughfare();
-                                String estado = addresses.get(0).getAdminArea();
-                                String number = addresses.get(0).getFeatureName();
-                                String city = addresses.get(0).getLocality();
-                                String state = addresses.get(0).getAdminArea();
-                                String country = addresses.get(0).getCountryName();
-                                String postalCode = addresses.get(0).getPostalCode();
-                                String knownName = addresses.get(0).getFeatureName();
-
-                            } catch (IOException e) {}
-                        }else{
-
-                        }
-                    }
-                });
     }
 
     private void mapReady(final Location location){
@@ -256,18 +208,6 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                 googleMap = mMap;
 
                 final LatLng latLng = new LatLng(-8.0459274,-34.8891792);
-
-                final MarkerOptions marker = new MarkerOptions()
-                        .position(latLng)
-                        .flat(false)
-                        .draggable(false)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_home));
-
-                final MarkerOptions you = new MarkerOptions()
-                        .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                        .flat(false)
-                        .draggable(false)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_you_map));
 
                 String url = makeURL(location.getLatitude(), location.getLongitude(), -8.0459274, -34.8891792);
                 AndroidNetworking.get(url)
@@ -280,12 +220,13 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                                 JSONObject routes = routeArray.getJSONObject(0);
                                 JSONObject address = routes.getJSONArray("legs").getJSONObject(0);
 
-                                String start_address = address.getString("start_address");
+                                String[] start_address = address.getString("start_address").split("-");
                                 String[] end_address = address.getString("end_address").split("-");
                                 String distance_address = address.getJSONObject("distance").getString("text");
                                 String duration_address = address.getJSONObject("duration").getString("text");
 
-                                info_location.setText(end_address[0]+"\nVocê está a "+distance_address+" de nós.\nCerca de "+duration_address+" para chegar");
+                                info_location_user.setText(start_address[0]);
+                                info_location.setText(end_address[0]);
 
                                 JSONObject overviewPolylines = routes.getJSONObject("overview_polyline");
                                 String encodedString = overviewPolylines.getString("points");
@@ -297,20 +238,51 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                                             .add(new LatLng(src.latitude, src.longitude), new LatLng(dest.latitude, dest.longitude))
                                             .width(5).color(getResources().getColor(R.color.colorBlack)).geodesic(true));
                                 }
-                                googleMap.addMarker(marker);
-                                googleMap.addMarker(you);
+
+                                final Marker destin_marker = googleMap.addMarker(new MarkerOptions()
+                                        .position(latLng)
+                                        .title("Lono")
+                                        .flat(false)
+                                        .draggable(false)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_home)));
+
+                                final Marker you_marker = googleMap.addMarker(new MarkerOptions()
+                                        .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                                        .title("Você")
+                                        .flat(false)
+                                        .draggable(false)
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_you_map)));
+
                                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                                googleMap.getUiSettings().setMapToolbarEnabled(false);
                                 googleMap.setBuildingsEnabled(true);
                                 googleMap.setIndoorEnabled(true);
                                 googleMap.setTrafficEnabled(false);
+
+                                googleMap.setInfoWindowAdapter(new Adapter_InfoWindow(View_Contact.this,
+                                        distance_address, duration_address,
+                                        start_address[0], end_address[0]));
+
                                 googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(View_Contact.this, R.raw.map_style));
-                                CameraPosition cameraPosition = new CameraPosition
-                                        .Builder()
-                                        .target(latLng)
-                                        .zoom(12).build();
-                                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                                LatLng norhtEast = SphericalUtil.computeOffset(new LatLng(location.getLatitude(), location.getLongitude()), 0, 45);
+                                LatLng southWest = SphericalUtil.computeOffset(new LatLng(-8.0459274, -34.8891792), 0, 225);
+
+                                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                                builder.include(norhtEast);
+                                builder.include(southWest);
+
+                                final LatLngBounds bounds = builder.build();
+                                final int zoomWidth = getResources().getDisplayMetrics().widthPixels / 3;
+                                final int zoomHeight = getResources().getDisplayMetrics().heightPixels / 2;
+                                final int zoomPadding = (int) (zoomWidth * 0.05);
+
+                                googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds,zoomWidth,zoomHeight,zoomPadding));
                                 mapView.setVisibility(View.VISIBLE);
                                 mapView.onResume();
+
+                                you_marker.showInfoWindow();
+
                             }catch (JSONException e){}
                         }
 
@@ -375,8 +347,101 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.item_call_lono:
+                callContactPhone();
+                break;
+
+            case R.id.item_chat_lono:
+                openChat();
+                break;
+
+            case R.id.item_mail_lono:
+                openMessageContact();
+                break;
+
+            case R.id.item_drive_lono:
+                comoChegarMaps();
+                break;
+        }
+    }
+
+    private void writeContact(String displayName, String number) {
+        ArrayList contentProviderOperations = new ArrayList();
+        //insert raw contact using RawContacts.CONTENT_URI
+        contentProviderOperations.add(ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null).withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null).build());
+        //insert contact display name using Data.CONTENT_URI
+        contentProviderOperations.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, displayName).build());
+        //insert mobile number using Data.CONTENT_URI
+        contentProviderOperations.add(ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, number).withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE).build());
+        try {
+            getApplicationContext().getContentResolver().
+                    applyBatch(ContactsContract.AUTHORITY, contentProviderOperations);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (OperationApplicationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openChat() {
+        writeContact("Lono Atendimento", "+558187059867");
+        try{
+            String number = "558187059867";
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            sendIntent.putExtra(Intent.EXTRA_TEXT,"");
+            sendIntent.putExtra("jid", number + "@s.whatsapp.net");
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
+        }
+        catch(Exception e) {
+            Snackbar.make(getWindow().getDecorView(),
+                    "Você não tem o Whatsapp instalado",
+                    Snackbar.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private void localeProfile() {
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationClient.getLastLocation()
+            .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(final Location location) {
+                    if (location != null) {
+                        mapReady(location);
+                    }
+                }
+            });
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private void callContactPhone() {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:81 3132-0664"));
+        startActivity(callIntent);
+    }
+
+    private void comoChegarMaps() {
+        Uri uri = Uri.parse("google.navigation:q=-8.0458145,-34.8895672");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setPackage("com.google.android.apps.maps");
+        startActivity(intent);
+    }
+
+    @Override
     public void onBackPressed() {
         finish();
     }
-
 }
