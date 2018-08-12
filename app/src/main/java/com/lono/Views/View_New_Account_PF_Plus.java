@@ -23,6 +23,7 @@ import com.lono.Service.Service_New_Account;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskCPF;
 import com.lono.Utils.MaskCellPhone;
+import com.lono.Utils.ValidaCPF;
 import com.lono.Utils.Valitations;
 
 public class View_New_Account_PF_Plus extends AppCompatActivity implements View.OnClickListener {
@@ -97,10 +98,16 @@ public class View_New_Account_PF_Plus extends AppCompatActivity implements View.
             @Override
             public void onFocusChange(View view, boolean b) {
                 String cpf = cpf_pf.getText().toString().trim();
-                if(b == false){
-                    if((!cpf.isEmpty()) && (cpf.length() > 13)){
-                        Alerts.progress_open(View_New_Account_PF_Plus.this, null, "Consultando informações", false);
-                        serviceNewAccount.check_cpf(cpf, cpf_pf, layout_cpf_pf, name_pf, email_pf);
+                if((!cpf.isEmpty()) && (cpf.length() > 13)){
+                    if(ValidaCPF.check(MaskCPF.unmask(cpf)) == false){
+                        layout_cpf_pf.setErrorEnabled(true);
+                        layout_name_pf.setErrorEnabled(false);
+                        layout_email_pf.setErrorEnabled(false);
+                        layout_cellphone_pf.setErrorEnabled(false);
+                        layout_password_pf.setErrorEnabled(false);
+                        layout_conf_password_pf.setErrorEnabled(false);
+                        layout_genre_pf.setErrorEnabled(false);
+                        layout_cpf_pf.setError("CPF inválido");
                     }
                 }
             }

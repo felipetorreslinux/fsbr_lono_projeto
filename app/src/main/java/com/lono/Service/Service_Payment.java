@@ -36,47 +36,6 @@ public class Service_Payment {
         this.builder = new AlertDialog.Builder(activity);
     }
 
-    public void check_cpf (String cpf, final EditText editText){
-        AndroidNetworking.get(Server.cpf()+"api/check_cpf/"+ MaskCPF.unmask(cpf))
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            int code = response.getInt("code");
-                            switch (code){
-                                case 0:
-                                    Alerts.progress_clode();
-                                    String name = response.getJSONObject("content").getJSONObject("cpf").getString("name");
-                                    editText.setText(name);
-                                    editText.setEnabled(false);
-                                    break;
-
-                                case 35:
-                                    Alerts.progress_clode();
-                                    String new_name = response.getJSONObject("content").getJSONObject("user_info").getString("name");
-                                    editText.setText(new_name);
-                                    editText.setEnabled(false);
-                                    break;
-                                default:
-                                    Alerts.progress_clode();
-                                    builder.setTitle("Ops!!!");
-                                    builder.setMessage("CPF inválido");
-                                    builder.setPositiveButton("Ok", null);
-                                    builder.create().show();
-
-                            }
-                        }catch (JSONException e){}
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Alerts.progress_clode();
-                        Server.ErrorServer(activity, anError.getErrorCode());
-                    }
-                });
-    };
-
     public void addCard(String token, final String number, final String month, final String year, final String document, final String name, final String price){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         try {

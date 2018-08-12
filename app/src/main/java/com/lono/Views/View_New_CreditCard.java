@@ -74,20 +74,6 @@ public class View_New_CreditCard extends AppCompatActivity {
         document_name_creditcard = (EditText) findViewById(R.id.document_name_creditcard);
 
         document_client_creditcard.addTextChangedListener(MaskCPF.insert(document_client_creditcard));
-        document_client_creditcard.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(b == false){
-                    String cpf = document_client_creditcard.getText().toString().trim();
-                    if((!cpf.isEmpty()) && (cpf.length() == 14)){
-                        Alerts.progress_open(View_New_CreditCard.this, null, "Consultando informações", false);
-                        servicePayment.check_cpf(cpf, document_name_creditcard);
-                    }else{
-
-                    }
-                }
-            }
-        });
 
         number_creditcard.addTextChangedListener(MaskNumberCreditCard.mask(number_creditcard));
         date_validate_creditcard.addTextChangedListener(MaskValidateCreditCard.mask(date_validate_creditcard));

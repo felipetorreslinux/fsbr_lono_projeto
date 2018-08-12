@@ -2,6 +2,7 @@ package com.lono.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -219,5 +220,4 @@ public class List_Plans_Adapter extends RecyclerView.Adapter<List_Plans_Adapter.
         holder.price_plan_anual.setText( Price.real( CalcTerms.value_anual( model.getValor_termo(), terms ) ) );
         holder.qtd_terms_plan_plus.setText( String.valueOf( terms ) );
     }
-
 }

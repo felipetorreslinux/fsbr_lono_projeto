@@ -38,10 +38,6 @@ public class Server {
         return sharedPreferences.getString( "token", "" );
     }
 
-    public static String cpf(){
-        return "http://api.cliksocial.com/";
-    };
-
     public static void ErrorServer (Activity activity, int code){
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);
         switch (code){

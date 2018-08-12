@@ -1,51 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorWhite">
 
-    <GridLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/actionbar_list_plans"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:columnCount="3"
-        android:rotation="0">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <ImageView
-            android:id="@+id/imageview_back_list_plans"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@color/colorWhite"
-            android:padding="13dp"
-            android:layout_column="0"
-            android:layout_row="0"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="0"
-            android:layout_gravity="fill_horizontal|center"
-            android:text="@string/title_list_plans"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:fontFamily="@font/roboto"/>
-
-        <ImageView
-            android:visibility="invisible"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:padding="12dp"
-            android:layout_column="2"
-            android:layout_row="0"/>
-
-    </GridLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -61,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/text_header_list_plans"
                 android:fontFamily="@font/roboto"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorDarkGray"
                 android:textSize="16dp"
                 android:padding="16dp"/>
 

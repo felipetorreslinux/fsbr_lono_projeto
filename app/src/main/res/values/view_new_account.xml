@@ -26,6 +26,7 @@
     <string name="label_info_new_account_pj_plus">Informe seus dados abaixo</string>
     <string name="title_new_account_pj_plus">Pessoa Jurídica</string>
     <string name="title_new_acoount_pf_plus">Pessoa Física</string>
+    <string name="title_new_acoount_free">Plano Free</string>
     <string name="label_info_new_account_pf_plus">Informe seus dados abaixo</string>
     <string name="info_cfp_new_account">Informe seu cpf para que possamos validar seus dados</string>
 </resources>

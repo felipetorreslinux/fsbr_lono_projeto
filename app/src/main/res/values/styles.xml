@@ -15,7 +15,22 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="ListPlans" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="NewAccountFree" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+    </style>
+
     <style name="NewAccountPF" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="NewAccountPJ" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>

@@ -57,7 +57,9 @@ public class View_Payment extends Activity implements View.OnClickListener {
 
     ImageView edit_terms_selected_payment;
 
+    int TYPE_PERSON;
     String DOCUMENT;
+    String RAZAO_SOCIAL;
     String NAME;
     String EMAIL;
     String CELLPHONE;
@@ -85,7 +87,6 @@ public class View_Payment extends Activity implements View.OnClickListener {
         edit_terms_selected_payment = (ImageView) findViewById( R.id.edit_terms_selected_payment );
         edit_terms_selected_payment.setOnClickListener( this );
 
-
         price_plam_anual = (TextView) findViewById(R.id.price_plam_anual);
         price_economy_plam_anual = (TextView) findViewById(R.id.price_economy_plam_anual);
 
@@ -112,21 +113,34 @@ public class View_Payment extends Activity implements View.OnClickListener {
     }
 
     public void paramsUserPaypment(){
-        QTD_TERMS = getIntent().getExtras().getString( "qtd_plan" );
-        VALUE_TERM = getIntent().getExtras().getDouble( "valor_termo" );
-        DOCUMENT = getIntent().getExtras().getString( "document" );
-        NAME = getIntent().getExtras().getString( "name" );
-        EMAIL = getIntent().getExtras().getString( "email" );
-        CELLPHONE = getIntent().getExtras().getString( "cellphone" );
-        MIN_TERMS = getIntent().getExtras().getInt( "min_termos" );
-        MAX_TERMS = getIntent().getExtras().getInt( "max_termos" );
+        try{
+            TYPE_PERSON = getIntent().getExtras().getInt("type_person");
+            QTD_TERMS = getIntent().getExtras().getString( "qtd_plan" );
+            VALUE_TERM = getIntent().getExtras().getDouble( "valor_termo" );
+            DOCUMENT = getIntent().getExtras().getString( "document" );
+            RAZAO_SOCIAL = getIntent().getExtras().getString("razao_social");
+            NAME = getIntent().getExtras().getString( "name" );
+            EMAIL = getIntent().getExtras().getString( "email" );
+            CELLPHONE = getIntent().getExtras().getString( "cellphone" );
+            MIN_TERMS = getIntent().getExtras().getInt( "min_termos" );
+            MAX_TERMS = getIntent().getExtras().getInt( "max_termos" );
 
-        name_user_view_payment.setText( "Olá, "+ Valitations.name_profile(NAME));
-        qtd_terms_selected_payment.setText( QTD_TERMS );
-        text_view_price_plan_anual.setText( Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
-        text_view_price_plan_mensal.setText( Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
-        price_plam_anual.setText("De: "+ Price.real(CalcTerms.close_value_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
-        price_economy_plam_anual.setText("Economia de "+Price.real(CalcTerms.economy_plan_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+            if(TYPE_PERSON == 0){
+                name_user_view_payment.setText( "Olá, "+ Valitations.name_profile(NAME));
+                qtd_terms_selected_payment.setText( QTD_TERMS );
+                text_view_price_plan_anual.setText( Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                text_view_price_plan_mensal.setText( Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                price_plam_anual.setText("De: "+ Price.real(CalcTerms.close_value_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                price_economy_plam_anual.setText("Economia de "+Price.real(CalcTerms.economy_plan_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+            }else{
+                name_user_view_payment.setText( "Olá, "+ RAZAO_SOCIAL);
+                qtd_terms_selected_payment.setText( QTD_TERMS );
+                text_view_price_plan_anual.setText( Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                text_view_price_plan_mensal.setText( Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                price_plam_anual.setText("De: "+ Price.real(CalcTerms.close_value_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+                price_economy_plam_anual.setText("Economia de "+Price.real(CalcTerms.economy_plan_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
+            }
+        }catch (NullPointerException e){}
 
     }
 

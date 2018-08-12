@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nome completo"
-                    android:inputType="textAutoCorrect"
+                    android:inputType="textCapWords"
                     android:fontFamily="@font/roboto"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -104,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Senha"
-                    android:inputType="numberPassword"
+                    android:inputType="textPassword"
                     android:fontFamily="@font/roboto"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -120,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Confirmar senha"
-                    android:inputType="numberPassword"
+                    android:inputType="textPassword"
                     android:fontFamily="@font/roboto"/>
 
             </android.support.design.widget.TextInputLayout>

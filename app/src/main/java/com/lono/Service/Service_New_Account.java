@@ -35,50 +35,6 @@ public class Service_New_Account {
         builder = new AlertDialog.Builder(activity);
     }
 
-    public void check_cpf (String cpf, final EditText cpf_edittext, final TextInputLayout textInputLayout, final EditText nome, final EditText email){
-        AndroidNetworking.get(Server.cpf()+"api/check_cpf/"+ MaskCPF.unmask(cpf))
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            int code = response.getInt("code");
-                            switch (code){
-                                case 0:
-                                    Alerts.progress_clode();
-                                    String name = response.getJSONObject("content").getJSONObject("cpf").getString("name");
-                                    textInputLayout.setErrorEnabled(false);
-                                    nome.setText(name);
-                                    nome.setEnabled(false);
-                                    email.requestFocus();
-                                    break;
-
-                                case 35:
-                                    Alerts.progress_clode();
-                                    String new_name = response.getJSONObject("content").getJSONObject("user_info").getString("name");
-                                    textInputLayout.setErrorEnabled(false);
-                                    nome.setText(new_name);
-                                    nome.setEnabled(false);
-                                    email.requestFocus();
-                                    break;
-                                default:
-                                    Alerts.progress_clode();
-                                    textInputLayout.setErrorEnabled(true);
-                                    textInputLayout.setError("CPF inválido");
-                                    cpf_edittext.requestFocus();
-                            }
-                        }catch (JSONException e){}
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Alerts.progress_clode();
-                        Server.ErrorServer(activity, anError.getErrorCode());
-
-                    }
-                });
-    };
-
     public void create_more_200(String id_service, String name, String cellphone, String email, String comments){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         try {
@@ -137,7 +93,7 @@ public class Service_New_Account {
         }catch (JSONException e){}
     }
 
-    public void create_free (final String name, String email, String password, String cellphone, String genre, String document){
+    public void create_free (final String name, final String email, String password, String cellphone, String genre, String document){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         builder.setCancelable( false );
         try{
@@ -149,8 +105,6 @@ public class Service_New_Account {
             jsonObject.put( "nome", name );
             jsonObject.put( "sexo", genre );
             jsonObject.put( "documento", document );
-
-            System.out.println(jsonObject);
 
             AndroidNetworking.post( Server.URL()+"services/adicionar-conta" )
             .addJSONObjectBody( jsonObject )
@@ -165,7 +119,8 @@ public class Service_New_Account {
                             case "success":
                                 Alerts.progress_clode();
                                 builder.setTitle( R.string.app_name );
-                                builder.setMessage( "Usuário cadastrado com sucesso" );
+                                builder.setMessage("Usuário cadastrado com sucesso");
+                                builder.setCancelable(false);
                                 builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -180,9 +135,11 @@ public class Service_New_Account {
                                 Alerts.progress_clode();
                                 builder.setTitle( R.string.app_name );
                                 builder.setMessage( response.getString( "message" ) );
-                                builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
+                                builder.setCancelable(false);
+                                builder.setPositiveButton( "Tente novamente", null);
+                                builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = activity.getIntent();
                                         activity.setResult( Activity.RESULT_CANCELED, intent );
                                         activity.finish();
@@ -196,10 +153,7 @@ public class Service_New_Account {
                 @Override
                 public void onError(ANError anError) {
                     Alerts.progress_clode();
-                    builder.setTitle( R.string.app_name );
-                    builder.setMessage( anError.getMessage() );
-                    builder.setPositiveButton( "Ok", null);
-                    builder.create().show();
+                    Server.ErrorServer(activity, anError.getErrorCode());
                 }
             });
 
@@ -267,9 +221,7 @@ public class Service_New_Account {
 
     }
 
-    public void create_plus_pj (final String document, final String razao_social, final String name, final String email, final String password, final String cellphone, final String qtd_terms){
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
+    public void create_plus_pj (final String document, final String razao_social, final String name, final String email, final String password, final String cellphone, final String qtd_terms, final double val_term){
 
         try {
 
@@ -293,26 +245,21 @@ public class Service_New_Account {
                                 String status = response.getString( "status" );
                                 switch (status){
                                     case "success":
-                                        builder.setTitle( "Ops!!!" );
-                                        builder.setMessage( "Novo usuário cadastrado com sucesso" );
-                                        builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                Intent intent = new Intent( activity, View_Payment.class );
-                                                intent.putExtra( "type_person",0);
-                                                intent.putExtra( "document", document );
-                                                intent.putExtra( "name", name );
-                                                intent.putExtra( "email", email);
-                                                intent.putExtra( "cellphone", cellphone );
-                                                intent.putExtra( "password", password );
-                                                intent.putExtra( "qtd_plan", qtd_terms);
-                                                activity.startActivity( intent );
-                                            }
-                                        });
-                                        builder.setCancelable( false );
-                                        builder.create().show();
+                                        Alerts.progress_clode();
+                                        Intent intent = new Intent( activity, View_Payment.class );
+                                        intent.putExtra( "type_person",1);
+                                        intent.putExtra( "document", document );
+                                        intent.putExtra("razao_social", razao_social);
+                                        intent.putExtra( "name", name );
+                                        intent.putExtra( "email", email);
+                                        intent.putExtra( "cellphone", cellphone );
+                                        intent.putExtra( "password", password );
+                                        intent.putExtra( "qtd_plan", qtd_terms);
+                                        intent.putExtra( "valor_termo", val_term);
+                                        activity.startActivity( intent );
                                         break;
                                     default:
+                                        Alerts.progress_clode();
                                         builder.setTitle( "Ops!!!" );
                                         builder.setMessage( response.getString("message" ));
                                         builder.setPositiveButton( "Ok", null );
@@ -325,11 +272,8 @@ public class Service_New_Account {
 
                         @Override
                         public void onError(ANError anError) {
-                            builder.setTitle( "Ops!!!" );
-                            builder.setMessage( anError.getMessage() );
-                            builder.setPositiveButton( "Ok", null );
-                            builder.setCancelable( false );
-                            builder.create().show();
+                            Alerts.progress_clode();
+                            Server.ErrorServer(activity, anError.getErrorCode());
                         }
                     } );
         }catch (JSONException e){}
