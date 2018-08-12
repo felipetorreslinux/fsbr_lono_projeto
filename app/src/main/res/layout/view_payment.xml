@@ -3,38 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorFundo">
 
-    <RelativeLayout
-        android:id="@+id/actionbar_view_payment"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/actionbar_payment"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <ImageView
-            android:id="@+id/imageview_back_payment_plan_plus"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@color/colorWhite"
-            android:padding="13dp"/>
+    <com.tmall.ultraviewpager.UltraViewPager
+        android:layout_below="@id/actionbar_payment"
+        android:id="@+id/ultrapage_plans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <TextView
-            android:id="@+id/name_user_view_payment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:textColor="@color/colorWhite"
-            android:fontFamily="@font/roboto"
-            android:textSize="19dp"
-            android:layout_marginLeft="5dp"/>
-
-    </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_below="@id/actionbar_view_payment"
+        android:visibility="gone"
+        android:layout_below="@id/actionbar_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -53,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Quantidade de termos"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorDarkGray"
                     android:fontFamily="@font/roboto"
                     android:layout_marginBottom="10dp"/>
 
@@ -109,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nossos planos disponíveis para você"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorDarkGray"
                 android:fontFamily="@font/roboto"
                 android:layout_marginBottom="10dp"/>
 

@@ -6,13 +6,11 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lono.Models.Slides_Intro_Model;
 import com.lono.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

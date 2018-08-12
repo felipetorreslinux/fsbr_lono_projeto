@@ -85,7 +85,7 @@
 
         <activity android:name=".Views.View_Payment"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:theme="@style/View_Intro"/>
 
         <activity android:name=".Views.View_Type_Payment"
             android:screenOrientation="portrait"

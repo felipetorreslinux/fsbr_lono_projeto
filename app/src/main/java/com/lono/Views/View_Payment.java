@@ -5,13 +5,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
@@ -21,24 +27,32 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.lono.Adapter.Adapter_Slide_Plans_Payment;
+import com.lono.Models.Slide_Payment_Model;
 import com.lono.R;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.CalcTerms;
 import com.lono.Utils.Price;
 import com.lono.Utils.Valitations;
+import com.tmall.ultraviewpager.UltraViewPager;
+import com.tmall.ultraviewpager.transformer.UltraScaleTransformer;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 
-public class View_Payment extends Activity implements View.OnClickListener {
+public class View_Payment extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView imageview_back_payment_plan_plus;
+    Toolbar toolbar;
+
+    UltraViewPager ultraviewpager;
+    List<Slide_Payment_Model> list_slide_payment = new ArrayList<>();
 
     LinearLayout item_plan_anual;
     LinearLayout item_plan_mensal;
 
-    TextView name_user_view_payment;
     TextView qtd_terms_selected_payment;
 
     TextView price_plam_anual;
@@ -73,15 +87,48 @@ public class View_Payment extends Activity implements View.OnClickListener {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.view_payment );
 
-        imageview_back_payment_plan_plus = (ImageView) findViewById( R.id.imageview_back_payment_plan_plus );
-        imageview_back_payment_plan_plus.setOnClickListener( this );
+        createToolbar(toolbar);
+
+        paramsUserPaypment();
+
+        ultraviewpager = (UltraViewPager) findViewById(R.id.ultrapage_plans);
+
+        Slide_Payment_Model slideAnual = new Slide_Payment_Model(0, NAME, DOCUMENT,"Plano Anual", "30 dias grátis", QTD_TERMS, VALUE_TERM,
+                "Parcele em até 05 (cinco) vezes.\n" +
+                        "Caso pague com seu cartão de crédito, todos os recursos de nossos serviços estarão disponíveis de imediato.\n" +
+                        "No caso de boleto bancário tem um prazo de 03 (três) dias úteis para compensação do pagamento",
+                "Quero este", MIN_TERMS, MAX_TERMS);
+
+        Slide_Payment_Model slideMensal = new Slide_Payment_Model(1,  NAME, DOCUMENT,"Plano Mensal", "Básico", QTD_TERMS, VALUE_TERM,
+                "Escolhendo o tipo de pagamento mensal você será avisado para renovação do seu plano via SMS ou por email.\n" +
+                        "Podendo pagar por cartão de crédito ou boleto bancário.",
+                "Quero este", MIN_TERMS, MAX_TERMS);
+
+        list_slide_payment.clear();
+        list_slide_payment.add(slideAnual);
+        list_slide_payment.add(slideMensal);
+
+        Adapter_Slide_Plans_Payment adapterSlidePlansPayment = new Adapter_Slide_Plans_Payment(this, list_slide_payment);
+
+        ultraviewpager.setAdapter(adapterSlidePlansPayment);
+        ultraviewpager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
+        ultraviewpager.initIndicator();
+        ultraviewpager.getIndicator()
+                .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
+                .setFocusColor(getResources().getColor(R.color.colorPrimary))
+                .setNormalColor(getResources().getColor(R.color.colorGray ))
+                .setRadius((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+        ultraviewpager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+        ultraviewpager.getIndicator().setMargin(0,25, 0 ,25);
+        ultraviewpager.getIndicator().build();
+        ultraviewpager.setInfiniteLoop(false);
+        ultraviewpager.setPageTransformer(false, new UltraScaleTransformer());
 
         item_plan_anual = (LinearLayout) findViewById( R.id.item_plan_anual );
         item_plan_anual.setOnClickListener( this );
         item_plan_mensal = (LinearLayout) findViewById( R.id.item_plan_mensal );
         item_plan_mensal.setOnClickListener( this );
 
-        name_user_view_payment = (TextView) findViewById( R.id.name_user_view_payment );
         qtd_terms_selected_payment = (TextView) findViewById( R.id.qtd_terms_selected_payment );
 
         edit_terms_selected_payment = (ImageView) findViewById( R.id.edit_terms_selected_payment );
@@ -108,8 +155,16 @@ public class View_Payment extends Activity implements View.OnClickListener {
         info_plan_anual = (TextView) findViewById(R.id.info_plan_anual);
         info_plan_mensal = (TextView) findViewById(R.id.info_plan_mensal);
 
-        paramsUserPaypment();
 
+    }
+
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = (Toolbar) findViewById(R.id.actionbar_payment);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     public void paramsUserPaypment(){
@@ -126,14 +181,14 @@ public class View_Payment extends Activity implements View.OnClickListener {
             MAX_TERMS = getIntent().getExtras().getInt( "max_termos" );
 
             if(TYPE_PERSON == 0){
-                name_user_view_payment.setText( "Olá, "+ Valitations.name_profile(NAME));
+                getSupportActionBar().setTitle("Olá, "+ Valitations.name_profile(NAME));
                 qtd_terms_selected_payment.setText( QTD_TERMS );
                 text_view_price_plan_anual.setText( Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
                 text_view_price_plan_mensal.setText( Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
                 price_plam_anual.setText("De: "+ Price.real(CalcTerms.close_value_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
                 price_economy_plam_anual.setText("Economia de "+Price.real(CalcTerms.economy_plan_anual(VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
             }else{
-                name_user_view_payment.setText( "Olá, "+ RAZAO_SOCIAL);
+                getSupportActionBar().setTitle("Olá, "+ RAZAO_SOCIAL);
                 qtd_terms_selected_payment.setText( QTD_TERMS );
                 text_view_price_plan_anual.setText( Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
                 text_view_price_plan_mensal.setText( Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( QTD_TERMS ))));
@@ -144,14 +199,20 @@ public class View_Payment extends Activity implements View.OnClickListener {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
+
     @SuppressLint("NewApi")
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.imageview_back_payment_plan_plus:
-                onBackPressed();
-                break;
-
             case R.id.edit_terms_selected_payment:
                 editTermsPayment();
                 break;
@@ -167,25 +228,11 @@ public class View_Payment extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.button_selected_plam_anual:
-                Intent intent_anual = new Intent( this, View_Type_Payment.class );
-                intent_anual.putExtra("name_plam","Anual");
-                intent_anual.putExtra("document", DOCUMENT);
-                intent_anual.putExtra("name", NAME);
-                intent_anual.putExtra("qtd_terms", qtd_terms_selected_payment.getText().toString().trim());
-                intent_anual.putExtra("price_plam", Price.real( CalcTerms.value_anual( VALUE_TERM,  Integer.parseInt( qtd_terms_selected_payment.getText().toString().trim() ))));
-                intent_anual.putExtra("validate_plam", "12 meses");
-                startActivity( intent_anual );
+
                 break;
 
             case R.id.button_selected_plam_mensal:
-                Intent intent_mensal = new Intent( this, View_Type_Payment.class );
-                intent_mensal.putExtra("name_plam","Mensal");
-                intent_mensal.putExtra("document", DOCUMENT);
-                intent_mensal.putExtra("name", NAME);
-                intent_mensal.putExtra("qtd_terms", qtd_terms_selected_payment.getText().toString().trim());
-                intent_mensal.putExtra("price_plam", Price.real( CalcTerms.value_mensal( VALUE_TERM,  Integer.parseInt( qtd_terms_selected_payment.getText().toString().trim() ))));
-                intent_mensal.putExtra("validate_plam", "30 dias");
-                startActivity( intent_mensal );
+
                 break;
 
         }
