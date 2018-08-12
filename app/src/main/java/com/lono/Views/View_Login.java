@@ -6,10 +6,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,27 +32,47 @@ import org.json.JSONObject;
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener{
 
-    EditText editText_email_login;
-    EditText editText_pass_login;
-    Button button_login;
-    TextView textview_recovery_pass;
+    Toolbar toolbar;
 
-    Service_Login service_login;
+    TextInputLayout layout_email_login;
+    TextInputLayout layout_password_login;
+
+    EditText email_login;
+    EditText password_login;
+
+    Button button_access_login;
+
+    Service_Login serviceLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
 
-        service_login = new Service_Login(this);
-        editText_email_login = (EditText) findViewById(R.id.edit_text_email_login);
-        editText_pass_login = (EditText) findViewById(R.id.edit_text_pass_login);
-        button_login= (Button) findViewById(R.id.button_login);
-        button_login.setOnClickListener(this);
+        createToolbar(toolbar);
+        Keyboard.open(this, email_login);
 
-        textview_recovery_pass = (TextView) findViewById(R.id.textview_recovery_pass);
-        textview_recovery_pass.setOnClickListener(this);
+        serviceLogin = new Service_Login(this);
 
+        layout_email_login = (TextInputLayout) findViewById(R.id.layout_email_login);
+        layout_password_login = (TextInputLayout) findViewById(R.id.layout_password_login);
+
+        email_login = (EditText) findViewById(R.id.email_login);
+        password_login = (EditText) findViewById(R.id.password_login);
+
+        button_access_login = (Button) findViewById(R.id.button_access_login);
+        button_access_login.setOnClickListener(this);
+
+    }
+
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = (Toolbar) findViewById(R.id.actionbar_login);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     @Override
@@ -58,67 +81,71 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
+
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.button_login:
-                buttonLogin();
-                break;
-
-            case R.id.textview_recovery_pass:
-                openRecoveryPass();
+            case R.id.button_access_login:
+                validLogin();
                 break;
         }
     }
 
-    private void buttonLogin() {
+    private void validLogin() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String email = editText_email_login.getText().toString().trim();
-        String password = editText_pass_login.getText().toString().trim();
+        String email = email_login.getText().toString().trim();
+        String password = password_login.getText().toString().trim();
 
         if(email.isEmpty()){
-            builder.setTitle("Ops!!!");
-            builder.setMessage(R.string.erro_email_empty);
-            builder.setPositiveButton("Ok", null);
-            builder.create().show();
-            editText_email_login.requestFocus();
+
+            layout_email_login.setErrorEnabled(true);
+            layout_password_login.setErrorEnabled(false);
+            layout_email_login.setError("Informe seu email");
+            email_login.requestFocus();
+
         }else if(Valitations.email(email) == false){
-            builder.setTitle("Ops!!!");
-            builder.setMessage(R.string.erro_email_invalid);
-            builder.setPositiveButton("Ok", null);
-            builder.create().show();
-            editText_email_login.requestFocus();
+
+            layout_email_login.setErrorEnabled(true);
+            layout_password_login.setErrorEnabled(false);
+            layout_email_login.setError("Email inválido");
+            email_login.requestFocus();
+
         }else if(password.isEmpty()){
-            builder.setTitle("Ops!!!");
-            builder.setMessage(R.string.erro_pass_empty);
-            builder.setPositiveButton("Ok", null);
-            builder.create().show();
-            editText_pass_login.requestFocus();
-        }else if(Valitations.password(password) == false){
-            builder.setTitle("Ops!!!");
-            builder.setMessage(R.string.erro_pass_length);
-            builder.setPositiveButton("Ok", null);
-            builder.create().show();
-            editText_pass_login.requestFocus();
+
+            layout_email_login.setErrorEnabled(false);
+            layout_password_login.setErrorEnabled(true);
+            layout_password_login.setError("Informe sua senha");
+            password_login.requestFocus();
+
+        }else if(password.length() < 6){
+
+            layout_email_login.setErrorEnabled(false);
+            layout_password_login.setErrorEnabled(true);
+            layout_password_login.setError("Senha inválida");
+            password_login.requestFocus();
+
         }else{
+            layout_email_login.setErrorEnabled(false);
+            layout_password_login.setErrorEnabled(false);
             Keyboard.close(this, getWindow().getDecorView());
-            try {
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.put("email", editText_email_login.getText().toString().trim());
-                jsonObject.put("senha", editText_pass_login.getText().toString().trim());
-                if(Conexao.check(this) == true){
-                    Alerts.progress_open(this, null, getResources().getString(R.string.progress_dialog_login), false);
-                    service_login.access(jsonObject);
-                }else{
-                    Alerts.snacs(getWindow().getDecorView(), R.string.not_connected);
-                };
-            } catch (JSONException e) {} catch (NullPointerException e){}
+            Alerts.progress_open(this, null, "Autorizando...", false);
+            serviceLogin.check(email, password);
         }
-    };
+
+    }
+
 
     private void openRecoveryPass() {
         Intent intent = new Intent(this, View_Recovery_Pass.class);
-        intent.putExtra("email", editText_email_login.getText().toString());
         startActivityForResult(intent, 1);
     };
 

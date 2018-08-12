@@ -2,10 +2,12 @@ package com.lono.Views;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.ContentProviderOperation;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.graphics.Color;
@@ -16,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -96,15 +99,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_contact);
 
-        ValidGPS.enable(this);
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.CALL_PHONE,
-                Manifest.permission.READ_CONTACTS,
-                Manifest.permission.WRITE_CONTACTS,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-        }, 1);
+        serviceContact = new Service_Contact(this);
 
         createToolbar(toolbar);
 
@@ -127,20 +122,54 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         item_drive_lono = (LinearLayout) findViewById(R.id.item_drive_lono);
         item_drive_lono.setOnClickListener(this);
 
-        try {
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.WRITE_CONTACTS,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        }, 1);
+
+        verificaGPS();
+
+    }
+
+    private void verificaGPS(){
+        if(ValidGPS.enable(this) == true){
+            try {
+                mapView.setVisibility(View.GONE);
+                box_loading_map.setVisibility(View.VISIBLE);
+                MapsInitializer.initialize(getApplicationContext());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        localeProfile();
+                    }
+                }, 1000);
+            } catch (Exception e) {}
+        }else{
             mapView.setVisibility(View.GONE);
-            box_loading_map.setVisibility(View.VISIBLE);
-            MapsInitializer.initialize(getApplicationContext());
-            new Handler().postDelayed(new Runnable() {
+            box_loading_map.setVisibility(View.GONE);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.app_name);
+            builder.setMessage("Ative seu GPS para que possamos traçar o melhor trajeto e informar a você sua localização, distância e tempo até nós");
+            builder.setCancelable(false);
+            builder.setPositiveButton("Ativar", new DialogInterface.OnClickListener() {
                 @Override
-                public void run() {
-                    localeProfile();
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(intent, 2000);
                 }
-            }, 1000);
-            serviceContact = new Service_Contact(this);
-        } catch (Exception e) {}
+            });
+            builder.setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-
+                }
+            });
+            builder.create().show();
+        }
     }
 
     private void createToolbar(Toolbar toolbar) {
@@ -292,8 +321,8 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                                 builder.include(southWest);
 
                                 final LatLngBounds bounds = builder.build();
-                                final int zoomWidth = getResources().getDisplayMetrics().widthPixels / 3;
-                                final int zoomHeight = getResources().getDisplayMetrics().heightPixels / 2;
+                                final int zoomWidth = getResources().getDisplayMetrics().widthPixels / 5;
+                                final int zoomHeight = getResources().getDisplayMetrics().heightPixels / 5;
                                 final int zoomPadding = (int) (zoomWidth * 0.05);
 
                                 googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds,zoomWidth,zoomHeight,zoomPadding));
@@ -471,5 +500,14 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 2000:
+                verificaGPS();
+                break;
+        }
     }
 }
