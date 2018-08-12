@@ -49,6 +49,7 @@
             android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".Views.View_Recovery_Pass"
+            android:theme="@style/View_Intro"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".Views.View_Intro_Slide"

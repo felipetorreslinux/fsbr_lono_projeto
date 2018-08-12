@@ -1,14 +1,9 @@
 package com.lono.Views;
 
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,17 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Utils.Alerts;
-import com.lono.Utils.Conexao;
 import com.lono.Utils.Keyboard;
 import com.lono.Utils.Valitations;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener{
@@ -40,6 +30,8 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     EditText email_login;
     EditText password_login;
 
+    TextView button_recovery_pass;
+
     Button button_access_login;
 
     Service_Login serviceLogin;
@@ -48,9 +40,9 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
+        overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
 
         createToolbar(toolbar);
-        Keyboard.open(this, email_login);
 
         serviceLogin = new Service_Login(this);
 
@@ -59,6 +51,9 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
         email_login = (EditText) findViewById(R.id.email_login);
         password_login = (EditText) findViewById(R.id.password_login);
+
+        button_recovery_pass = (TextView) findViewById(R.id.button_recovery_pass);
+        button_recovery_pass.setOnClickListener(this);
 
         button_access_login = (Button) findViewById(R.id.button_access_login);
         button_access_login.setOnClickListener(this);
@@ -94,6 +89,9 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.button_recovery_pass:
+                openRecoveryPass();
+                break;
             case R.id.button_access_login:
                 validLogin();
                 break;
@@ -152,5 +150,13 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onBackPressed(){
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1000:
+                break;
+        }
     }
 }

@@ -1,80 +1,75 @@
 package com.lono.Views;
 
-import android.app.Activity;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-
 import com.lono.R;
 import com.lono.Service.Service_Recovery_Pass;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Keyboard;
 import com.lono.Utils.Valitations;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+public class View_Recovery_Pass extends AppCompatActivity implements View.OnClickListener {
 
-public class View_Recovery_Pass extends Activity implements View.OnClickListener {
+    Toolbar toolbar;
 
-    Service_Recovery_Pass service_recovery_pass;
+    TextInputLayout layout_email_recovery;
 
-    ImageView imageview_back_recovery_pass;
-    EditText edit_text_email_recovery_pass;
+    EditText email_recovery;
+
     Button button_recovery_pass;
+
+    Service_Recovery_Pass serviceRecoveryPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_recovery_pass);
 
-        service_recovery_pass = new Service_Recovery_Pass(this);
+        createToolbar(toolbar);
 
-        imageview_back_recovery_pass = (ImageView) findViewById(R.id.imageview_back_recovery_pass);
-        imageview_back_recovery_pass.setOnClickListener(this);
+        serviceRecoveryPass = new Service_Recovery_Pass(this);
 
-        edit_text_email_recovery_pass = (EditText) findViewById(R.id.edit_text_email_recovery_pass);
-        edit_text_email_recovery_pass.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-            @Override
-            public void afterTextChanged(Editable editable) {}
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(Valitations.email(edit_text_email_recovery_pass.getText().toString()) == true){
-                    button_recovery_pass.setVisibility(View.VISIBLE);
-                }else{
-                    button_recovery_pass.setVisibility(View.GONE);
-                }
-            }
-        });
+        layout_email_recovery = (TextInputLayout) findViewById(R.id.layout_email_recovery);
+
+        email_recovery = (EditText) findViewById(R.id.email_recovery);
 
         button_recovery_pass = (Button) findViewById(R.id.button_recovery_pass);
-        button_recovery_pass.setVisibility(View.GONE);
         button_recovery_pass.setOnClickListener(this);
-
-        String email = getIntent().getExtras().getString("email");
-        edit_text_email_recovery_pass.setText(email);
 
     }
 
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = (Toolbar) findViewById(R.id.actionbar_recovery_pass);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Recuperar Senha");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+    }
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        emailKeyboardOpen();
-    };
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.imageview_back_recovery_pass:
-                onBackPressed();
-                break;
-
             case R.id.button_recovery_pass:
                 sendRecoveryPass();
                 break;
@@ -82,26 +77,26 @@ public class View_Recovery_Pass extends Activity implements View.OnClickListener
     }
 
     private void sendRecoveryPass() {
-        String email = edit_text_email_recovery_pass.getText().toString().trim();
-        Keyboard.close(this, getWindow().getDecorView());
-        Alerts.progress_open(this, null, getResources()
-                .getString(R.string.progress_recovery_pass), false);
-        try{
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("email", email);
-            service_recovery_pass.recovery(jsonObject);
-        }catch (JSONException e){}catch (NullPointerException e){}
-    }
-
-    private void emailKeyboardOpen(){
-        String email = edit_text_email_recovery_pass.getText().toString().trim();
+        String email = email_recovery.getText().toString().trim();
         if(email.isEmpty()){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Keyboard.open(View_Recovery_Pass.this, edit_text_email_recovery_pass);
-                }
-            }, 100);
+
+            layout_email_recovery.setErrorEnabled(true);
+            layout_email_recovery.setError("Informe seu email");
+            email_recovery.requestFocus();
+
+        }else if(Valitations.email(email) == false){
+
+            layout_email_recovery.setErrorEnabled(true);
+            layout_email_recovery.setError("Email inválido");
+            email_recovery.requestFocus();
+
+        }else{
+
+            layout_email_recovery.setErrorEnabled(false);
+            Keyboard.close(this, getWindow().getDecorView());
+            Alerts.progress_open(this, null, "Consultando informações", false);
+            serviceRecoveryPass.recovery(email, layout_email_recovery);
+
         }
     }
 

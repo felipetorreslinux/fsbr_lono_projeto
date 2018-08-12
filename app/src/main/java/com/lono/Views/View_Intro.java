@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.lono.Permissions.Permissions;
 import com.lono.R;
 
 public class View_Intro extends AppCompatActivity implements View.OnClickListener{
@@ -23,6 +25,8 @@ public class View_Intro extends AppCompatActivity implements View.OnClickListene
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_intro);
+
+        Permissions.request(this);
 
         button_login = (Button) findViewById(R.id.button_intro_login);
         button_login.setOnClickListener(this);
