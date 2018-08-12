@@ -44,12 +44,12 @@ public class View_Plans_List extends AppCompatActivity{
         recyclerview_plans.setLayoutManager(new LinearLayoutManager(this));
         recyclerview_plans.setNestedScrollingEnabled(false);
         recyclerview_plans.setHasFixedSize(true);
+        Alerts.progress_open(this, null, "Listando planos...", false);
 
     }
 
     @Override
     protected void onResume() {
-        Alerts.progress_open(this, null, "Listando planos...", false);
         serviceListPlans.list(recyclerview_plans);
         super.onResume();
     }

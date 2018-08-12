@@ -67,6 +67,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".Views.View_Send_Mail_Plan_200"
+            android:theme="@style/NewAccountPlanMore200"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".Views.View_New_Account_Free"

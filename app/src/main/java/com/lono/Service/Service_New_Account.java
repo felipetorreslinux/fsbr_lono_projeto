@@ -35,11 +35,11 @@ public class Service_New_Account {
         builder = new AlertDialog.Builder(activity);
     }
 
-    public void create_more_200(String id_service, String name, String cellphone, String email, String comments){
+    public void create_more_200(String name, String email, String cellphone, String comments){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         try {
             JSONObject jsonObject = new JSONObject( );
-            jsonObject.put( "id_servico", id_service );
+            jsonObject.put( "id_servico", "2" );
             jsonObject.put( "nome", name );
             jsonObject.put( "telefone", cellphone );
             jsonObject.put( "email", email );
@@ -56,10 +56,12 @@ public class Service_New_Account {
                                 case "success":
                                     Alerts.progress_clode();
                                     builder.setTitle( R.string.app_name );
-                                    builder.setMessage( "Solicitção enviada com sucesso" );
+                                    builder.setMessage( "Solicitção enviada com sucesso.\nEntraremos em contato o mais rápido possível." );
                                     builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent = activity.getIntent();
+                                            activity.setResult( Activity.RESULT_OK, intent );
                                             activity.finish();
                                         }
                                     });
@@ -72,6 +74,8 @@ public class Service_New_Account {
                                     builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent = activity.getIntent();
+                                            activity.setResult( Activity.RESULT_OK, intent );
                                             activity.finish();
                                         }
                                     });
@@ -84,10 +88,7 @@ public class Service_New_Account {
                     @Override
                     public void onError(ANError anError) {
                         Alerts.progress_clode();
-                        builder.setTitle( R.string.app_name );
-                        builder.setMessage( anError.getMessage() );
-                        builder.setPositiveButton( "Ok", null);
-                        builder.create().show();
+                        Server.ErrorServer(activity, anError.getErrorCode());
                     }
                 } );
         }catch (JSONException e){}

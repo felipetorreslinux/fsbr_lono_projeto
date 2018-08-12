@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,8 +23,10 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.Button;
@@ -70,12 +73,15 @@ import java.util.List;
 
 public class View_Contact extends AppCompatActivity implements View.OnClickListener{
 
-
+    Toolbar toolbar;
+    
     MapView mapView;
     private GoogleMap googleMap;
     FusedLocationProviderClient mFusedLocationClient;
     TextView info_location;
     TextView info_location_user;
+
+    LinearLayout box_loading_map;
 
     LinearLayout item_call_lono;
     LinearLayout item_chat_lono;
@@ -90,9 +96,6 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_contact);
 
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-
         ValidGPS.enable(this);
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.READ_PHONE_STATE,
@@ -103,8 +106,12 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                 Manifest.permission.ACCESS_COARSE_LOCATION
         }, 1);
 
+        createToolbar(toolbar);
+
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
+
+        box_loading_map = (LinearLayout) findViewById(R.id.box_loading_map);
 
         info_location = (TextView) findViewById(R.id.info_location);
         info_location_user = (TextView) findViewById(R.id.info_location_user);
@@ -122,6 +129,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
 
         try {
             mapView.setVisibility(View.GONE);
+            box_loading_map.setVisibility(View.VISIBLE);
             MapsInitializer.initialize(getApplicationContext());
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -133,6 +141,16 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {}
 
 
+    }
+
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = (Toolbar) findViewById(R.id.actionbar_contact);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_contact);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void openMessageContact() {
@@ -252,6 +270,7 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
                                         .flat(false)
                                         .draggable(false)
                                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_you_map)));
+                                you_marker.showInfoWindow();
 
                                 googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                                 googleMap.getUiSettings().setMapToolbarEnabled(false);
@@ -279,9 +298,8 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
 
                                 googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds,zoomWidth,zoomHeight,zoomPadding));
                                 mapView.setVisibility(View.VISIBLE);
+                                box_loading_map.setVisibility(View.GONE);
                                 mapView.onResume();
-
-                                you_marker.showInfoWindow();
 
                             }catch (JSONException e){}
                         }
@@ -344,27 +362,6 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         urlString.append("&sensor=false&mode=driving&alternatives=true");
         System.out.println(urlString);
         return urlString.toString();
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.item_call_lono:
-                callContactPhone();
-                break;
-
-            case R.id.item_chat_lono:
-                openChat();
-                break;
-
-            case R.id.item_mail_lono:
-                openMessageContact();
-                break;
-
-            case R.id.item_drive_lono:
-                comoChegarMaps();
-                break;
-        }
     }
 
     private void writeContact(String displayName, String number) {
@@ -438,6 +435,37 @@ public class View_Contact extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.item_call_lono:
+                callContactPhone();
+                break;
+
+            case R.id.item_chat_lono:
+                openChat();
+                break;
+
+            case R.id.item_mail_lono:
+                openMessageContact();
+                break;
+
+            case R.id.item_drive_lono:
+                comoChegarMaps();
+                break;
+        }
     }
 
     @Override

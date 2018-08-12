@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/text_header_list_plans"
                 android:fontFamily="@font/roboto"
-                android:textColor="@color/colorDarkGray"
+                android:textColor="@color/colorGray"
                 android:textSize="16dp"
                 android:padding="16dp"/>
 

@@ -11,10 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c930cf30-a173-4ee1-b5d4-807138c2eac1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Utils/ValidaCNPF.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Utils/ValidaCPF.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_add_free.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_add_pj.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
@@ -25,20 +21,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/List_Plans_Adapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/List_Plans_Adapter.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_Free.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_Free.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_CreditCard.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_CreditCard.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pj_plus.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pj_plus.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_QuemSomos.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_QuemSomos.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Send_Mail_Plan_200.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Send_Mail_Plan_200.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_quemsomos.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_quemsomos.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_plan_more_200.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_plan_more_200.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml" />
     </list>
@@ -73,29 +65,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view_new_account_pf_plus.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="View_Contact.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="7" selection-end-column="42" />
+            <state relative-caret-position="782">
+              <caret line="447" column="5" lean-forward="false" selection-start-line="447" selection-start-column="5" selection-end-line="447" selection-end-column="5" />
               <folding>
-                <element signature="e#736#6909#0" expanded="false" />
+                <element signature="method#onCreate#0;class#View_Contact#0" expanded="false" />
+                <element signature="e#5541#5563#0" expanded="true" />
+                <element signature="method#openMessageContact#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#mapReady#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#decodePoly#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#makeURL#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#writeContact#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#openChat#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#localeProfile#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#callContactPhone#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#comoChegarMaps#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#View_Contact#0" expanded="false" />
+                <element signature="method#onClick#0;class#View_Contact#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="View_Plans_List.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java">
+      <file leaf-file-name="view_new_account_free.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
-              <folding>
-                <element signature="e#2011#2036#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="62" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="15" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,23 +105,28 @@
       <file leaf-file-name="View_New_Account_PF_Plus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="127" column="5" lean-forward="false" selection-start-line="123" selection-start-column="4" selection-end-line="127" selection-end-column="5" />
+            <state relative-caret-position="528">
+              <caret line="152" column="5" lean-forward="false" selection-start-line="140" selection-start-column="4" selection-end-line="152" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_plans_list.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml">
+      <file leaf-file-name="view_contact.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml">
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+            <state relative-caret-position="136">
+              <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="42" />
               <folding>
-                <element signature="e#733#1697#0" expanded="false" />
+                <element signature="e#653#1681#0" expanded="false" />
+                <element signature="e#1955#4408#0" expanded="false" />
+                <element signature="e#4414#12421#0" expanded="false" />
+                <element signature="e#4890#6742#0" expanded="false" />
+                <element signature="e#6756#8611#0" expanded="false" />
+                <element signature="e#10498#12353#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -2193,9 +2200,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_info_contents.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_InfoWindow.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/info_window_map.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_add_pj.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pj_plus.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Utils/ValidaCPF.java" />
@@ -2206,18 +2210,26 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_CreditCard.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Utils/Valitations.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_add_free.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_Free.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/List_Plans_Adapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_list_plans.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_plan_more_200.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Send_Mail_Plan_200.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_QuemSomos.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_quemsomos.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java" />
       </list>
     </option>
   </component>
@@ -2264,27 +2276,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
@@ -2522,64 +2513,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_CreditCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="60" column="96" lean-forward="false" selection-start-line="60" selection-start-column="96" selection-end-line="60" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3927">
-          <caret line="231" column="78" lean-forward="false" selection-start-line="231" selection-start-column="78" selection-end-line="231" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="90" column="41" lean-forward="false" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Firebase/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/view_contact.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Utils/ValidGPS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" column="38" lean-forward="false" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-374">
@@ -2676,17 +2614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_new_pf.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_chat.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2723,22 +2650,6 @@
         <state relative-caret-position="323">
           <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="206" column="60" lean-forward="false" selection-start-line="206" selection-start-column="60" selection-end-line="206" selection-end-column="60" />
-          <folding>
-            <element signature="e#510#2963#0" expanded="false" />
-            <element signature="e#3445#5297#0" expanded="false" />
-            <element signature="e#5311#7166#0" expanded="false" />
-            <element signature="e#9053#10908#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2784,25 +2695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#onCreate#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#openMessageContact#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#decodePoly#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#makeURL#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#onClick#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#writeContact#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#openChat#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#localeProfile#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#callContactPhone#0;class#View_Contact#0" expanded="false" />
-            <element signature="method#comoChegarMaps#0;class#View_Contact#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_CreditCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-33">
@@ -2838,14 +2730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_add_free.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -2865,68 +2749,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="95" column="133" lean-forward="false" selection-start-line="95" selection-start-column="133" selection-end-line="95" selection-end-column="133" />
-          <folding>
-            <element signature="method#create_more_200#0;class#Service_New_Account#0" expanded="false" />
-            <element signature="method#create_free#0;class#Service_New_Account#0" expanded="false" />
-            <element signature="method#create_plus_pf#0;class#Service_New_Account#0" expanded="false" />
-            <element signature="method#create_plus_pj#0;class#Service_New_Account#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_Free.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1853">
           <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="149" column="60" lean-forward="false" selection-start-line="149" selection-start-column="41" selection-end-line="149" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="7" selection-end-column="42" />
-          <folding>
-            <element signature="e#736#6909#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding>
-            <element signature="e#733#1697#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="127" column="5" lean-forward="false" selection-start-line="123" selection-start-column="4" selection-end-line="127" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -2953,10 +2779,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="51" column="31" lean-forward="false" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+          <folding>
+            <element signature="e#2011#2036#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_new_pf.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_plan_more_200.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/view_contact.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/view_new_account.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="24" column="62" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Send_Mail_Plan_200.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="66" column="74" lean-forward="false" selection-start-line="66" selection-start-column="74" selection-end-line="66" selection-end-column="74" />
+          <folding>
+            <element signature="e#2465#2500#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_New_Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="90" column="75" lean-forward="false" selection-start-line="90" selection-start-column="75" selection-end-line="90" selection-end-column="75" />
+          <folding>
+            <element signature="method#create_free#0;class#Service_New_Account#0" expanded="false" />
+            <element signature="method#create_plus_pf#0;class#Service_New_Account#0" expanded="false" />
+            <element signature="method#create_plus_pj#0;class#Service_New_Account#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_pf_plus.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="65" column="43" lean-forward="false" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+        <state relative-caret-position="311">
+          <caret line="69" column="55" lean-forward="false" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -2964,20 +2901,94 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_quemsomos.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="26" />
+        <state relative-caret-position="272">
+          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding>
+            <element signature="e#2114#2149#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_QuemSomos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+          <folding>
+            <element signature="e#948#972#0" expanded="false" />
+            <element signature="e#1480#1481#0" expanded="false" />
+            <element signature="e#1504#1505#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_new_account_free.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="62" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="15" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Plans_List.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_contact.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+        <state relative-caret-position="136">
+          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="42" />
           <folding>
-            <element signature="e#2011#2036#0" expanded="true" />
+            <element signature="e#653#1681#0" expanded="false" />
+            <element signature="e#1955#4408#0" expanded="false" />
+            <element signature="e#4414#12421#0" expanded="false" />
+            <element signature="e#4890#6742#0" expanded="false" />
+            <element signature="e#6756#8611#0" expanded="false" />
+            <element signature="e#10498#12353#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="152" column="5" lean-forward="false" selection-start-line="140" selection-start-column="4" selection-end-line="152" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="42" column="74" lean-forward="false" selection-start-line="42" selection-start-column="74" selection-end-line="42" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="447" column="5" lean-forward="false" selection-start-line="447" selection-start-column="5" selection-end-line="447" selection-end-column="5" />
+          <folding>
+            <element signature="method#onCreate#0;class#View_Contact#0" expanded="false" />
+            <element signature="e#5541#5563#0" expanded="true" />
+            <element signature="method#openMessageContact#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#mapReady#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#decodePoly#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#makeURL#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#writeContact#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#openChat#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#localeProfile#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#callContactPhone#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#comoChegarMaps#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#View_Contact#0" expanded="false" />
+            <element signature="method#onClick#0;class#View_Contact#0" expanded="false" />
           </folding>
         </state>
       </provider>

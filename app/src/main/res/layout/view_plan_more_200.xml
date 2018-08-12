@@ -1,196 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorWhite">
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/actionbar_list_plans"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <ImageView
-            android:id="@+id/imageview_back_plan_200"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@color/colorWhite"
-            android:padding="13dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/title_plan_200"
-            android:textColor="@color/colorWhite"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:fontFamily="@font/roboto"
-            android:textSize="19dp"
-            android:layout_marginLeft="5dp"/>
-
-    </RelativeLayout>
-
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_alignParentBottom="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorGray"
                 android:text="@string/info_solicita_plan_200"
-                android:textSize="16dp"
+                android:paddingHorizontal="5dp"
                 android:layout_marginBottom="16dp"/>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_name_more_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:text="Nome e sobrenome"
-                    android:fontFamily="@font/roboto"
-                    android:layout_marginBottom="5dp"/>
-
                 <EditText
-                    android:id="@+id/edit_text_name_send_email"
+                    android:id="@+id/name_more_200"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/input_view_login"
-                    android:padding="10dp"
-                    android:elevation="1dp"
-                    android:textColor="@color/colorPrimary"
                     android:inputType="textCapWords"
-                    android:textColorHint="@color/colorGray"
-                    android:paddingHorizontal="10dp"/>
+                    android:hint="Nome"
+                    android:fontFamily="@font/roboto"/>
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_email_more_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:text="Email"
-                    android:fontFamily="@font/roboto"
-                    android:layout_marginBottom="5dp"/>
-
                 <EditText
-                    android:id="@+id/edit_text_email_send_email"
+                    android:id="@+id/email_more_200"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/input_view_login"
-                    android:padding="10dp"
-                    android:elevation="1dp"
-                    android:textColor="@color/colorPrimary"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="@color/colorGray"
-                    android:paddingHorizontal="10dp"/>
+                    android:hint="Email"
+                    android:fontFamily="@font/roboto"/>
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_cellphone_more_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:text="Telefone"
-                    android:fontFamily="@font/roboto"
-                    android:layout_marginBottom="5dp"/>
-
                 <EditText
-                    android:id="@+id/edit_text_cellphone_send_email"
+                    android:id="@+id/cellphone_more_200"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/input_view_login"
-                    android:padding="10dp"
-                    android:elevation="1dp"
-                    android:textColor="@color/colorPrimary"
                     android:inputType="number"
-                    android:textColorHint="@color/colorGray"
-                    android:paddingHorizontal="10dp"/>
+                    android:hint="Telefone"
+                    android:fontFamily="@font/roboto"/>
 
-            </LinearLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_msg_more_200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:text="Observações"
-                    android:fontFamily="@font/roboto"
-                    android:layout_marginBottom="5dp"/>
-
                 <EditText
-                    android:id="@+id/edit_text_comment_send_email"
+                    android:id="@+id/msg_more_200"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="100dp"
-                    android:layout_gravity="left"
-                    android:gravity="start"
-                    android:background="@drawable/input_view_login"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:elevation="1dp"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_height="120dp"
                     android:inputType="textAutoComplete"
-                    android:textColorHint="@color/colorGray"/>
+                    android:hint="Messagem"
+                    android:gravity="start"
+                    android:fontFamily="@font/roboto"/>
 
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/button_send_email_plan_more_200"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="7.5dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto"
-                android:background="@drawable/ripple_login"
-                android:textColor="@color/colorBlack"
-                android:text="@string/send_email_plans_200"/>
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

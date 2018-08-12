@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFundo">
+    android:background="@color/colorWhite">
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/actionbar_quemsomos"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:elevation="1dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <ImageView
-            android:id="@+id/imageview_back_quemsomos"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@color/colorWhite"
-            android:padding="13dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/title_quemsomom"
-            android:textColor="@color/colorWhite"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:fontFamily="@font/roboto"
-            android:textSize="19dp"
-            android:layout_marginLeft="5dp"/>
-
-    </RelativeLayout>
-
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -46,9 +28,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/colorDarkGray"
+                android:fontFamily="@font/roboto"
+                android:textStyle="bold"
+                android:text="Sobre nós um pouco"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="@string/info_quems_somos"
-                android:textColor="@color/colorDarkGray"
+                android:textColor="@color/colorGray"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto"/>
 
@@ -56,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorDarkGray"
                 android:fontFamily="@font/roboto"
                 android:textStyle="bold"
                 android:text="@string/info_label_view_quemsomos"/>
@@ -65,13 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:textColor="@color/colorDarkGray"
+                android:textColor="@color/colorGray"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/info2_label_view_quemsomos"/>
 
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
