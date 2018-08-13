@@ -1,16 +1,9 @@
 package com.lono.Views;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,21 +17,22 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Service.Service_Payment;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.MaskCPF;
 import com.lono.Utils.MaskNumberCreditCard;
+import com.lono.Utils.MaskValidateCreditCard;
 import com.lono.Utils.Price;
+import com.lono.Utils.ValidaCPF;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 public class View_Type_Payment extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,20 +47,25 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     LinearLayout box_pay_creditcard;
     LinearLayout box_pay_boleto;
     LinearLayout box_codebar_boleto;
-
     TextView text_codebar_boleto;
-
     Switch swipe_cpf_creditcard;
 
-    EditText cpf_creditcard;
-    EditText name_creditcard;
-
     Spinner parcelas_creditcard;
-
     Button button_pay_creditcard;
     Button button_pay_boleto;
 
+    TextInputLayout layout_number_creditcard;
+    TextInputLayout layout_validate_creditcard;
+    TextInputLayout layout_cvv_creditcard;
+    TextInputLayout layout_cpf_creditcard;
+    TextInputLayout layout_name_creditcard;
 
+
+    EditText number_creditcard;
+    EditText validate_creditcard;
+    EditText cvv_creditcard;
+    EditText cpf_creditcard;
+    EditText name_creditcard;
 
     TextView textview_name_plam;
     TextView textview_qtd_terms;
@@ -103,8 +102,6 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
         check_cartao = (ImageView) findViewById(R.id.check_cartao);
 
 
-
-
         box_pay_boleto = (LinearLayout) findViewById(R.id.box_pay_boleto);
         box_pay_boleto.setVisibility(View.GONE);
         box_codebar_boleto = (LinearLayout) findViewById(R.id.box_codebar_boleto);
@@ -114,14 +111,24 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
         button_pay_boleto = (Button) findViewById(R.id.button_pay_boleto);
         button_pay_boleto.setOnClickListener(this);
 
-
-
-
         box_pay_creditcard = (LinearLayout) findViewById(R.id.box_pay_creditcard);
         box_pay_creditcard.setVisibility(View.GONE);
 
+        layout_number_creditcard = (TextInputLayout) findViewById(R.id.layout_number_creditcard);
+        layout_validate_creditcard = (TextInputLayout) findViewById(R.id.layout_validate_creditcard);
+        layout_cvv_creditcard = (TextInputLayout) findViewById(R.id.layout_cvv_creditcard);
+        layout_cpf_creditcard = (TextInputLayout) findViewById(R.id.layout_cpf_creditcard);
+        layout_name_creditcard = (TextInputLayout) findViewById(R.id.layout_name_creditcard);
+
+        number_creditcard = (EditText) findViewById(R.id.number_creditcard);
+        validate_creditcard = (EditText) findViewById(R.id.validate_creditcard);
+        cvv_creditcard = (EditText) findViewById(R.id.cvv_creditcard);
         cpf_creditcard = (EditText) findViewById(R.id.cpf_creditcard);
         name_creditcard = (EditText) findViewById(R.id.name_creditcard);
+
+        number_creditcard.addTextChangedListener(MaskNumberCreditCard.mask(number_creditcard));
+        validate_creditcard.addTextChangedListener(MaskValidateCreditCard.mask(validate_creditcard));
+        cpf_creditcard.addTextChangedListener(MaskCPF.insert(cpf_creditcard));
 
         swipe_cpf_creditcard = (Switch) findViewById(R.id.swipe_cpf_creditcard);
         swipe_cpf_creditcard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -258,6 +265,118 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     }
 
     private void payCreditCard() {
+        Date data = null;
+        String number = number_creditcard.getText().toString().trim();
+        String[] validate = validate_creditcard.getText().toString().trim().split("/");
+        String cvv = cvv_creditcard.getText().toString().trim();
+        String document = cpf_creditcard.getText().toString().trim();
+        String name = name_creditcard.getText().toString().trim();
+        String[] parcelas = parcelas_creditcard.getSelectedItem().toString().split("$");
+        System.out.println(parcelas[1]);
+
+        try {
+            data = new SimpleDateFormat("yyyy").parse("2015-01-24 17:39:50");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(number.isEmpty()){
+            layout_number_creditcard.setErrorEnabled(true);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_number_creditcard.setError("Informe o número do cartão");
+            number_creditcard.requestFocus();
+        }else if(number.length() < 18){
+            layout_number_creditcard.setErrorEnabled(true);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_number_creditcard.setError("Cartão inválido");
+            number_creditcard.requestFocus();
+        }else if(validate[0].isEmpty()) {
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(true);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setError("Informe o mês da validade");
+            validate_creditcard.requestFocus();
+        }else if(Integer.parseInt(validate[0]) > 12){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(true);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setError("Mês inválido");
+            validate_creditcard.requestFocus();
+        }else if(validate[1].isEmpty()) {
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(true);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setError("Informe o ano da validade");
+            validate_creditcard.requestFocus();
+        }else if(Integer.parseInt(validate[1]) < Integer.parseInt(String.valueOf(data))){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(true);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setError("Ano inválido");
+            validate_creditcard.requestFocus();
+        }else if(cvv.isEmpty()){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(true);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setError("Informe o CVV");
+            cvv_creditcard.requestFocus();
+        }else if(cvv.length() < 3){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(true);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setError("CVV inválido");
+            cvv_creditcard.requestFocus();
+        }else if(document.isEmpty()){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(true);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setError("Informe o CPF do titutar");
+            cpf_creditcard.requestFocus();
+        }else if(ValidaCPF.check(document) == false){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(true);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setError("CPF inválido");
+            cpf_creditcard.requestFocus();
+        }else if(name.isEmpty()){
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(true);
+            layout_name_creditcard.setError("informe o nome do titular");
+            name_creditcard.requestFocus();
+        }else{
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            button_pay_creditcard.setText("Analidando informações...");
+
+        }
     }
 
     @Override
