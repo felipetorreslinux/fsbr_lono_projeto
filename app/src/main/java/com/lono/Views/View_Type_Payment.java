@@ -1,8 +1,10 @@
 package com.lono.Views;
 
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -21,17 +23,12 @@ import android.widget.TextView;
 import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Service.Service_Payment;
-import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskCPF;
 import com.lono.Utils.MaskNumberCreditCard;
 import com.lono.Utils.MaskValidateCreditCard;
 import com.lono.Utils.Price;
-import com.lono.Utils.ValidaCPF;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class View_Type_Payment extends AppCompatActivity implements View.OnClickListener {
@@ -265,20 +262,17 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     }
 
     private void payCreditCard() {
-        Date data = null;
         String number = number_creditcard.getText().toString().trim();
         String[] validate = validate_creditcard.getText().toString().trim().split("/");
         String cvv = cvv_creditcard.getText().toString().trim();
         String document = cpf_creditcard.getText().toString().trim();
         String name = name_creditcard.getText().toString().trim();
-        String[] parcelas = parcelas_creditcard.getSelectedItem().toString().split("$");
-        System.out.println(parcelas[1]);
 
-        try {
-            data = new SimpleDateFormat("yyyy").parse("2015-01-24 17:39:50");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        int parcell = parcelas_creditcard.getSelectedItemPosition();
+        String parcelas = String.valueOf(parcelas_creditcard.getSelectedItem());
+
+        System.out.println(parcelas);
+        System.out.println(parcell);
 
         if(number.isEmpty()){
             layout_number_creditcard.setErrorEnabled(true);
@@ -320,7 +314,7 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
             layout_name_creditcard.setErrorEnabled(false);
             layout_validate_creditcard.setError("Informe o ano da validade");
             validate_creditcard.requestFocus();
-        }else if(Integer.parseInt(validate[1]) < Integer.parseInt(String.valueOf(data))){
+        }else if(Integer.parseInt(validate[1]) < 2018){
             layout_number_creditcard.setErrorEnabled(false);
             layout_validate_creditcard.setErrorEnabled(true);
             layout_cvv_creditcard.setErrorEnabled(false);
@@ -352,7 +346,7 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
             layout_name_creditcard.setErrorEnabled(false);
             layout_cpf_creditcard.setError("Informe o CPF do titutar");
             cpf_creditcard.requestFocus();
-        }else if(ValidaCPF.check(document) == false){
+        }else if(document.length() < 14){
             layout_number_creditcard.setErrorEnabled(false);
             layout_validate_creditcard.setErrorEnabled(false);
             layout_cvv_creditcard.setErrorEnabled(false);
@@ -360,7 +354,7 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
             layout_name_creditcard.setErrorEnabled(false);
             layout_cpf_creditcard.setError("CPF inválido");
             cpf_creditcard.requestFocus();
-        }else if(name.isEmpty()){
+        }else if(name.isEmpty()) {
             layout_number_creditcard.setErrorEnabled(false);
             layout_validate_creditcard.setErrorEnabled(false);
             layout_cvv_creditcard.setErrorEnabled(false);
@@ -374,7 +368,22 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
             layout_cvv_creditcard.setErrorEnabled(false);
             layout_cpf_creditcard.setErrorEnabled(false);
             layout_name_creditcard.setErrorEnabled(false);
-            button_pay_creditcard.setText("Analidando informações...");
+
+            if(parcell == 0){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Ops!!!").setMessage("Informe a parcela para pagamento")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            parcelas_creditcard.performClick();
+                        }
+                    }).create().show();
+            }else{
+                button_pay_creditcard.setText("Analidando informações...");
+            }
+
+
+
 
         }
     }

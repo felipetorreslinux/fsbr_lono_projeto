@@ -11,8 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c930cf30-a173-4ee1-b5d4-807138c2eac1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_type_payment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_type_payment.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,15 +56,15 @@
       <file leaf-file-name="View_Type_Payment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="274" column="37" lean-forward="false" selection-start-line="274" selection-start-column="37" selection-end-line="274" selection-end-column="37" />
+            <state relative-caret-position="494">
+              <caret line="374" column="54" lean-forward="false" selection-start-line="374" selection-start-column="54" selection-end-line="374" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4913#5380#0" expanded="true" />
-                <element signature="e#5379#5380#0" expanded="true" />
-                <element signature="e#7535#7543#0" expanded="true" />
-                <element signature="e#16414#16415#0" expanded="true" />
-                <element signature="e#16438#16439#0" expanded="true" />
+                <element signature="e#4802#5269#0" expanded="true" />
+                <element signature="e#5268#5269#0" expanded="true" />
+                <element signature="e#7424#7432#0" expanded="true" />
+                <element signature="e#16521#16522#0" expanded="true" />
+                <element signature="e#16545#16546#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,7 +77,7 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="354">
-              <caret line="446" column="50" lean-forward="true" selection-start-line="446" selection-start-column="50" selection-end-line="446" selection-end-column="50" />
+              <caret line="446" column="50" lean-forward="false" selection-start-line="446" selection-start-column="50" selection-end-line="446" selection-end-column="50" />
               <folding>
                 <element signature="e#1101#7286#0" expanded="false" />
                 <element signature="e#7300#7622#0" expanded="false" />
@@ -2283,7 +2291,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../PubGo/Android" />
-    <property name="device.picker.selection" value="ZW322BRF23" />
+    <property name="device.picker.selection" value="192.168.0.106:5555" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
   </component>
   <component name="RecentsManager">
@@ -3044,8 +3052,8 @@
           <caret line="119" column="107" lean-forward="false" selection-start-line="119" selection-start-column="107" selection-end-line="119" selection-end-column="107" />
           <folding>
             <element signature="method#addCard#0;class#Service_Payment#0" expanded="false" />
-            <element signature="e#5595#6070#0" expanded="true" />
-            <element signature="e#6069#6070#0" expanded="true" />
+            <element signature="e#5595#6070#0" expanded="false" />
+            <element signature="e#6069#6070#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3056,7 +3064,7 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
-          <caret line="446" column="50" lean-forward="true" selection-start-line="446" selection-start-column="50" selection-end-line="446" selection-end-column="50" />
+          <caret line="446" column="50" lean-forward="false" selection-start-line="446" selection-start-column="50" selection-end-line="446" selection-end-column="50" />
           <folding>
             <element signature="e#1101#7286#0" expanded="false" />
             <element signature="e#7300#7622#0" expanded="false" />
@@ -3072,15 +3080,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="274" column="37" lean-forward="false" selection-start-line="274" selection-start-column="37" selection-end-line="274" selection-end-column="37" />
+        <state relative-caret-position="494">
+          <caret line="374" column="54" lean-forward="false" selection-start-line="374" selection-start-column="54" selection-end-line="374" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4913#5380#0" expanded="true" />
-            <element signature="e#5379#5380#0" expanded="true" />
-            <element signature="e#7535#7543#0" expanded="true" />
-            <element signature="e#16414#16415#0" expanded="true" />
-            <element signature="e#16438#16439#0" expanded="true" />
+            <element signature="e#4802#5269#0" expanded="true" />
+            <element signature="e#5268#5269#0" expanded="true" />
+            <element signature="e#7424#7432#0" expanded="true" />
+            <element signature="e#16521#16522#0" expanded="true" />
+            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
