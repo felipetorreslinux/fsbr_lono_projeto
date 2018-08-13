@@ -200,18 +200,7 @@ public class View_New_CreditCard extends AppCompatActivity {
             String token = Server.token(this);
             if(!token.equals("")){
                 Alerts.progress_open(this, null, "Analisando informações", false);
-                servicePayment.addCard( token, number, String.valueOf(month), String.valueOf(year), document, name, PRICE_PLAN);
-                lonoPagamentoUtils.GenerateCardToken( number, cvv, month, year, new LonoPagamentoUtils.GenerateCardTokenListener() {
-                    @Override
-                    public void onSuccess(String cardToken) {
-                        Server.tokenCard = cardToken;
-                    }
 
-                    @Override
-                    public void onError(String errorMessage) {
-
-                    }
-                });
             }
         }
     }

@@ -68,61 +68,85 @@ public class Service_Payment {
 
     }
 
-
-    public void addCard(String token, final String number, final String month, final String year, final String document, final String name, final String price){
-        final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
-        try {
-            JSONObject jsonObject = new JSONObject(  );
-            jsonObject.put( "token", token );
-            jsonObject.put( "numero_cartao", number );
-            jsonObject.put( "validade_mes", month );
-            jsonObject.put( "validade_ano", year );
-            jsonObject.put("valor", price);
+    public void paymentCard(String token, String qtd_terms, String type_plam, String hash, String token_card, String cep, String number_local, String cpf, String name, String data_nasc, String cellphone, String parcells ){
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("token", token);
+            jsonObject.put("qtd_termos", qtd_terms);
+            jsonObject.put("tipo_plano", type_plam);
+            jsonObject.put("forma_pagamento", "cartao");
+            jsonObject.put("sender_hash", hash);
+            jsonObject.put("card_token", token_card);
+            jsonObject.put("cep", cep);
+            jsonObject.put("numero", number_local);
+            jsonObject.put("cpf_titular", cpf);
             jsonObject.put("nome_titular", name);
+            jsonObject.put("data_nas_titular", data_nasc);
+            jsonObject.put("telefone_titular", cellphone);
+            jsonObject.put("num_parcelas", parcells);
 
-            System.out.println(jsonObject);
+            AndroidNetworking.post(Server.URL()+"services/contratar-plano")
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String status = response.getString("status");
+                            switch (status){
+                                case "success":
+                                    Alerts.progress_clode();
+                                    builder.setTitle(R.string.app_name);
+                                    builder.setMessage(response.getString("message"));
+                                    builder.setCancelable(false);
+                                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            activity.finishAffinity();
+                                            Intent intent = new Intent(activity, View_Login.class);
+                                            activity.startActivity(intent);
+                                        }
+                                    });
+                                    builder.create().show();
+                                    break;
+                                default:
+                                    Alerts.progress_clode();
+                                    builder.setTitle(R.string.app_name);
+                                    builder.setMessage(response.getString("message"));
+                                    builder.setCancelable(false);
+                                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            activity.finish();
+                                        }
+                                    });
+                                    builder.create().show();
+                                    break;
+                            }
 
-            AndroidNetworking.post( Server.URL()+"services/adicionar-cartao-usuario" )
-                    .addJSONObjectBody( jsonObject )
-                    .build()
-                    .getAsJSONObject( new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try{
-                                String status = response.getString( "status" );
-                                switch (status){
-                                    case "success":
-                                        Alerts.progress_clode();
-                                        JSONArray array = response.getJSONArray("parcelas");
-                                        System.out.println(array);
-                                        Intent intent = activity.getIntent();
-                                        intent.putExtra( "number", number );
-                                        intent.putExtra( "month", month );
-                                        intent.putExtra( "year", year );
-                                        intent.putExtra( "document", document);
-                                        intent.putExtra( "name", name );
-                                        intent.putExtra("array_parcelas", array.toString());
-                                        activity.setResult( Activity.RESULT_OK, intent );
-                                        activity.finish();
-                                        break;
-                                    default:
-                                        Alerts.progress_clode();
-                                        builder.setTitle( "Ops!!!" );
-                                        builder.setMessage( response.getString("mesaage") );
-                                        builder.setCancelable( false );
-                                        builder.setPositiveButton( "Ok", null );
-                                        builder.create().show();
-                                }
-                            }catch (JSONException e){}
-                        }
-                        @Override
-                        public void onError(ANError anError) {
-                            Alerts.progress_clode();
-                            Server.ErrorServer(activity, anError.getErrorCode());
-                        }
-                    });
+                        }catch (JSONException e){}
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Alerts.progress_clode();
+                        Server.ErrorServer(activity, anError.getErrorCode());
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage(anError.getMessage());
+                        builder.setCancelable(false);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                activity.finish();
+                            }
+                        });
+                        builder.create().show();
+                    }
+                });
+
         }catch (JSONException e){}
-
 
     }
 
@@ -189,6 +213,5 @@ public class Service_Payment {
         }catch (JSONException e){}
 
     }
-
 
 }

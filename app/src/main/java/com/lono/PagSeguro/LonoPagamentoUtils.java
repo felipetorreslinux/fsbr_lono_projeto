@@ -225,22 +225,22 @@ public class LonoPagamentoUtils {
      * @param expirationYear -> Ano de validade
      * @param listener -> Listener que sera executado (onSuccess/onError) após o processamento
      */
-    public void GenerateCardToken(String numeroCartao, String cvv, int expirationMonth, int expirationYear, GenerateCardTokenListener listener) {
-        // Garantindo o listener
-        if ( listener == null ) {
-            Log.e(LOG_TAG, "O Listener não pode ser NULL");
-            return;
-        }
-
-        // Verificando o último lastSessionCode
-        if ( lastSessionCode == null ) {
-            listener.onError("Nenhuma sessão foi inicializada");
-            return;
-        }
-
-        // Executando o 'GenerateCardToken' passando a ultima Sessao como argumento
-        GenerateCardToken(lastSessionCode, numeroCartao, cvv, expirationMonth, expirationYear, listener);
-    }
+//    public void GenerateCardToken(String numeroCartao, String cvv, int expirationMonth, int expirationYear, GenerateCardTokenListener listener) {
+//        // Garantindo o listener
+//        if ( listener == null ) {
+//            Log.e(LOG_TAG, "O Listener não pode ser NULL");
+//            return;
+//        }
+//
+//        // Verificando o último lastSessionCode
+//        if ( lastSessionCode == null ) {
+//            listener.onError("Nenhuma sessão foi inicializada");
+//            return;
+//        }
+//
+//        // Executando o 'GenerateCardToken' passando a ultima Sessao como argumento
+//        GenerateCardToken(lastSessionCode, numeroCartao, cvv, expirationMonth, expirationYear, listener);
+//    }
 
     /**
      * Obtém o nome da bandeira do cartão informado

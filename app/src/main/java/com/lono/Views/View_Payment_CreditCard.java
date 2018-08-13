@@ -11,11 +11,15 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.lono.APIServer.Server;
+import com.lono.PagSeguro.LonoPagamentoUtils;
 import com.lono.R;
 import com.lono.Service.Service_Payment;
+import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskCPF;
 import com.lono.Utils.MaskCellPhone;
 import com.lono.Utils.MaskData;
@@ -40,6 +44,7 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     TextInputLayout layout_date_nasc_creditcard;
     TextInputLayout layout_cellphone_creditcard;
     TextInputLayout layout_cep_creditcard;
+    TextInputLayout layout_number_local_creditcard;
 
 
     EditText number_creditcard;
@@ -50,12 +55,23 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     EditText date_nasc_creditcard;
     EditText cellphone_creditcard;
     EditText cep_creditcard;
+    EditText number_local_creditcard;
 
     Spinner parcelas_creditcard;
 
+    Button button_pay_creditcard;
+
+    String TYPE_PLAM;
+    String HASH;
+    int QTC_PARCELAS;
+    String QTD_TERMS;
     double PRICE;
+    String NAME;
+    String DOCUMENT;
+    String TOKEN_CARD;
 
     Service_Payment servicePayment;
+    LonoPagamentoUtils lonoPagamentoUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,8 +79,11 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         setContentView(R.layout.view_payment_creditcard);
 
         servicePayment = new Service_Payment(this);
+        lonoPagamentoUtils = new LonoPagamentoUtils(this, Server.payment());
+
 
         createToolbar(toolbar);
+
 
         layout_number_creditcard = (TextInputLayout) findViewById(R.id.layout_number_creditcard);
         layout_validate_creditcard = (TextInputLayout) findViewById(R.id.layout_validate_creditcard);
@@ -74,6 +93,7 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         layout_date_nasc_creditcard = (TextInputLayout) findViewById(R.id.layout_date_nasc_creditcard);
         layout_cellphone_creditcard = (TextInputLayout) findViewById(R.id.layout_cellphone_creditcard);
         layout_cep_creditcard = (TextInputLayout) findViewById(R.id.layout_cep_creditcard);
+        layout_number_local_creditcard = (TextInputLayout) findViewById(R.id.layout_number_local_creditcard);
 
         number_creditcard = (EditText) findViewById(R.id.number_creditcard);
         number_creditcard.addTextChangedListener(MaskNumberCreditCard.mask(number_creditcard));
@@ -112,13 +132,9 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         cellphone_creditcard = (EditText) findViewById(R.id.cellphone_creditcard);
         cellphone_creditcard.addTextChangedListener(MaskCellPhone.insert(cellphone_creditcard));
         cep_creditcard = (EditText) findViewById(R.id.cep_creditcard);
-
         cep_creditcard.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.length() > 7){
@@ -128,17 +144,22 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
                     System.out.println(cep);
                 }
             }
-
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
-
+        number_local_creditcard = (EditText) findViewById(R.id.number_local_creditcard);
         parcelas_creditcard = (Spinner) findViewById(R.id.parcelas_creditcard);
 
+        button_pay_creditcard = (Button) findViewById(R.id.button_pay_creditcard);
+        button_pay_creditcard.setOnClickListener(this);
+
         try{
+            TYPE_PLAM = getIntent().getExtras().getString("type_plan");
+            QTD_TERMS = getIntent().getExtras().getString("qtd_terms");
             PRICE = getIntent().getExtras().getDouble("price");
+            DOCUMENT = getIntent().getExtras().getString("document");
+            NAME = getIntent().getExtras().getString("name");
+            TOKEN_CARD = null;
             parcelas(PRICE);
         }catch (NullPointerException e){}
 
@@ -167,6 +188,11 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         parcelas_creditcard.setAdapter(dataAdapter);
     }
 
+    @Override
+    public void onResume(){
+        Server.hash_pagseguro(this);
+        super.onResume();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -179,12 +205,54 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     }
 
     @Override
-    public void onBackPressed() {
-        finish();
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_pay_creditcard:
+                pay();
+                break;
+        }
+    }
+
+    private void pay() {
+
+        String number_card = MaskNumberCreditCard.unmask(number_creditcard.getText().toString().trim());
+        String validate_card = validate_creditcard.getText().toString().trim();
+        String[] validate = validate_card.split("/");
+        int monthCard = Integer.parseInt(validate[0]);
+        int yearCard = Integer.parseInt(validate[1]);
+        String cvv_card = cvv_creditcard.getText().toString().trim();
+
+        final String token = Server.token(this);
+        final String qtd_terms = QTD_TERMS;
+        final String type_plan = TYPE_PLAM;
+        final String sessionPayment = Server.sessionPayment;
+        final String hash = Server.hashSession;
+        final String cpf = cpf_creditcard.getText().toString().trim();
+        final String name = name_creditcard.getText().toString().trim();
+        final String data_nasc = date_nasc_creditcard.getText().toString().trim();
+        final String cellphone = cellphone_creditcard.getText().toString().trim();
+        QTC_PARCELAS = parcelas_creditcard.getSelectedItemPosition();
+        Alerts.progress_open(this, null, "Realizando pagamento", false);
+        lonoPagamentoUtils.GenerateCardToken(sessionPayment, number_card, cvv_card, monthCard, yearCard, new LonoPagamentoUtils.GenerateCardTokenListener() {
+            @Override
+            public void onSuccess(String cardToken) {
+                TOKEN_CARD = cardToken;
+
+                System.out.println(cardToken);
+
+                servicePayment.paymentCard(token, qtd_terms, type_plan.toLowerCase(), hash, cardToken,
+                        cep_creditcard.getText().toString(), number_local_creditcard.getText().toString(),
+                        cpf, name, data_nasc, cellphone, String.valueOf(QTC_PARCELAS));            }
+
+            @Override
+            public void onError(String errorMessage) {
+                TOKEN_CARD = null;
+            }
+        });
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onBackPressed() {
+        finish();
     }
 }

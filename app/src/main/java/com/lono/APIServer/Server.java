@@ -20,6 +20,7 @@ import java.net.URL;
 public class Server {
 
     public static String hashSession = null;
+    public static String sessionPayment = null;
     public static String tokenCard = null;
 
     public static String payment (){
@@ -54,11 +55,13 @@ public class Server {
             @Override
             public void onSuccess(String sessionCode, String senderHash) {
                 hashSession = senderHash;
+                sessionPayment = sessionCode;
             }
 
             @Override
             public void onError(String errorMessage) {
                 hashSession = null;
+                sessionPayment = null;
                 hash_pagseguro(activity);
             }
         });
