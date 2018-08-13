@@ -7,14 +7,22 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.lono.APIServer.Server;
@@ -22,6 +30,7 @@ import com.lono.R;
 import com.lono.Service.Service_Payment;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskNumberCreditCard;
+import com.lono.Utils.Price;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,41 +38,50 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
-public class View_Type_Payment extends Activity implements View.OnClickListener {
+public class View_Type_Payment extends AppCompatActivity implements View.OnClickListener {
 
-    ImageView imageview_back_type_payment;
-    CardView item_boleto_bank;
-    CardView item_add_credit_card;
+    Toolbar toolbar;
+
+    RelativeLayout item_boleto_pay;
+    RelativeLayout item_cartao_pay;
+
+    ImageView check_boleto;
+    ImageView check_cartao;
+
+    LinearLayout box_pay_creditcard;
+    LinearLayout box_pay_boleto;
+    LinearLayout box_codebar_boleto;
+
+    TextView text_codebar_boleto;
+
+    Switch swipe_cpf_creditcard;
+
+    EditText cpf_creditcard;
+    EditText name_creditcard;
+
+    Spinner parcelas_creditcard;
+
+    Button button_pay_creditcard;
+    Button button_pay_boleto;
+
+
 
     TextView textview_name_plam;
     TextView textview_qtd_terms;
     TextView price_plan_selected;
     TextView textview_validade_plam;
 
+    int TYPE_PERSON;
     String TYPE_PLAN;
+    String DOCUMENT;
+    String NAME;
     String QTD_PLAN;
     String PRICE_PLAM;
+    double PRICE;
     String VALID_PLAN;
     int TYPE_PAY;
-
-    LinearLayout box_response_boleto;
-    TextView response_dados_boleto;
-    TextView response_link_boleto;
-
-    CardView card_info_creditcard;
-    TextView number_creditcard_payment;
-    TextView validate_creditcard_payment;
-    TextView name_creditcard_payment;
-    CardView card_parcells;
-    Spinner parcelas_credit_card;
-
-    CardView card_info_boleto;
-    TextView codebar_boleto;
-    ImageView button_copy_codebar_boleto;
-    ImageView button_share_codebar_boleto;
-
-    Button button_pay;
 
     Service_Payment servicePayment;
 
@@ -74,178 +92,177 @@ public class View_Type_Payment extends Activity implements View.OnClickListener 
 
         servicePayment = new Service_Payment(this);
 
-        TYPE_PLAN = getIntent().getExtras().getString("name_plam");
-        QTD_PLAN = getIntent().getExtras().getString("qtd_terms");
-        PRICE_PLAM = getIntent().getExtras().getString("price_plam");
-        VALID_PLAN = getIntent().getExtras().getString("validate_plam");
-        TYPE_PAY = 0;
+        createToolbar(toolbar);
 
-        imageview_back_type_payment = (ImageView) findViewById( R.id.imageview_back_type_payment );
-        imageview_back_type_payment.setOnClickListener( this );
+        item_boleto_pay = (RelativeLayout) findViewById(R.id.item_boleto_pay);
+        item_boleto_pay.setOnClickListener(this);
+        item_cartao_pay = (RelativeLayout) findViewById(R.id.item_cartao_pay);
+        item_cartao_pay.setOnClickListener(this);
 
-        item_boleto_bank = (CardView) findViewById( R.id.item_boleto_bank );
-        item_boleto_bank.setOnClickListener( this );
+        check_boleto = (ImageView) findViewById(R.id.check_boleto);
+        check_cartao = (ImageView) findViewById(R.id.check_cartao);
 
-        item_add_credit_card = (CardView) findViewById( R.id.item_add_credit_card );
-        item_add_credit_card.setOnClickListener( this );
 
-        card_info_creditcard = (CardView) findViewById(R.id.card_info_creditcard);
-        card_info_creditcard.setVisibility(View.GONE);
 
-        number_creditcard_payment = (TextView) findViewById(R.id.number_creditcard_payment);
-        validate_creditcard_payment = (TextView) findViewById(R.id.validate_creditcard_payment);
-        name_creditcard_payment = (TextView) findViewById(R.id.name_creditcard_payment);
-        card_parcells = (CardView) findViewById(R.id.card_parcells);
-        card_parcells.setVisibility(View.GONE);
-        parcelas_credit_card = (Spinner) findViewById(R.id.parcelas_credit_card);
 
-        card_info_boleto = (CardView) findViewById(R.id.card_info_boleto);
-        card_info_boleto.setVisibility(View.GONE);
-        codebar_boleto = (TextView) findViewById(R.id.codebar_boleto);
-        button_copy_codebar_boleto = (ImageView) findViewById(R.id.button_copy_codebar_boleto);
-        button_share_codebar_boleto = (ImageView) findViewById(R.id.button_share_codebar_boleto);
-        button_copy_codebar_boleto.setOnClickListener(this);
-        button_share_codebar_boleto.setOnClickListener(this);
+        box_pay_boleto = (LinearLayout) findViewById(R.id.box_pay_boleto);
+        box_pay_boleto.setVisibility(View.GONE);
+        box_codebar_boleto = (LinearLayout) findViewById(R.id.box_codebar_boleto);
+        box_codebar_boleto.setVisibility(View.GONE);
+        text_codebar_boleto = (TextView) findViewById(R.id.text_codebar_boleto);
+        text_codebar_boleto.setText(null);
+        button_pay_boleto = (Button) findViewById(R.id.button_pay_boleto);
+        button_pay_boleto.setOnClickListener(this);
 
-        textview_name_plam = (TextView)findViewById(R.id.textview_name_plam);
-        textview_name_plam.setText(TYPE_PLAN);
-        textview_qtd_terms = (TextView)findViewById(R.id.textview_qtd_terms);
-        textview_qtd_terms.setText(QTD_PLAN);
-        price_plan_selected = (TextView)findViewById(R.id.price_plan_selected);
-        price_plan_selected.setText(PRICE_PLAM);
-        textview_validade_plam = (TextView)findViewById(R.id.textview_validade_plam);
-        textview_validade_plam.setText(VALID_PLAN);
 
-        box_response_boleto = (LinearLayout) findViewById(R.id.box_response_boleto);
-        box_response_boleto.setVisibility(View.GONE);
-        response_dados_boleto = (TextView) findViewById(R.id.response_dados_boleto);
-        response_link_boleto = (TextView) findViewById(R.id.response_link_boleto);
 
-        button_pay = (Button) findViewById(R.id.button_pay);
-        button_pay.setVisibility(View.GONE);
-        button_pay.setOnClickListener(this);
 
+        box_pay_creditcard = (LinearLayout) findViewById(R.id.box_pay_creditcard);
+        box_pay_creditcard.setVisibility(View.GONE);
+
+        cpf_creditcard = (EditText) findViewById(R.id.cpf_creditcard);
+        name_creditcard = (EditText) findViewById(R.id.name_creditcard);
+
+        swipe_cpf_creditcard = (Switch) findViewById(R.id.swipe_cpf_creditcard);
+        swipe_cpf_creditcard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked == true){
+                    cpf_creditcard.setText(DOCUMENT);
+                    name_creditcard.setText(NAME);
+                }else{
+                    cpf_creditcard.setText(null);
+                    name_creditcard.setText(null);
+                }
+            }
+        });
+
+        parcelas_creditcard = (Spinner) findViewById(R.id.parcelas_creditcard);
+
+
+        button_pay_creditcard = (Button) findViewById(R.id.button_pay_creditcard);
+        button_pay_creditcard.setOnClickListener(this);
+
+        infoActivity();
+        parcelas(PRICE);
+
+    }
+
+    private void infoActivity(){
+
+            TYPE_PAY = 0;
+            TYPE_PERSON = getIntent().getExtras().getInt("type_person");
+            TYPE_PLAN = getIntent().getExtras().getString("name_plam");
+            DOCUMENT = getIntent().getExtras().getString("document");
+            NAME = getIntent().getExtras().getString("name");
+            QTD_PLAN = getIntent().getExtras().getString("qtd_terms");
+            PRICE = getIntent().getExtras().getDouble("price");
+            PRICE_PLAM = getIntent().getExtras().getString("price_plam");
+            VALID_PLAN = getIntent().getExtras().getString("validate_plam");
+
+            textview_name_plam = (TextView)findViewById(R.id.textview_name_plam);
+            textview_name_plam.setText(TYPE_PLAN);
+            textview_qtd_terms = (TextView)findViewById(R.id.textview_qtd_terms);
+            textview_qtd_terms.setText(QTD_PLAN);
+            price_plan_selected = (TextView)findViewById(R.id.price_plan_selected);
+            price_plan_selected.setText(PRICE_PLAM);
+            textview_validade_plam = (TextView)findViewById(R.id.textview_validade_plam);
+            textview_validade_plam.setText(VALID_PLAN);
+
+        if(TYPE_PERSON == 0){
+            item_boleto_pay.setVisibility(View.VISIBLE);
+            item_cartao_pay.setVisibility(View.VISIBLE);
+        }else{
+            item_boleto_pay.setVisibility(View.VISIBLE);
+            item_cartao_pay.setVisibility(View.GONE);
+            box_pay_creditcard.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void parcelas(double price){
+        List<String> list_parcells = new ArrayList<>();
+        list_parcells.clear();
+        list_parcells.add("Escolha sua parcela");
+        for(int i = 1; i < 6; i++){
+            list_parcells.add(i + "x de " + (Price.real(price / i)) );
+        }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list_parcells);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        parcelas_creditcard.setAdapter(dataAdapter);
+    }
+
+    private void createToolbar(Toolbar toolbar) {
+        Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
+        toolbar = (Toolbar) findViewById(R.id.actionbar_pay);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Pagar");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.imageview_back_type_payment:
-                onBackPressed();
+            case R.id.item_boleto_pay:
+                TYPE_PAY=1;
+                check_boleto.setVisibility(View.VISIBLE);
+                check_cartao.setVisibility(View.GONE);
+                box_pay_creditcard.setVisibility(View.GONE);
+                box_pay_boleto.setVisibility(View.VISIBLE);
+                box_codebar_boleto.setVisibility(View.GONE);
+                button_pay_boleto.setText("Gerar boleto");
                 break;
 
-            case R.id.item_boleto_bank:
-                generateBoleto();
-                TYPE_PAY= 1;
-                button_pay.setText("Finalizar");
-                break;
-
-            case R.id.button_copy_codebar_boleto:
-                String codebar = codebar_boleto.getText().toString().trim();
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText(null, codebar);
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(this, "Código copiado com sucesso", Toast.LENGTH_LONG).show();
-                break;
-
-            case R.id.button_share_codebar_boleto:
-                String codebar_share = codebar_boleto.getText().toString().trim();
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT,"Plano Plus\nValor:"+PRICE_PLAM+"\nCódigo de barras para pagamento\n\n"+codebar_share);
-                startActivity(Intent.createChooser(shareIntent, "Compartilhar..."));
-                break;
-
-            case R.id.item_add_credit_card:
-                TYPE_PAY = 2;
-                button_pay.setText("Pagar");
-                Intent intent = new Intent( this, View_New_CreditCard.class );
-                intent.putExtra("price_plan", PRICE_PLAM);
-                startActivityForResult( intent, 1000);
-                break;
-
-            case R.id.button_pay:
-                switch (TYPE_PAY){
-                    case 1:
-                        Intent open_login = new Intent(this, View_Login.class);
-                        startActivity(open_login);
-                        finishAffinity();
-                        break;
-
-                    case 2:
-
-                        break;
+            case R.id.item_cartao_pay:
+                TYPE_PAY=2;
+                check_boleto.setVisibility(View.GONE);
+                check_cartao.setVisibility(View.VISIBLE);
+                box_pay_creditcard.setVisibility(View.VISIBLE);
+                box_pay_boleto.setVisibility(View.GONE);
+                box_codebar_boleto.setVisibility(View.GONE);
+                if(TYPE_PLAN.equals("Anual")){
+                    parcelas_creditcard.setVisibility(View.VISIBLE);
+                }else{
+                    parcelas_creditcard.setVisibility(View.GONE);
                 }
+                break;
+
+            case R.id.button_pay_creditcard:
+                payCreditCard();
+                break;
+                
+            case R.id.button_pay_boleto:
+                payBoleto();
                 break;
         }
     }
 
-    private void generateBoleto() {
-        final String token = Server.token(this);
-        final String terms = textview_qtd_terms.getText().toString().trim();
-        final String plan = TYPE_PLAN.toLowerCase();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.app_name);
-        builder.setMessage("Deseja gerar seu boleto bancário para pagamento do Plano Plus com "+QTD_PLAN+" termos no valor de "+PRICE_PLAM+" com validade de 30 dias?");
-        builder.setCancelable(false);
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Alerts.progress_open(View_Type_Payment.this, null, "Gerando boleto...", true);
-                servicePayment.paymentBoleto(token, terms, plan, Server.hashSession, card_info_boleto, codebar_boleto, button_pay);
-                card_info_creditcard.setVisibility(View.GONE);
-                card_parcells.setVisibility(View.GONE);
-            }
-        });
-        builder.setNegativeButton("Não", null);
-        builder.create().show();
+    private void payBoleto() {
+        button_pay_boleto.setText("Gerando boleto...");
+        String token = Server.token(this);
+        String hash = Server.hashSession;
+        servicePayment.paymentBoleto(token, QTD_PLAN, TYPE_PLAN.toLowerCase(), hash, box_codebar_boleto, text_codebar_boleto, button_pay_boleto );
+    }
+
+    private void payCreditCard() {
     }
 
     @Override
     public void onBackPressed() {
         finish();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case 1000:
-                if(resultCode == Activity.RESULT_OK){
-                    card_info_boleto.setVisibility(View.GONE);
-                    card_info_creditcard.setVisibility(View.VISIBLE);
-
-                    String number = data.getExtras().getString( "number" );
-                    String month = data.getExtras().getString( "month" );
-                    String year = data.getExtras().getString( "year" );
-                    String document = data.getExtras().getString( "document" );
-                    String name = data.getExtras().getString( "name" );
-
-                    number_creditcard_payment.setText(MaskNumberCreditCard.maskCript(number));
-                    validate_creditcard_payment.setText("Validade: "+month+"/"+year);
-                    name_creditcard_payment.setText(name);
-                    button_pay.setVisibility(View.VISIBLE);
-
-                    if(TYPE_PLAN.equals("Anual")){
-                        card_parcells.setVisibility(View.VISIBLE);
-                        String parcelas = data.getExtras().getString("array_parcelas");
-                        try {
-                            JSONArray jsonArray = new JSONArray(parcelas);
-                            for (int i= 0; i < jsonArray.length(); i++){
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            }
-//                            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, parcells);
-//                            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                            parcelas_credit_card.setAdapter(arrayAdapter);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-
-                }
-                break;
-        }
     }
 }
 

@@ -18,6 +18,7 @@ import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.MaskCPF;
+import com.lono.Views.View_Login;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,7 +94,7 @@ public class Service_Payment {
 
     }
 
-    public void paymentBoleto(String token, String qtd_terms, String type_plam, final String senderHash, final CardView cardView, final TextView textView, final Button button_pay){
+    public void paymentBoleto(String token, String qtd_terms, String type_plam, final String senderHash, final LinearLayout linearLayout, final TextView textView, final Button button_pay){
         try{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("token", token);
@@ -101,26 +102,35 @@ public class Service_Payment {
             jsonObject.put("tipo_plano", type_plam);
             jsonObject.put("forma_pagamento", "boleto");
             jsonObject.put("sender_hash", senderHash);
+
+            System.out.println(jsonObject);
+
             AndroidNetworking.post(Server.URL()+"services/contratar-plano")
                 .addJSONObjectBody(jsonObject)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println(response);
                         try {
                             String status = response.getString("status");
                             switch (status){
                                 case "success":
-                                    Alerts.progress_clode();
-                                    cardView.setVisibility(View.VISIBLE);
+                                    linearLayout.setVisibility(View.VISIBLE);
                                     button_pay.setVisibility(View.VISIBLE);
+                                    button_pay.setText("Boleto gerado com sucesso\nClique aqui para acessar");
+                                    button_pay.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            activity.finishAffinity();
+                                            Intent intent = new Intent(activity, View_Login.class);
+                                            activity.startActivity(intent);
+                                        }
+                                    });
                                     textView.setText(response.getString("boleto_barcode"));
                                     break;
 
                                 default:
-                                    Alerts.progress_clode();
-                                    cardView.setVisibility(View.GONE);
+                                    linearLayout.setVisibility(View.GONE);
                                     button_pay.setVisibility(View.GONE);
                                     textView.setText(null);
                                     builder.setTitle("Ops!!!");

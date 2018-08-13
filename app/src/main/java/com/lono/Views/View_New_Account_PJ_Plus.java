@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Service.Service_New_Account;
 import com.lono.Utils.Alerts;
@@ -114,6 +115,12 @@ public class View_New_Account_PJ_Plus extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Server.hash_pagseguro(this);
     }
 
     @Override

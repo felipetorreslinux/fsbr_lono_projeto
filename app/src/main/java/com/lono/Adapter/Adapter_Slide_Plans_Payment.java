@@ -170,9 +170,11 @@ public class Adapter_Slide_Plans_Payment extends PagerAdapter {
             case 0:
                 Intent intent_anual = new Intent( activity, View_Type_Payment.class );
                 intent_anual.putExtra("name_plam","Anual");
+                intent_anual.putExtra("type_person", slide_payment_model.getType_person());
                 intent_anual.putExtra("document", slide_payment_model.getDocument());
                 intent_anual.putExtra("name", slide_payment_model.getName());
                 intent_anual.putExtra("qtd_terms", slide_payment_model.getQtd_termos());
+                intent_anual.putExtra("price", CalcTerms.value_anual(slide_payment_model.getValue_termos(), Integer.parseInt(slide_payment_model.getQtd_termos())));
                 intent_anual.putExtra("price_plam", Price.real( CalcTerms.value_anual( slide_payment_model.getValue_termos(),  Integer.parseInt( slide_payment_model.getQtd_termos() ))));
                 intent_anual.putExtra("validate_plam", "12 meses");
                 activity.startActivity( intent_anual );
@@ -181,9 +183,11 @@ public class Adapter_Slide_Plans_Payment extends PagerAdapter {
             case 1:
                 Intent intent_mensal = new Intent( activity, View_Type_Payment.class );
                 intent_mensal.putExtra("name_plam","Mensal");
+                intent_mensal.putExtra("type_person", slide_payment_model.getType_person());
                 intent_mensal.putExtra("document", slide_payment_model.getDocument());
                 intent_mensal.putExtra("name", slide_payment_model.getName());
                 intent_mensal.putExtra("qtd_terms", slide_payment_model.getQtd_termos());
+                intent_mensal.putExtra("price", CalcTerms.value_mensal(slide_payment_model.getValue_termos(), Integer.parseInt(slide_payment_model.getQtd_termos())));
                 intent_mensal.putExtra("price_plam", Price.real( CalcTerms.value_mensal( slide_payment_model.getValue_termos(),  Integer.parseInt( slide_payment_model.getQtd_termos() ))));
                 intent_mensal.putExtra("validate_plam", "30 dias");
                 activity.startActivity( intent_mensal );

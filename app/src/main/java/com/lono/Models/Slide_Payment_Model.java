@@ -4,6 +4,7 @@ public class Slide_Payment_Model {
 
 
     int type;
+    int type_person;
     String document;
     String name;
     String title;
@@ -15,8 +16,9 @@ public class Slide_Payment_Model {
     int min_terms;
     int max_terms;
 
-    public Slide_Payment_Model(int type, String document, String name, String title, String subtitle, String qtd_termos, double value_termos, String description_plam, String label_button, int min_terms, int max_terms) {
+    public Slide_Payment_Model(int type, int type_person, String document, String name, String title, String subtitle, String qtd_termos, double value_termos, String description_plam, String label_button, int min_terms, int max_terms) {
         this.type = type;
+        this.type_person = type_person;
         this.document = document;
         this.name = name;
         this.title = title;
@@ -35,6 +37,14 @@ public class Slide_Payment_Model {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getType_person() {
+        return type_person;
+    }
+
+    public void setType_person(int type_person) {
+        this.type_person = type_person;
     }
 
     public String getDocument() {

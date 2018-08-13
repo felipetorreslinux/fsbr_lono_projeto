@@ -93,13 +93,12 @@ public class View_Payment extends AppCompatActivity implements View.OnClickListe
 
         ultraviewpager = (UltraViewPager) findViewById(R.id.ultrapage_plans);
 
-        Slide_Payment_Model slideAnual = new Slide_Payment_Model(0, NAME, DOCUMENT,"Plano Anual", "30 dias grátis", QTD_TERMS, VALUE_TERM,
+        Slide_Payment_Model slideAnual = new Slide_Payment_Model(0, TYPE_PERSON, DOCUMENT, NAME,"Plano Anual", "30 dias grátis", QTD_TERMS, VALUE_TERM,
                 "Parcele em até 05 (cinco) vezes.\n" +
-                        "Caso pague com seu cartão de crédito, todos os recursos de nossos serviços estarão disponíveis de imediato.\n" +
-                        "No caso de boleto bancário tem um prazo de 03 (três) dias úteis para compensação do pagamento",
+                        "Caso pague com seu cartão de crédito, todos os recursos de nossos serviços estarão disponíveis de imediato.",
                 "Quero este", MIN_TERMS, MAX_TERMS);
 
-        Slide_Payment_Model slideMensal = new Slide_Payment_Model(1,  NAME, DOCUMENT,"Plano Mensal", "Básico", QTD_TERMS, VALUE_TERM,
+        Slide_Payment_Model slideMensal = new Slide_Payment_Model(1, TYPE_PERSON,  DOCUMENT, NAME,"Plano Mensal", "Básico", QTD_TERMS, VALUE_TERM,
                 "Escolhendo o tipo de pagamento mensal você será avisado para renovação do seu plano via SMS ou por email.\n" +
                         "Podendo pagar por cartão de crédito ou boleto bancário.",
                 "Quero este", MIN_TERMS, MAX_TERMS);
