@@ -1,6 +1,7 @@
 package com.lono.Views;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -56,7 +57,6 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     TextInputLayout layout_cvv_creditcard;
     TextInputLayout layout_cpf_creditcard;
     TextInputLayout layout_name_creditcard;
-
 
     EditText number_creditcard;
     EditText validate_creditcard;
@@ -232,16 +232,22 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
 
             case R.id.item_cartao_pay:
                 TYPE_PAY=2;
-                check_boleto.setVisibility(View.GONE);
-                check_cartao.setVisibility(View.VISIBLE);
-                box_pay_creditcard.setVisibility(View.VISIBLE);
-                box_pay_boleto.setVisibility(View.GONE);
-                box_codebar_boleto.setVisibility(View.GONE);
-                if(TYPE_PLAN.equals("Anual")){
-                    parcelas_creditcard.setVisibility(View.VISIBLE);
-                }else{
-                    parcelas_creditcard.setVisibility(View.GONE);
-                }
+//                check_boleto.setVisibility(View.GONE);
+//                check_cartao.setVisibility(View.VISIBLE);
+//                box_pay_creditcard.setVisibility(View.VISIBLE);
+//                box_pay_boleto.setVisibility(View.GONE);
+//                box_codebar_boleto.setVisibility(View.GONE);
+//                if(TYPE_PLAN.equals("Anual")){
+//                    parcelas_creditcard.setVisibility(View.VISIBLE);
+//                }else{
+//                    parcelas_creditcard.setVisibility(View.GONE);
+//                }
+                Intent intent = new Intent(this, View_Payment_CreditCard.class);
+                intent.putExtra("document", DOCUMENT);
+                intent.putExtra("name", NAME);
+                intent.putExtra("qtd_terms", QTD_PLAN);
+                intent.putExtra("price", PRICE);
+                startActivityForResult(intent, 1001);
                 break;
 
             case R.id.button_pay_creditcard:

@@ -37,6 +37,38 @@ public class Service_Payment {
         this.builder = new AlertDialog.Builder(activity);
     }
 
+    public void checkCEP (String cep){
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("cep", cep);
+            AndroidNetworking.post(Server.URL()+"services/consultar-cep")
+                    .addJSONObjectBody(jsonObject)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try{
+                                String status = response.getString("status");
+                                switch (status){
+                                    case "success":
+                                        System.out.println(response);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }catch (JSONException e){}
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            Server.ErrorServer(activity, anError.getErrorCode());
+                        }
+                    });
+        }catch (JSONException e){}
+
+    }
+
+
     public void addCard(String token, final String number, final String month, final String year, final String document, final String name, final String price){
         final AlertDialog.Builder builder = new AlertDialog.Builder( activity );
         try {
@@ -157,5 +189,6 @@ public class Service_Payment {
         }catch (JSONException e){}
 
     }
+
 
 }
