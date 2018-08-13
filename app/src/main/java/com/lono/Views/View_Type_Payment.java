@@ -379,7 +379,7 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
                         }
                     }).create().show();
             }else{
-                button_pay_creditcard.setText("Analidando informações...");
+                button_pay_creditcard.setText("Realizando pagamento\nAguarde...");
             }
 
 
