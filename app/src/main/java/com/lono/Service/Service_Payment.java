@@ -37,10 +37,10 @@ public class Service_Payment {
         this.builder = new AlertDialog.Builder(activity);
     }
 
-    public void checkCEP (String cep){
+    public void checkCEP (EditText cep, final EditText logradouro, final EditText numero, final EditText bairro, final EditText cidade, final EditText estado){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("cep", cep);
+            jsonObject.put("cep", cep.getText().toString().trim());
             AndroidNetworking.post(Server.URL()+"services/consultar-cep")
                     .addJSONObjectBody(jsonObject)
                     .build()
@@ -51,9 +51,22 @@ public class Service_Payment {
                                 String status = response.getString("status");
                                 switch (status){
                                     case "success":
-                                        System.out.println(response);
+                                        Alerts.progress_clode();
+                                        JSONObject dados = response.getJSONObject("cep_info");
+                                        logradouro.setText(dados.getString("logradouro"));
+                                        bairro.setText(dados.getString("bairro"));
+                                        cidade.setText(dados.getString("cidade"));
+                                        estado.setText(dados.getString("estado"));
+                                        numero.requestFocus();
                                         break;
                                     default:
+                                        Alerts.progress_clode();
+                                        logradouro.requestFocus();
+                                        logradouro.setText(null);
+                                        numero.setText(null);
+                                        bairro.setText(null);
+                                        cidade.setText(null);
+                                        estado.setText(null);
                                         break;
                                 }
                             }catch (JSONException e){}
@@ -61,6 +74,7 @@ public class Service_Payment {
 
                         @Override
                         public void onError(ANError anError) {
+                            Alerts.progress_clode();
                             Server.ErrorServer(activity, anError.getErrorCode());
                         }
                     });
