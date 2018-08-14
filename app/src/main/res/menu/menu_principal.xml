@@ -7,12 +7,14 @@
         android:visible="false"
         android:icon="@drawable/ic_settings"
         android:title="Configurações"
-        app:showAsAction="never"/>
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/exit_app"
         android:visible="false"
         android:title="Sair"
         android:icon="@drawable/ic_exit"
-        app:showAsAction="never"/>
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="always"/>
 
 </menu>
