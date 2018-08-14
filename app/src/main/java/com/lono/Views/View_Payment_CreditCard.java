@@ -249,8 +249,12 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         final String number_card = MaskNumberCreditCard.unmask(number_creditcard.getText().toString().trim());
         String validate_card = validate_creditcard.getText().toString().trim();
         String[] validate = validate_card.split("/");
-        int monthCard = Integer.parseInt(validate[0]);
-        int yearCard = Integer.parseInt(validate[1]);
+        int monthCard = 0;
+        int yearCard = 0;
+        if(!validate_card.isEmpty()){
+            monthCard = Integer.parseInt(validate[0]);
+            yearCard = Integer.parseInt(validate[1]);
+        }
         String cvv_card = cvv_creditcard.getText().toString().trim();
         QTC_PARCELAS = parcelas_creditcard.getSelectedItemPosition();
 
@@ -292,7 +296,7 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
             layout_number_creditcard.setError("Informe o número do cartão");
             number_creditcard.requestFocus();
 
-        }else if(number_card.length() < 18){
+        }else if(number_card.length() < 16){
 
             layout_number_creditcard.setErrorEnabled(true);
             layout_validate_creditcard.setErrorEnabled(false);
@@ -457,7 +461,7 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
             layout_name_creditcard.setError("Informe o nome do titular");
             name_creditcard.requestFocus();
 
-        }else if(data_nasc.isEmpty()){
+        }else if(data_nasc.isEmpty()) {
 
             layout_number_creditcard.setErrorEnabled(false);
             layout_validate_creditcard.setErrorEnabled(false);
@@ -474,6 +478,25 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
             layout_estado_creditcard.setErrorEnabled(false);
 
             layout_date_nasc_creditcard.setError("Informe a data de nascimento do titular");
+            date_nasc_creditcard.requestFocus();
+
+        }else if(data_nasc.length() < 7){
+
+            layout_number_creditcard.setErrorEnabled(false);
+            layout_validate_creditcard.setErrorEnabled(false);
+            layout_cvv_creditcard.setErrorEnabled(false);
+            layout_cpf_creditcard.setErrorEnabled(false);
+            layout_name_creditcard.setErrorEnabled(false);
+            layout_date_nasc_creditcard.setErrorEnabled(true);
+            layout_cellphone_creditcard.setErrorEnabled(false);
+            layout_cep_creditcard.setErrorEnabled(false);
+            layout_logradouro_creditcard.setErrorEnabled(false);
+            layout_number_local_creditcard.setErrorEnabled(false);
+            layout_bairro_creditcard.setErrorEnabled(false);
+            layout_cidade_creditcard.setErrorEnabled(false);
+            layout_estado_creditcard.setErrorEnabled(false);
+
+            layout_date_nasc_creditcard.setError("Data inválida");
             date_nasc_creditcard.requestFocus();
 
         }else if(ValidData.check(data_nasc) == false){

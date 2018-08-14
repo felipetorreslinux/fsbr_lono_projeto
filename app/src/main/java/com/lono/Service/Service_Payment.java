@@ -128,12 +128,7 @@ public class Service_Payment {
                                     builder.setTitle(R.string.app_name);
                                     builder.setMessage(response.getString("message"));
                                     builder.setCancelable(false);
-                                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            activity.finish();
-                                        }
-                                    });
+                                    builder.setPositiveButton("Ok", null);
                                     builder.create().show();
                                     break;
                             }

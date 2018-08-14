@@ -3,26 +3,13 @@ package com.lono;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.androidnetworking.AndroidNetworking;
-import com.google.android.gms.common.api.Api;
-import com.lono.APIServer.Server;
-import com.lono.Firebase.Database;
 import com.lono.Permissions.Permissions;
-import com.lono.Utils.Profile;
-import com.lono.Utils.Valitations;
-import com.lono.Views.View_Check_Cellphone;
 import com.lono.Views.View_Intro;
 import com.lono.Views.View_Intro_Slide;
-import com.lono.Views.View_Login;
-import com.lono.Views.View_New_Account_PF_Plus;
-import com.lono.Views.View_Payment;
 import com.lono.Views.View_Principal;
-import com.lono.Views.View_Type_Payment;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +18,7 @@ import okhttp3.OkHttpClient;
 public class Splash extends Activity {
 
     SharedPreferences sharedPreferences;
+    SharedPreferences share_profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +30,28 @@ public class Splash extends Activity {
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
         AndroidNetworking.initialize(getApplicationContext(), okHttpClient);
+
+        sharedPreferences = getSharedPreferences("intro_view", MODE_PRIVATE);
+        share_profile = getSharedPreferences("profile", MODE_PRIVATE);
+
     };
 
     @Override
     public void onResume(){
         super.onResume();
-        Permissions.request(this);
         loadView();
     };
 
     private void loadView(){
-        sharedPreferences = getSharedPreferences("intro_view", MODE_PRIVATE);
         if(sharedPreferences != null){
             if(sharedPreferences.getInt("view", 0) == 1){
-                openIntro();
+                if(share_profile != null){
+                    if(!share_profile.getString("token", "").equals("")){
+                        openCentral();
+                    }else{
+                        openIntro();
+                    }
+                }
             }else{
                 openIntroSlide();
             }

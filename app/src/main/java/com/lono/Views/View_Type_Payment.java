@@ -47,23 +47,8 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     LinearLayout box_pay_boleto;
     LinearLayout box_codebar_boleto;
     TextView text_codebar_boleto;
-    Switch swipe_cpf_creditcard;
 
-    Spinner parcelas_creditcard;
-    Button button_pay_creditcard;
     Button button_pay_boleto;
-
-    TextInputLayout layout_number_creditcard;
-    TextInputLayout layout_validate_creditcard;
-    TextInputLayout layout_cvv_creditcard;
-    TextInputLayout layout_cpf_creditcard;
-    TextInputLayout layout_name_creditcard;
-
-    EditText number_creditcard;
-    EditText validate_creditcard;
-    EditText cvv_creditcard;
-    EditText cpf_creditcard;
-    EditText name_creditcard;
 
     TextView textview_name_plam;
     TextView textview_qtd_terms;
@@ -111,47 +96,7 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
         button_pay_boleto = (Button) findViewById(R.id.button_pay_boleto);
         button_pay_boleto.setOnClickListener(this);
 
-        box_pay_creditcard = (LinearLayout) findViewById(R.id.box_pay_creditcard);
-        box_pay_creditcard.setVisibility(View.GONE);
-
-        layout_number_creditcard = (TextInputLayout) findViewById(R.id.layout_number_creditcard);
-        layout_validate_creditcard = (TextInputLayout) findViewById(R.id.layout_validate_creditcard);
-        layout_cvv_creditcard = (TextInputLayout) findViewById(R.id.layout_cvv_creditcard);
-        layout_cpf_creditcard = (TextInputLayout) findViewById(R.id.layout_cpf_creditcard);
-        layout_name_creditcard = (TextInputLayout) findViewById(R.id.layout_name_creditcard);
-
-        number_creditcard = (EditText) findViewById(R.id.number_creditcard);
-        validate_creditcard = (EditText) findViewById(R.id.validate_creditcard);
-        cvv_creditcard = (EditText) findViewById(R.id.cvv_creditcard);
-        cpf_creditcard = (EditText) findViewById(R.id.cpf_creditcard);
-        name_creditcard = (EditText) findViewById(R.id.name_creditcard);
-
-        number_creditcard.addTextChangedListener(MaskNumberCreditCard.mask(number_creditcard));
-        validate_creditcard.addTextChangedListener(MaskValidateCreditCard.mask(validate_creditcard));
-        cpf_creditcard.addTextChangedListener(MaskCPF.insert(cpf_creditcard));
-
-        swipe_cpf_creditcard = (Switch) findViewById(R.id.swipe_cpf_creditcard);
-        swipe_cpf_creditcard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked == true){
-                    cpf_creditcard.setText(DOCUMENT);
-                    name_creditcard.setText(NAME);
-                }else{
-                    cpf_creditcard.setText(null);
-                    name_creditcard.setText(null);
-                }
-            }
-        });
-
-        parcelas_creditcard = (Spinner) findViewById(R.id.parcelas_creditcard);
-
-
-        button_pay_creditcard = (Button) findViewById(R.id.button_pay_creditcard);
-        button_pay_creditcard.setOnClickListener(this);
-
         infoActivity();
-        parcelas(PRICE);
 
     }
 
@@ -176,28 +121,9 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
             textview_validade_plam = (TextView)findViewById(R.id.textview_validade_plam);
             textview_validade_plam.setText(VALID_PLAN);
 
-        if(TYPE_PERSON == 0){
             item_boleto_pay.setVisibility(View.VISIBLE);
             item_cartao_pay.setVisibility(View.VISIBLE);
-        }else{
-            item_boleto_pay.setVisibility(View.VISIBLE);
-            item_cartao_pay.setVisibility(View.GONE);
-            box_pay_creditcard.setVisibility(View.GONE);
-        }
 
-    }
-
-    private void parcelas(double price){
-        List<String> list_parcells = new ArrayList<>();
-        list_parcells.clear();
-        list_parcells.add("Escolha sua parcela");
-        for(int i = 1; i < 6; i++){
-            list_parcells.add(i + "x de " + (Price.real(price / i)) );
-        }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, list_parcells);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        parcelas_creditcard.setAdapter(dataAdapter);
     }
 
     private void createToolbar(Toolbar toolbar) {
@@ -227,7 +153,6 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
                 TYPE_PAY=1;
                 check_boleto.setVisibility(View.VISIBLE);
                 check_cartao.setVisibility(View.GONE);
-                box_pay_creditcard.setVisibility(View.GONE);
                 box_pay_boleto.setVisibility(View.VISIBLE);
                 box_codebar_boleto.setVisibility(View.GONE);
                 button_pay_boleto.setText("Gerar boleto");

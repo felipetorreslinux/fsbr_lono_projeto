@@ -1,131 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/actionbar_principal"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <FrameLayout
+        android:layout_below="@id/actionbar_principal"
         android:id="@+id/container"
-        android:background="@color/colorWhite"
+        android:background="@color/colorGrayLight"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottombar_principal"/>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:id="@+id/bottombar_principal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:weightSum="4">
+        android:background="@color/colorWhite"
+        android:weightSum="4"
+        android:elevation="-3dp"
+        android:paddingVertical="5dp">
 
         <LinearLayout
-            android:id="@+id/bottom_view_item_home"
+            android:id="@+id/item_home"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="5dp">
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_home"
-                android:tint="@color/colorWhite"/>
+                android:tint="@color/colorBlack"
+                android:src="@drawable/ic_home"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="10sp"
-                android:text="@string/home_bottom_viem"
-                android:textColor="@color/colorWhite"/>
+                android:text="Publicações"
+                android:singleLine="true"
+                android:textSize="10dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/roboto"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/bottom_view_item_search"
+            android:id="@+id/item_search"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="5dp">
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_search"
-                android:tint="@color/colorWhite"/>
+                android:tint="@color/colorBlack"
+                android:src="@drawable/ic_search"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="10sp"
-                android:text="@string/search_bottom_viem"
-                android:textColor="@color/colorWhite"/>
+                android:text="Termos / Jornais"
+                android:singleLine="true"
+                android:textSize="10dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/roboto"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/bottom_view_item_alerts"
+            android:id="@+id/item_notifi"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="5dp">
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_notifications"
-                android:tint="@color/colorWhite"/>
+                android:tint="@color/colorBlack"
+                android:src="@drawable/ic_notifications"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="10sp"
-                android:text="@string/alerts_bottom_viem"
-                android:textColor="@color/colorWhite"/>
+                android:text="Alertas"
+                android:singleLine="true"
+                android:textSize="10dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/roboto"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/bottom_view_item_person"
+            android:id="@+id/item_person"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:paddingVertical="5dp">
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_person"
-                android:tint="@color/colorWhite"/>
+                android:tint="@color/colorBlack"
+                android:src="@drawable/ic_person"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="10sp"
-                android:text="@string/person_bottom_viem"
-                android:textColor="@color/colorWhite"/>
+                android:text="Perfil"
+                android:singleLine="true"
+                android:textSize="10dp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/roboto"/>
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 </RelativeLayout>

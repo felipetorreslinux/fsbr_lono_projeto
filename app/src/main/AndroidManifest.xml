@@ -44,10 +44,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 
-        <activity android:name=".Views.View_Check_Cellphone"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-
         <activity android:name=".Views.View_Recovery_Pass"
             android:theme="@style/View_Intro"
             android:screenOrientation="portrait"/>
@@ -95,12 +91,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 
-        <activity android:name=".Views.View_New_CreditCard"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/NewCreditCard"/>
-
         <activity android:name=".Views.View_Principal"
+            android:theme="@style/View_Intro"
             android:screenOrientation="portrait"/>
 
     </application>

@@ -2,22 +2,16 @@ package com.lono.Service;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.text.SymbolTable;
-import android.support.design.widget.Snackbar;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lono.APIServer.Server;
-import com.lono.R;
 import com.lono.Utils.Alerts;
-import com.lono.Utils.Keyboard;
-import com.lono.Views.View_Check_Cellphone;
 import com.lono.Views.View_Principal;
 
 import org.json.JSONException;
@@ -37,8 +31,6 @@ public class Service_Login {
         this.sharedPreferences = activity.getSharedPreferences("profile", Context.MODE_PRIVATE);
     }
 
-
-
     public void check(String email, String password){
         try{
             JSONObject jsonObject = new JSONObject();
@@ -57,7 +49,9 @@ public class Service_Login {
                                         Alerts.progress_clode();
                                         editor.putString("token", response.getString("authcode"));
                                         editor.commit();
-                                        info_profile(response.getString("authcode"));
+                                        Intent intent = new Intent(activity, View_Principal.class);
+                                        activity.startActivity(intent);
+                                        activity.finishAffinity();
                                         break;
                                     default:
                                         Alerts.progress_clode();
@@ -92,13 +86,56 @@ public class Service_Login {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        editor.putString("email", response.getJSONObject("usuario_info").getString("email"));
+                        String name = response.getJSONObject("usuario_info").getString("nome");
+                        String email = response.getJSONObject("usuario_info").getString("email");
+                        String created_at = response.getJSONObject("usuario_info").getString("data_cad");
+                        boolean admin = response.getJSONObject("usuario_info").getBoolean("nome");
+                        boolean view_notifications = response.getJSONObject("usuario_info").getBoolean("nomexibir_notificacoese");
+
+                        String type = response.getString("tipo");
+                        String name_account = response.getString("nome");
+                        String name_contact = response.getString("nome_contato");
+                        String document = response.getString("docnum");
+                        String razao_social = response.getString("razao");
+                        String cellphone = response.getString("telefone");
+
+                        String cep = response.getString("cep");
+                        String logradouro = response.getString("logradouro");
+                        String numero = response.getString("numero");
+                        String complemento = response.getString("complemento");
+                        String bairro = response.getString("bairro");
+                        String cidade = response.getString("cidade");
+                        String estado = response.getString("uf");
+
+                        String situacao_cad = response.getString("sit_cad");
+                        int advoagodos = response.getInt("advogado");
+
+                        editor.putString("name", name);
+                        editor.putString("email", email);
+                        editor.putString("created_at", created_at);
+                        editor.putBoolean("admin", admin);
+                        editor.putBoolean("view_notifications", view_notifications);
+
+                        editor.putString("type_account", type);
+                        editor.putString("name_account", name_account);
+                        editor.putString("name_contact", name_contact);
+                        editor.putString("document", document);
+                        editor.putString("razao_social", razao_social);
+                        editor.putString("cellphone_account", cellphone);
+
+                        editor.putString("cep", cep);
+                        editor.putString("lougradouro", logradouro);
+                        editor.putString("numero", numero);
+                        editor.putString("complemento", complemento);
+                        editor.putString("bairro", bairro);
+                        editor.putString("cidade", cidade);
+                        editor.putString("estado", estado);
+
+                        editor.putString("situacao_cad", situacao_cad);
+                        editor.putInt("advogado", advoagodos);
+
                         editor.commit();
-                        if(editor.commit()){
-                            Alerts.progress_clode();
-                            activity.startActivity(new Intent(activity, View_Check_Cellphone.class));
-                            activity.finish();
-                        }
+
                     } catch (JSONException e) {}
                 }
                 @Override
