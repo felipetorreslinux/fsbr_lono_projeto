@@ -11,7 +11,7 @@
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/View_Principal"/>
 
     <FrameLayout
         android:layout_below="@id/actionbar_principal"

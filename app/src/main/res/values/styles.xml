@@ -46,16 +46,6 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="Chat" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorAccent">@color/colorWhite</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
-        <item name="actionOverflowButtonStyle">@style/DotsDarkTheme</item>
-    </style>
-
-    <style name="DotsDarkTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
-        <item name="android:tint">@color/colorWhite</item>
-    </style>
-
     <style name="NewCreditCard" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -63,8 +53,16 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/colorPrimary</item>
+    <style name="View_Principal" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+        <item name="actionOverflowButtonStyle">@style/ButtonMenuWhite</item>
     </style>
+
+    <style name="ButtonMenuWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
+        <item name="android:tint">@color/colorWhite</item>
+    </style>
+
 
 </resources>

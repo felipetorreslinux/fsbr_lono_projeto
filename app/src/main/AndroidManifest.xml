@@ -92,7 +92,7 @@
             android:theme="@style/View_Intro"/>
 
         <activity android:name=".Views.View_Principal"
-            android:theme="@style/View_Intro"
+            android:theme="@style/View_Principal"
             android:screenOrientation="portrait"/>
 
     </application>
