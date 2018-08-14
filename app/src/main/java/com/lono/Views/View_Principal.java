@@ -1,13 +1,7 @@
 package com.lono.Views;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -84,7 +78,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_meu_perfil, menu);
+        inflater.inflate(R.menu.menu_principal, menu);
         settings_profile = menu.findItem(R.id.settings_profile);
         exit = menu.findItem(R.id.exit_app);
         return super.onCreateOptionsMenu(menu);
