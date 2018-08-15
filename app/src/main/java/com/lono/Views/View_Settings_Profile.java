@@ -27,17 +27,19 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
 
+
         createToolbar(toolbar);
 
-        switch_notifications_profile =(Switch) findViewById(R.id.switch_notifications_profile);
-        if(sharedPreferences != null){
-            boolean notifications = sharedPreferences.getBoolean("view_notifications", false);
-            if(notifications == true){
-                switch_notifications_profile.setChecked(true);
-            }else{
-                switch_notifications_profile.setChecked(false);
-            }
+        switch_notifications_profile = (Switch) findViewById(R.id.switch_notifications_profile);
+        System.out.println("Notifications: " + sharedPreferences.getBoolean("view_notifications", false));
+        boolean notifications = sharedPreferences.getBoolean("view_notifications", false);
+
+        if(notifications == true){
+            switch_notifications_profile.setChecked(true);
+        }else{
+            switch_notifications_profile.setChecked(false);
         }
+
     }
 
     private void createToolbar(Toolbar toolbar) {

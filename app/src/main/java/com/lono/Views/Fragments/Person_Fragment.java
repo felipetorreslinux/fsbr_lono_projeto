@@ -59,7 +59,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         email_profile = (TextView) rootview.findViewById(R.id.email_profile);
 
         Picasso.with(getActivity())
-                .load(R.drawable.eu)
+                .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.eu)))
                 .placeholder(R.drawable.place_profile)
                 .error(R.drawable.place_profile)
                 .resize(150,150)
@@ -70,6 +70,9 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
             String status = sharedPreferences.getString("situacao_cad", null);
+
+            System.out.println(sharedPreferences.getBoolean("view_notifications", false));
+
             if(status.equals("A")){
                 status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorGreenLight));
                 status_account.setText("Sua conta está ativa");

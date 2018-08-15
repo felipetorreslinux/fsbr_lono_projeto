@@ -1,6 +1,8 @@
 package com.lono.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -39,11 +41,13 @@ public class Adapter_Gallery_Profile extends RecyclerView.Adapter<Adapter_Galler
     Activity activity;
     List<Gallery_Images> list_image;
     Service_Profile serviceProfile;
+    SharedPreferences.Editor editor;
 
     public Adapter_Gallery_Profile(Activity activity, List<Gallery_Images> list_image){
         this.activity = activity;
         this.list_image = list_image;
         this.serviceProfile = new Service_Profile(activity);
+        editor = activity.getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
     }
 
     @Override
@@ -66,12 +70,10 @@ public class Adapter_Gallery_Profile extends RecyclerView.Adapter<Adapter_Galler
         holder.image_holder_gallery_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Alerts.progress_open(activity, null, "Salvando imagem", false);
-//                serviceProfile.uploadImage(new File(galleryImages.getImages()));
-                CropImage.activity(Uri.fromFile(new File(galleryImages.getImages())))
-                        .setGuidelines(CropImageView.Guidelines.ON)
-//                        .setAspectRatio(250,250)
-                        .start(activity);
+                Alerts.progress_open(activity, null, "Salvando imagem", false);
+                editor.putString("avatar_url", galleryImages.getImages());
+                editor.commit();
+                serviceProfile.uploadImage(new File(galleryImages.getImages()));
             }
         });
     }

@@ -88,7 +88,7 @@ public class Service_Login {
 
                         editor.putInt("id", response.getJSONObject("usuario_info").getInt("id"));
                         editor.putString("name", response.getJSONObject("usuario_info").getString("nome"));
-                        editor.putString("avatar", response.getJSONObject("usuario_info").getString("avatar") != null ? response.getJSONObject("usuario_info").getString("avatar") : "");
+                        editor.putString("avatar_url", response.getJSONObject("usuario_info").getString("avatar_url") != null ? response.getJSONObject("usuario_info").getString("avatar_url") : "");
                         editor.putString("email", response.getJSONObject("usuario_info").getString("email"));
                         editor.putLong("created_at", response.getJSONObject("usuario_info").getLong("dat_cad"));
                         editor.putBoolean("admin", response.getJSONObject("usuario_info").getBoolean("admin"));

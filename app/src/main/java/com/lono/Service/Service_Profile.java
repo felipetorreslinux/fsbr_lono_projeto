@@ -23,8 +23,8 @@ public class Service_Profile {
     }
 
     public void uploadImage (File file){
-        AndroidNetworking.upload(Server.URL()+"")
-            .addMultipartFile("image",file)
+        AndroidNetworking.upload(Server.URL()+"services/enviar-avatar-usuario")
+            .addMultipartFile("avatar",file)
             .addMultipartParameter("token",Server.token(activity))
             .build()
             .setUploadProgressListener(new UploadProgressListener() {
