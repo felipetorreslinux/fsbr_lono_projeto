@@ -1,19 +1,26 @@
 package com.lono.Views;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.lono.R;
 import com.lono.Service.Service_Login;
+import com.lono.Views.Fragments.Person_Fragment;
 
 public class View_Principal extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,8 +48,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         createToolbar(toolbar);
 
         createBottomBar();
-
-
     }
 
     private void infoUserProfile(){
@@ -52,6 +57,12 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             String token = sharedPreferences.getString("token", null);
             serviceLogin.info_profile(token);
         }
+    }
+
+    private void createToolbar(Toolbar toolbar) {
+        toolbar = (Toolbar) findViewById(R.id.actionbar_principal);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void createBottomBar() {
@@ -69,12 +80,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         item_person.setAlpha(0.3f);
         TAB_INDEX = 0;
         getSupportActionBar().setTitle("Publicações");
-    }
-
-    private void createToolbar(Toolbar toolbar) {
-        toolbar = (Toolbar) findViewById(R.id.actionbar_principal);
-        setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     @Override
@@ -97,6 +102,8 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.settings_profile:
+                Intent intent = new Intent(this, View_Settings_Profile.class);
+                startActivityForResult(intent, 1001);
                 break;
 
             case R.id.exit_app:
@@ -104,6 +111,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 editor.commit();
                 finish();
                 break;
+
         }
         return true;
     }
@@ -153,6 +161,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(1.0f);
                     getSupportActionBar().setTitle("Meu Perfil");
                     menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Person_Fragment()).commit();
                 }
                 break;
         }
@@ -161,12 +170,13 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onBackPressed() {
         if(TAB_INDEX != 0){
+            TAB_INDEX = 0;
             item_home.setAlpha(1.0f);
             item_search.setAlpha(0.3f);
             item_notifi.setAlpha(0.3f);
             item_person.setAlpha(0.3f);
             getSupportActionBar().setTitle("Publicações");
-            TAB_INDEX = 0;
+            menuPrincipal();
         }else{
             finish();
         }
@@ -192,5 +202,17 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                  exit.setVisible(true);
                  break;
          }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1001:
+                if(resultCode == Activity.RESULT_OK){
+
+                }
+                break;
+        }
     }
 }

@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -94,6 +96,14 @@
         <activity android:name=".Views.View_Principal"
             android:theme="@style/View_Principal"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".Views.View_Settings_Profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Gallery_Profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
 
     </application>
 

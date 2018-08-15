@@ -14,11 +14,11 @@
         app:popupTheme="@style/View_Principal"/>
 
     <FrameLayout
-        android:layout_below="@id/actionbar_principal"
-        android:id="@+id/container"
         android:background="@color/colorGrayLight"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/actionbar_principal"
         android:layout_above="@id/bottombar_principal"/>
 
     <LinearLayout
