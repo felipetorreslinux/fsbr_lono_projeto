@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import com.lono.Views.View_Gallery_Profile;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
+
+import java.io.File;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
@@ -92,7 +95,9 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         switch (requestCode){
             case 1001:
                 if(resultCode == Activity.RESULT_OK){
-
+//                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
+//                    editor.putString("avatar", data.getExtras().getString("image_avatar"));
+//                    editor.commit();
                 }else{
 
                 }

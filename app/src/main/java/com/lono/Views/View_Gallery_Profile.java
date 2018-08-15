@@ -2,7 +2,9 @@ package com.lono.Views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -16,12 +18,13 @@ import android.view.View;
 import com.lono.Adapter.Adapter_Gallery_Profile;
 import com.lono.Models.Gallery_Images;
 import com.lono.R;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.os.Environment.DIRECTORY_DCIM;
 
 public class View_Gallery_Profile extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,14 +51,15 @@ public class View_Gallery_Profile extends AppCompatActivity implements View.OnCl
 
         for (int i=0; i < file.length; i++) {
             String image = file[i].getParent()+"/"+file[i].getName();
-            String name = file[i].getParent()+"/"+file[i].getName();
-            Gallery_Images galleryImages = new Gallery_Images(
-                    i,
-                    image,
-                    name);
-            list_images.add(galleryImages);
+            String extencion = image.substring(image.lastIndexOf("."));
+            if(extencion.equals(".jpg")){
+                Gallery_Images galleryImages = new Gallery_Images(
+                        i,
+                        image,
+                        extencion);
+                list_images.add(galleryImages);
+            }
         };
-
         Adapter_Gallery_Profile adapterGalleryProfile = new Adapter_Gallery_Profile(this, list_images);
         recyclerview_gallery.setAdapter(adapterGalleryProfile);
 
@@ -91,5 +95,22 @@ public class View_Gallery_Profile extends AppCompatActivity implements View.OnCl
         Intent intent = getIntent();
         setResult(Activity.RESULT_CANCELED, intent);
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if (resultCode == RESULT_OK) {
+                    Intent intent = getIntent();
+                    intent.putExtra("image_avatar", result.getUri());
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Exception error = result.getError();
+                }
+                break;
+        }
     }
 }

@@ -3,12 +3,12 @@ package com.lono.Models;
 public class Gallery_Images {
     int id;
     String images;
-    String name;
+    String extencion;
 
-    public Gallery_Images(int id, String images, String name) {
+    public Gallery_Images(int id, String images, String extencion) {
         this.id = id;
         this.images = images;
-        this.name = name;
+        this.extencion = extencion;
     }
 
     public int getId() {
@@ -27,11 +27,11 @@ public class Gallery_Images {
         this.images = images;
     }
 
-    public String getName() {
-        return name;
+    public String getExtencion() {
+        return extencion;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setExtencion(String extencion) {
+        this.extencion = extencion;
     }
 }

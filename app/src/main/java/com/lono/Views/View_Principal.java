@@ -20,7 +20,10 @@ import android.widget.LinearLayout;
 
 import com.lono.R;
 import com.lono.Service.Service_Login;
+import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
+import com.lono.Views.Fragments.Publications_Fragment;
+import com.lono.Views.Fragments.TermsJournals_Fragment;
 
 public class View_Principal extends AppCompatActivity implements View.OnClickListener {
 
@@ -128,6 +131,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Publicações");
                     menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
                 }
                 break;
             case R.id.item_search:
@@ -139,6 +143,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Termos e Jornais");
                     menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new TermsJournals_Fragment()).commit();
                 }
                 break;
             case R.id.item_notifi:
@@ -150,6 +155,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Alertas");
                     menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Alerts_Fragment()).commit();
                 }
                 break;
             case R.id.item_person:
