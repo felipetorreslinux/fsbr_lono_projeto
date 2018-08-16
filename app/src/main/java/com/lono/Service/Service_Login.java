@@ -119,6 +119,7 @@ public class Service_Login {
                 @Override
                 public void onError(ANError anError) {
                     Alerts.progress_clode();
+                    System.out.println(anError.getMessage());
                     Server.ErrorServer(activity, anError.getErrorCode());
                 }
             });

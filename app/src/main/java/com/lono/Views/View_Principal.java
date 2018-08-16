@@ -1,6 +1,8 @@
 package com.lono.Views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -110,11 +112,21 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.exit_app:
-                editor.putString("token", "");
-                editor.commit();
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Deseja realmente sair do Lono?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        editor.putString("token", "");
+                        editor.commit();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Não", null);
+                builder.create().show();
                 break;
-
         }
         return true;
     }
@@ -183,11 +195,11 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             item_person.setAlpha(0.3f);
             getSupportActionBar().setTitle("Publicações");
             menuPrincipal();
+            getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
         }else{
             finish();
         }
     }
-
 
     private void menuPrincipal(){
          switch (TAB_INDEX){
@@ -209,7 +221,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                  break;
          }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
