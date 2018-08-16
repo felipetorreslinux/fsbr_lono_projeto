@@ -10,27 +10,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c930cf30-a173-4ee1-b5d4-807138c2eac1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edittext_bg_profile.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bottomsweet_edit_password.xml" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Edit_Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Edit_Profile.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Settings_Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Settings_Profile.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_edit_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_edit_profile.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-    </list>
+    <list default="true" id="c930cf30-a173-4ee1-b5d4-807138c2eac1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -2229,7 +2209,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -2505,7 +2485,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
