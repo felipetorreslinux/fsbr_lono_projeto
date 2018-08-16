@@ -17,6 +17,7 @@ public class View_Politic_Privacy extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_politic_privacy);
+        overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
 
         createToolbar(toolbar);
     }

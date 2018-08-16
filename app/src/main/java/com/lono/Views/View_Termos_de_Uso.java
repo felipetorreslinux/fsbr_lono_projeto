@@ -18,6 +18,7 @@ public class View_Termos_de_Uso extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_termos_de_uso);
+        overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
 
         createToolbar(toolbar);
 

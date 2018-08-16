@@ -31,7 +31,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
 
     SharedPreferences.Editor editor;
     Toolbar toolbar;
-    MenuItem exit;
     MenuItem settings_profile;
 
     LinearLayout item_home;
@@ -99,7 +98,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             }
         }
         settings_profile = menu.findItem(R.id.settings_profile);
-        exit = menu.findItem(R.id.exit_app);
         return true;
     }
 
@@ -109,23 +107,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             case R.id.settings_profile:
                 Intent intent = new Intent(this, View_Settings_Profile.class);
                 startActivityForResult(intent, 1001);
-                break;
-
-            case R.id.exit_app:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Deseja realmente sair do Lono?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        editor.putString("token", "");
-                        editor.commit();
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("Não", null);
-                builder.create().show();
                 break;
         }
         return true;
@@ -205,19 +186,15 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
          switch (TAB_INDEX){
              case 0:
                  settings_profile.setVisible(false);
-                 exit.setVisible(false);
                  break;
              case 1:
                  settings_profile.setVisible(false);
-                 exit.setVisible(false);
                  break;
              case 2:
                  settings_profile.setVisible(false);
-                 exit.setVisible(false);
                  break;
              case 3:
                  settings_profile.setVisible(true);
-                 exit.setVisible(true);
                  break;
          }
     }

@@ -9,12 +9,5 @@
         android:title="Configurações"
         android:iconTint="@color/colorWhite"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/exit_app"
-        android:visible="false"
-        android:title="Sair"
-        android:icon="@drawable/ic_exit"
-        android:iconTint="@color/colorWhite"
-        app:showAsAction="always"/>
 
 </menu>
