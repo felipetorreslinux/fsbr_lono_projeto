@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import com.lono.R;
@@ -19,6 +20,10 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
     Switch switch_notifications_profile;
+
+    LinearLayout item_termos_de_uso;
+    LinearLayout item_politic_privacy;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +44,11 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         }else{
             switch_notifications_profile.setChecked(false);
         }
+
+        item_termos_de_uso = (LinearLayout) findViewById(R.id.item_termos_de_uso);
+        item_politic_privacy = (LinearLayout) findViewById(R.id.item_politic_privacy);
+        item_termos_de_uso.setOnClickListener(this);
+        item_politic_privacy.setOnClickListener(this);
 
     }
 
@@ -64,7 +74,17 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.item_termos_de_uso:
+                Intent terms_of_use = new Intent(this, View_Termos_de_Uso.class);
+                startActivity(terms_of_use);
+                break;
 
+            case R.id.item_politic_privacy:
+                Intent politic_privacy = new Intent(this, View_Politic_Privacy.class);
+                startActivity(politic_privacy);
+                break;
+        }
     }
 
     @Override

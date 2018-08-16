@@ -104,6 +104,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 
+        <activity android:name=".Views.View_Termos_de_Uso"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Politic_Privacy"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
     </application>
 
 </manifest>
