@@ -29,8 +29,8 @@ public class Server {
     }
 
     public static String URL (){
-        String url_p = "http://179.188.38.70:8888/";
-//        String url_p = "http://192.168.15.220:80/";
+//        String url_p = "http://179.188.38.70:8888/";
+        String url_p = "http://192.168.15.220:80/";
         return url_p;
     };
 
@@ -43,7 +43,34 @@ public class Server {
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);
         switch (code){
             case 0:
-
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Aparelho eem conexão com a internet");
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+                break;
+            case 401:
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Servidor em manutenção - 401");
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+                break;
+            case 403:
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Servidor em manutenção - 403");
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+                break;
+            case 404:
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Servidor em manutenção - 404");
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
+                break;
+            case 500:
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Servidor em manutenção - 500");
+                builder.setPositiveButton("Ok", null);
+                builder.create().show();
                 break;
         }
 

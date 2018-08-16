@@ -114,7 +114,8 @@
 
         <activity android:name=".Views.View_Edit_Profile"
             android:screenOrientation="portrait"
-            android:theme="@style/View_Intro"/>
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/EditProfile"/>
 
     </application>
 

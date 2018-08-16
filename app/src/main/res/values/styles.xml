@@ -64,5 +64,10 @@
         <item name="android:tint">@color/colorWhite</item>
     </style>
 
+    <style name="EditProfile" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
+    </style>
+
 
 </resources>

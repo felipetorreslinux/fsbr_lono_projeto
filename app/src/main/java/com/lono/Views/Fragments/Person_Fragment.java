@@ -63,12 +63,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         return rootview;
     }
 
-    @Override
-    public void onResume() {
-
-        super.onResume();
-    }
-
     private void infoProfile() {
         sharedPreferences = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE);
         status_account = (TextView) rootview.findViewById(R.id.status_account);
@@ -80,8 +74,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
 
         Picasso.with(getActivity())
                 .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.eu)))
-                .placeholder(R.drawable.place_profile)
-                .error(R.drawable.place_profile)
                 .resize(150,150)
                 .transform(new CropCircleTransformation())
                 .into(image_profile);

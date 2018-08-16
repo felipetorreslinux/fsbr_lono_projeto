@@ -103,7 +103,7 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
                     public void onClick(DialogInterface dialog, int which) {
                         editor.putString("token", "");
                         editor.commit();
-                        finish();
+                        finishAffinity();
                     }
                 });
                 builder.setNegativeButton("Não", null);
