@@ -51,6 +51,8 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         editor = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
         builder = new AlertDialog.Builder(getActivity());
 
+        infoProfile();
+
         item_edit_profile = (LinearLayout) rootview.findViewById(R.id.item_edit_profile);
         item_edit_profile.setOnClickListener(this);
         item_my_plam = (LinearLayout) rootview.findViewById(R.id.item_my_plam);
@@ -63,7 +65,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onResume() {
-        infoProfile();
+
         super.onResume();
     }
 
