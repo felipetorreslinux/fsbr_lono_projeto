@@ -16,8 +16,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.lono.R;
+import com.lono.Utils.TypePlanProfile;
+import com.lono.Views.View_Edit_Profile;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
@@ -34,6 +38,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
     ImageView image_profile;
     TextView name_profile;
     TextView email_profile;
+    TextView name_plan_profile;
 
     LinearLayout item_edit_profile;
     LinearLayout item_my_plam;
@@ -69,6 +74,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         image_profile.setOnClickListener(this);
         name_profile = (TextView) rootview.findViewById(R.id.name_profile);
         email_profile = (TextView) rootview.findViewById(R.id.email_profile);
+        name_plan_profile = (TextView) rootview.findViewById(R.id.name_plan_profile);
 
         Picasso.with(getActivity())
                 .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.eu)))
@@ -81,9 +87,8 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         if(sharedPreferences != null){
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
+            name_plan_profile.setText(TypePlanProfile.name(sharedPreferences.getString("type_account", null)));
             String status = sharedPreferences.getString("situacao_cad", null);
-
-            System.out.println(sharedPreferences.getBoolean("view_notifications", false));
 
             if(status.equals("A")){
                 status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorGreenLight));
@@ -103,7 +108,8 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.item_edit_profile:
-
+                Intent edit_profile = new Intent(getActivity(), View_Edit_Profile.class);
+                getActivity().startActivityForResult(edit_profile, 1001);
                 break;
 
             case R.id.item_my_plam:
@@ -113,21 +119,18 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
             case R.id.item_payment:
 
                 break;
+        }
+    }
 
-            case R.id.item_exit_app:
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Deseja realmente sair do Lono?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        editor.putString("token", "");
-                        editor.commit();
-                        getActivity().finish();
-                    }
-                });
-                builder.setNegativeButton("Não", null);
-                builder.create().show();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1001:
+                if(requestCode == Activity.RESULT_OK){
+
+                }else{
+                    Toast.makeText(getActivity(), "Deu certo", Toast.LENGTH_LONG).show();
+                }
                 break;
         }
     }

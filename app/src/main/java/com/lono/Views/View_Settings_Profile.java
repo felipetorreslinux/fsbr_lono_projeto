@@ -1,6 +1,8 @@
 package com.lono.Views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -17,12 +19,15 @@ import com.lono.R;
 
 public class View_Settings_Profile extends AppCompatActivity implements View.OnClickListener {
 
+    AlertDialog.Builder builder;
+    SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
     Switch switch_notifications_profile;
 
     LinearLayout item_termos_de_uso;
     LinearLayout item_politic_privacy;
+    LinearLayout item_exitapp;
 
 
     @Override
@@ -30,7 +35,9 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_settings_profile);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
+        editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
+        builder = new AlertDialog.Builder(this);
 
 
         createToolbar(toolbar);
@@ -47,8 +54,10 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
 
         item_termos_de_uso = (LinearLayout) findViewById(R.id.item_termos_de_uso);
         item_politic_privacy = (LinearLayout) findViewById(R.id.item_politic_privacy);
+        item_exitapp = (LinearLayout) findViewById(R.id.item_exitapp);
         item_termos_de_uso.setOnClickListener(this);
         item_politic_privacy.setOnClickListener(this);
+        item_exitapp.setOnClickListener(this);
 
     }
 
@@ -83,6 +92,22 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
             case R.id.item_politic_privacy:
                 Intent politic_privacy = new Intent(this, View_Politic_Privacy.class);
                 startActivity(politic_privacy);
+                break;
+
+            case R.id.item_exitapp:
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Deseja realmente sair do Lono?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        editor.putString("token", "");
+                        editor.commit();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Não", null);
+                builder.create().show();
                 break;
         }
     }

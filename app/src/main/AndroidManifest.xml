@@ -112,6 +112,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 
+        <activity android:name=".Views.View_Edit_Profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
     </application>
 
 </manifest>
