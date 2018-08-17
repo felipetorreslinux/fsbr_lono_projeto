@@ -3,15 +3,20 @@ package com.lono.Views;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lono.Models.Info_Plano_Profile_Model;
 import com.lono.R;
+import com.lono.Service.Service_Profile;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.Price;
 import com.lono.Utils.TypePlanProfile;
 
 public class View_My_Plan_Profile extends AppCompatActivity implements View.OnClickListener{
@@ -21,6 +26,13 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     TextView name_plan;
     TextView edit_plan;
     TextView terms_plan;
+    TextView termos_usados;
+    TextView price_plan;
+    LinearLayout item_pay_my_plan;
+    TextView type_pay_plan;
+
+    Service_Profile serviceProfile;
+    Info_Plano_Profile_Model infoPlanoProfileModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,26 +40,24 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.view_my_plan_profile);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
-
+        serviceProfile = new Service_Profile(this);
         createToolbar(toolbar);
-
-    }
-
-    @Override
-    protected void onResume() {
+        Alerts.progress_open(this, null, "Atualizando...", false);
         infoPlan();
-        super.onResume();
+
     }
 
     private void infoPlan(){
         name_plan = findViewById(R.id.name_plan);
         edit_plan = findViewById(R.id.edit_plan);
         terms_plan = findViewById(R.id.terms_plan);
+        termos_usados = findViewById(R.id.termos_usados);
+        price_plan = findViewById(R.id.price_plan);
+        item_pay_my_plan = findViewById(R.id.item_pay_my_plan);
+        item_pay_my_plan.setVisibility(View.GONE);
+        type_pay_plan = findViewById(R.id.type_pay_plan);
         edit_plan.setOnClickListener(this);
-        name_plan.setText(TypePlanProfile.name(sharedPreferences.getString("type_account", null)));
-        if(sharedPreferences.getString("type_account", null).equals("F")){
-            terms_plan.setText("01");
-        }
+        serviceProfile.detailsPlanProfile(name_plan, terms_plan, termos_usados, price_plan, type_pay_plan, item_pay_my_plan);
     }
 
     private void createToolbar(Toolbar toolbar) {

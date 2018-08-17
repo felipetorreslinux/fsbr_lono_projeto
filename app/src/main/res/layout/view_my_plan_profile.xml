@@ -74,6 +74,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:weightSum="2">
 
                 <LinearLayout
@@ -120,6 +121,7 @@
                         android:text="Termos Utilizados"/>
 
                     <TextView
+                        android:id="@+id/termos_usados"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorBlack"
@@ -128,6 +130,61 @@
                         android:textSize="18dp"/>
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg_profile"
+                android:layout_marginRight="5dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"
+                    android:fontFamily="@font/roboto"
+                    android:text="Valor do Plano"/>
+
+                <TextView
+                    android:id="@+id/price_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item_pay_my_plan"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg_profile"
+                android:layout_marginRight="5dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"
+                    android:fontFamily="@font/roboto"
+                    android:text="Tipo de cobrança"/>
+
+                <TextView
+                    android:id="@+id/type_pay_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18dp"/>
 
             </LinearLayout>
 

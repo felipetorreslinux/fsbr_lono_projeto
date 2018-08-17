@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.BottomSheetDialog;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -15,8 +16,10 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.lono.APIServer.Server;
+import com.lono.Models.Info_Plano_Profile_Model;
 import com.lono.R;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.Price;
 import com.lono.Views.View_Login;
 
 import org.json.JSONException;
@@ -175,6 +178,43 @@ public class Service_Profile {
                     Alerts.progress_clode();
                     Server.ErrorServer(activity, anError.getErrorCode());
                     System.out.println(anError.getMessage());
+                }
+            });
+    }
+
+    public void detailsPlanProfile(final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView typePAyPlan, final LinearLayout typePay){
+       AndroidNetworking.post(Server.URL()+"services/informacoes-plano")
+            .addHeaders("token", Server.token(activity))
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try{
+                        String status = response.getString("status");
+                        switch (status){
+                            case "success":
+                                Alerts.progress_clode();
+                                namePlan.setText(response.getString("nome_plano"));
+                                qtdTerms.setText(String.valueOf(response.getInt("qtd_termos")));
+                                pricePlan.setText(Price.real(response.getDouble("valor_plano")));
+                                qtdTermosUtil.setText(String.valueOf(response.getString("num_termos_cadastrados")));
+                                typePAyPlan.setText(response.getString("tipo_cobranca"));
+                                typePay.setVisibility(View.GONE);
+
+                                break;
+
+                            default:
+                                Alerts.progress_clode();
+
+                                break;
+                        }
+                    }catch (JSONException e){}
+                }
+
+                @Override
+                public void onError(ANError anError) {
+                    Alerts.progress_clode();
+                    Server.ErrorServer(activity, anError.getErrorCode());
                 }
             });
     }
