@@ -6,11 +6,13 @@ public class TypePlanProfile {
         String name = null;
         switch (type){
             case "F":
-                name = "Plano Free";
+                name = "Free";
                 break;
             case "P":
-                name = "Plano Plus";
+                name = "Plus";
                 break;
+            default:
+                name = "+200";
         }
         return name;
     }

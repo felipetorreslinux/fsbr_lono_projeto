@@ -22,6 +22,7 @@ import android.widget.Toolbar;
 import com.lono.R;
 import com.lono.Utils.TypePlanProfile;
 import com.lono.Views.View_Edit_Profile;
+import com.lono.Views.View_My_Plan_Profile;
 import com.squareup.picasso.Picasso;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
@@ -51,14 +52,14 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         editor = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
         builder = new AlertDialog.Builder(getActivity());
 
-        infoProfile();
-
         item_edit_profile = (LinearLayout) rootview.findViewById(R.id.item_edit_profile);
         item_edit_profile.setOnClickListener(this);
         item_my_plam = (LinearLayout) rootview.findViewById(R.id.item_my_plam);
         item_my_plam.setOnClickListener(this);
         item_payment = (LinearLayout) rootview.findViewById(R.id.item_payment);
         item_payment.setOnClickListener(this);
+
+        infoProfile();
 
         return rootview;
     }
@@ -81,7 +82,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         if(sharedPreferences != null){
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
-            name_plan_profile.setText(TypePlanProfile.name(sharedPreferences.getString("type_account", null)));
+            name_plan_profile.setText("Plano "+TypePlanProfile.name(sharedPreferences.getString("type_account", null)));
             String status = sharedPreferences.getString("situacao_cad", null);
 
             if(status.equals("A")){
@@ -91,6 +92,12 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
                 status_account.setText("Sua conta pendente");
                 status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorRed));
             }
+        }
+
+        if(sharedPreferences.getString("razao_social", null).equals("null")){
+            item_payment.setVisibility(View.GONE);
+        }else{
+            item_payment.setVisibility(View.VISIBLE);
         }
     }
 
@@ -107,7 +114,8 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.item_my_plam:
-
+                Intent my_plan = new Intent(getActivity(), View_My_Plan_Profile.class);
+                getActivity().startActivity(my_plan);
                 break;
 
             case R.id.item_payment:

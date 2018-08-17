@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.BottomSheetDialog;
+import android.view.View;
+import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -34,12 +36,13 @@ public class Service_Profile {
         this.editor = activity.getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
     }
 
-    public void resetEmailCellphoe(String email, String cellphone){
+    public void resetEmailCellphoe(final String email, final String cellphone, final TextView erro){
         try{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("email", email);
             jsonObject.put("telefone", cellphone);
-            AndroidNetworking.post(Server.URL()+"")
+            AndroidNetworking.post(Server.URL()+"services/editar-usuario")
+                .addHeaders("token", Server.token(activity))
                 .addJSONObjectBody(jsonObject)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -50,19 +53,20 @@ public class Service_Profile {
                             switch (status){
                                 case "success":
                                     Alerts.progress_clode();
-                                    builder.setTitle("Ops!!!");
-                                    builder.setMessage("informações atualizadas com sucesso.");
-                                    builder.setCancelable(false);
-                                    builder.setPositiveButton("Ok", null);
-                                    builder.create().show();
+                                    editor.putString("email", email);
+                                    editor.putString("cellphone_account", cellphone);
+                                    editor.commit();
+                                    if(editor.commit()){
+                                        erro.setVisibility(View.VISIBLE);
+                                        erro.setText("Informações atualizadas com sucesso");
+                                        erro.setBackgroundColor(activity.getResources().getColor(R.color.colorGreenLight));
+                                    }
                                     break;
                                 default:
                                     Alerts.progress_clode();
-                                    builder.setTitle("Ops!!!");
-                                    builder.setMessage(response.getString("message"));
-                                    builder.setCancelable(false);
-                                    builder.setPositiveButton("Ok", null);
-                                    builder.create().show();
+                                    erro.setVisibility(View.VISIBLE);
+                                    erro.setText(response.getString("message"));
+                                    erro.setBackgroundColor(activity.getResources().getColor(R.color.colorRed));
                                     break;
                             }
                         }catch (JSONException e){}
@@ -174,4 +178,5 @@ public class Service_Profile {
                 }
             });
     }
+
 }

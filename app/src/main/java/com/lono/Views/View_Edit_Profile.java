@@ -3,6 +3,7 @@ package com.lono.Views;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,13 +25,18 @@ import android.widget.TextView;
 import com.lono.R;
 import com.lono.Service.Service_Profile;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.MaskCPF;
 import com.lono.Utils.MaskCellPhone;
+import com.lono.Utils.Valitations;
 
 public class View_Edit_Profile extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
 
+    TextView box_erro_profile;
+
+    EditText document_profile_edit;
     TextView name_profile_edit;
     EditText email_profile_edit;
     EditText cellphone_profile_edit;
@@ -44,7 +52,6 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
     BottomSheetDialog bottomSheetDialog;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,8 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
         createToolbar(toolbar);
         infoEditProfile();
 
+        box_erro_profile = (TextView) findViewById(R.id.box_erro_profile);
+        box_erro_profile.setVisibility(View.GONE);
 
     }
 
@@ -70,9 +79,11 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
     }
 
     private void infoEditProfile(){
+        document_profile_edit = findViewById(R.id.document_profile_edit);
         name_profile_edit = findViewById(R.id.name_profile_edit);
         email_profile_edit = findViewById(R.id.email_profile_edit);
         cellphone_profile_edit = findViewById(R.id.cellphone_profile_edit);
+        document_profile_edit.setText(sharedPreferences.getString("document", null));
         name_profile_edit.setText(sharedPreferences.getString("name", null));
         email_profile_edit.setText(sharedPreferences.getString("email", null));
         cellphone_profile_edit.setText(sharedPreferences.getString("cellphone_account", null));
@@ -82,13 +93,65 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_edit_profile, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
+
+            case R.id.send_edit_profile:
+                editProfile();
+                break;
         }
         return true;
+    }
+
+    private void editProfile() {
+        String email = email_profile_edit.getText().toString().trim();
+        String cellphone = cellphone_profile_edit.getText().toString().trim();
+
+        if(email.equals(sharedPreferences.getString("email", null)) && (cellphone.equals(sharedPreferences.getString("cellphone_account", null))) ){
+
+            box_erro_profile.setVisibility(View.VISIBLE);
+            box_erro_profile.setText("Você precisa alterar algo antes de salvar");
+
+        }else if(email.isEmpty()){
+
+            box_erro_profile.setVisibility(View.VISIBLE);
+            box_erro_profile.setText("Informe seu email");
+            email_profile_edit.requestFocus();
+
+        }else if(Valitations.email(email) == false){
+
+            box_erro_profile.setVisibility(View.VISIBLE);
+            box_erro_profile.setText("Email inválido");
+            email_profile_edit.requestFocus();
+
+        }else if(cellphone.isEmpty()){
+
+            box_erro_profile.setVisibility(View.VISIBLE);
+            box_erro_profile.setText("Informe seu telefone");
+            cellphone_profile_edit.requestFocus();
+
+        }else if(cellphone.length() < 14){
+
+            box_erro_profile.setVisibility(View.VISIBLE);
+            box_erro_profile.setText("Telefone inválido");
+            cellphone_profile_edit.requestFocus();
+
+        }else{
+            box_erro_profile.setVisibility(View.GONE);
+            box_erro_profile.setText(null);
+            Alerts.progress_open(this, null, "Atualizando informações", false);
+            serviceProfile.resetEmailCellphoe(email, cellphone, box_erro_profile);
+        }
     }
 
     @Override

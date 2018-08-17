@@ -44,7 +44,7 @@ public class Server {
         switch (code){
             case 0:
                 builder.setTitle("Ops!!!");
-                builder.setMessage("Aparelho eem conexão com a internet");
+                builder.setMessage("Aparelho sem conexão com a internet");
                 builder.setPositiveButton("Ok", null);
                 builder.create().show();
                 break;

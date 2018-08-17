@@ -39,12 +39,10 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
         builder = new AlertDialog.Builder(this);
 
-
         createToolbar(toolbar);
 
         switch_notifications_profile = (Switch) findViewById(R.id.switch_notifications_profile);
-        System.out.println("Notifications: " + sharedPreferences.getBoolean("view_notifications", false));
-        boolean notifications = sharedPreferences.getBoolean("view_notifications", false);
+        boolean notifications = sharedPreferences.getBoolean("view_notifications", true);
 
         if(notifications == true){
             switch_notifications_profile.setChecked(true);
