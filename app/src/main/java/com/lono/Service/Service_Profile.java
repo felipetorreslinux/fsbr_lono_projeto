@@ -21,6 +21,7 @@ import com.lono.R;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Price;
 import com.lono.Views.View_Login;
+import com.lono.Views.View_My_Plan_Profile;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -182,7 +183,7 @@ public class Service_Profile {
             });
     }
 
-    public void detailsPlanProfile(final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView typePayPlan, final LinearLayout typePay, final ViewStub loading){
+    public void detailsPlanProfile(final TextView value_terms, final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView datePlanExpire, final TextView typePayPlan, final LinearLayout typePay, final ViewStub loading){
        AndroidNetworking.post(Server.URL()+"services/informacoes-plano")
             .addHeaders("token", Server.token(activity))
             .build()
@@ -193,6 +194,7 @@ public class Service_Profile {
                         String status = response.getString("status");
                         switch (status){
                             case "success":
+                                value_terms.setText(String.valueOf(response.getDouble("valor_termo")));
                                 namePlan.setText(response.getString("nome_plano"));
                                 qtdTerms.setText(String.valueOf(response.getInt("qtd_termos")));
                                 pricePlan.setText(Price.real(response.getDouble("valor_plano")));
@@ -201,6 +203,11 @@ public class Service_Profile {
                                 typePay.setVisibility(View.GONE);
                                 if(response.getString("nome_plano").equals("Plus")){
                                     typePay.setVisibility(View.VISIBLE);
+                                }
+                                if(response.getString("nome_plano").equals("Free")){
+                                    datePlanExpire.setText("Ilimitado");
+                                }else{
+                                    datePlanExpire.setText(response.getString("expiracao_data"));
                                 }
                                 loading.setVisibility(View.GONE);
                                 break;

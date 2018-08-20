@@ -31,6 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/value_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
             <LinearLayout
                 android:layout_weight="1"
                 android:orientation="vertical"
@@ -122,6 +131,31 @@
 
                 <TextView
                     android:id="@+id/price_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/roboto"
+                    android:text="Expira"/>
+
+                <TextView
+                    android:id="@+id/date_expira_plan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
