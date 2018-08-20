@@ -1,6 +1,7 @@
 package com.lono.Views;
 
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,11 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lono.R;
 import com.lono.Service.Service_Profile;
@@ -24,7 +28,6 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     Toolbar toolbar;
     ViewStub loading;
     TextView name_plan;
-    TextView edit_plan;
     TextView terms_plan;
     TextView termos_usados;
     TextView price_plan;
@@ -49,13 +52,11 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
 
     private void infoPlan(){
         name_plan = findViewById(R.id.name_plan);
-        edit_plan = findViewById(R.id.edit_plan);
         terms_plan = findViewById(R.id.terms_plan);
         termos_usados = findViewById(R.id.termos_usados);
         price_plan = findViewById(R.id.price_plan);
         item_pay_my_plan = findViewById(R.id.item_pay_my_plan);
         type_pay_plan = findViewById(R.id.type_pay_plan);
-        edit_plan.setOnClickListener(this);
     }
 
     private void createToolbar(Toolbar toolbar) {
@@ -69,28 +70,32 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_my_plan_profile, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.edit_pmay_plan:
+                editPlanProfile();
+                break;
         }
         return true;
     }
 
+    private void editPlanProfile() {
+    }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.edit_plan:
-                Alerts.progress_open(this, null, "Carregando planos...", true);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Alerts.progress_clode();
-                        Snackbar.make(getWindow().getDecorView(), "Em desenvolvimento", Snackbar.LENGTH_LONG).show();
-                    }
-                }, 2000);
-                break;
+        switch (v.getId()) {
+
         }
     }
 

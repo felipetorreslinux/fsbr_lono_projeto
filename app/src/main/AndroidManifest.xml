@@ -119,7 +119,7 @@
 
         <activity android:name=".Views.View_My_Plan_Profile"
             android:screenOrientation="portrait"
-            android:theme="@style/View_Intro"/>
+            android:theme="@style/EditMYPlanProfile"/>
 
     </application>
 
