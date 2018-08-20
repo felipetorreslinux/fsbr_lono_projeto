@@ -23,6 +23,7 @@ import com.lono.Utils.Price;
 import com.lono.Views.View_Login;
 import com.lono.Views.View_My_Plan_Profile;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -183,7 +184,7 @@ public class Service_Profile {
             });
     }
 
-    public void detailsPlanProfile(final TextView value_terms, final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView datePlanExpire, final TextView typePayPlan, final LinearLayout typePay, final ViewStub loading){
+    public void detailsPlanProfile(final TextView val_terms, final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView datePlanExpire, final TextView typePayPlan, final LinearLayout typePay, final ViewStub loading){
        AndroidNetworking.post(Server.URL()+"services/informacoes-plano")
             .addHeaders("token", Server.token(activity))
             .build()
@@ -194,7 +195,14 @@ public class Service_Profile {
                         String status = response.getString("status");
                         switch (status){
                             case "success":
-                                value_terms.setText(String.valueOf(response.getDouble("valor_termo")));
+                                JSONArray jsonArray = response.getJSONArray("outros_planos");
+                                for (int i = 0; i < jsonArray.length(); i++){
+                                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                    double value_terms = jsonObject.getDouble("valor_termo");
+                                    if(value_terms != 0){
+                                        val_terms.setText(String.valueOf(value_terms));
+                                    }
+                                }
                                 namePlan.setText(response.getString("nome_plano"));
                                 qtdTerms.setText(String.valueOf(response.getInt("qtd_termos")));
                                 pricePlan.setText(Price.real(response.getDouble("valor_plano")));

@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:tint="@color/colorBlack"
-                android:src="@drawable/ic_search"/>
+                android:src="@drawable/ic_journal"/>
 
             <TextView
                 android:layout_width="match_parent"

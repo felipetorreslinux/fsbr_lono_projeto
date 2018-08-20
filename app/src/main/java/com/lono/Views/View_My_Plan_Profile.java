@@ -1,5 +1,6 @@
 package com.lono.Views;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -20,6 +21,8 @@ import android.view.ViewStub;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -52,7 +55,7 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     TextView type_pay_plan;
 
     Service_Profile serviceProfile;
-    double VALUE_TERMS_EDIT_PLAN_PROFILE;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +70,6 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
         createToolbar(toolbar);
         infoPlan();
         serviceProfile.detailsPlanProfile(value_terms, name_plan, terms_plan, termos_usados, price_plan, date_expira_plan, type_pay_plan, item_pay_my_plan, loading);
-        VALUE_TERMS_EDIT_PLAN_PROFILE = 4.99;
     }
 
     private void infoPlan(){
@@ -113,103 +115,12 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
 
     private void editPlanProfile() {
 
-        View view = getLayoutInflater().inflate(R.layout.dialog_edit_plan_profile, null);
-        builder.setView(view);
-        builder.setCancelable(true);
-        builder.create().show();
-
-        final double VALUE_TERNS = Double.parseDouble(value_terms.getText().toString().trim());
-
-        System.out.println(value_terms.getText().toString().trim());
-
-        final LinearLayout layout_buttons_edit_plan_profile = view.findViewById(R.id.layout_buttons_edit_plan_profile);
-        final LinearLayout box_plan_plus_edit_plan_profile = view.findViewById(R.id.box_plan_plus_edit_plan_profile);
-        layout_buttons_edit_plan_profile.setVisibility(View.GONE);
-        box_plan_plus_edit_plan_profile.setVisibility(View.GONE);
-        final Spinner spinner_plan = view.findViewById(R.id.spinner_plan);
-
-        final ImageView terms_remove = view.findViewById(R.id.terms_remove);
-        final TextView qtd_terms = view.findViewById(R.id.qtd_terms);
-        final ImageView terms_add = view.findViewById(R.id.terms_add);
-
-        final TextInputLayout layout_pay_plan = view.findViewById(R.id.layout_pay_plan);
-        final TextView price_mensal_edit_plan_profile = view.findViewById(R.id.price_mensal_edit_plan_profile);
-        price_mensal_edit_plan_profile.setText(Price.real(CalcTerms.value_mensal(4.99, 10)));
-        final TextView price_anual_edit_plan_profile = view.findViewById(R.id.price_anual_edit_plan_profile);
-        price_anual_edit_plan_profile.setText(Price.real(CalcTerms.value_anual(4.99, 10)));
-
-        final Button button_edit_plan = view.findViewById(R.id.button_edit_plan);
-
-
-        String[] plans = new String[]{"Escolha","Free","Plus","+200"};
-        List<String> list_plans = new ArrayList<>(Arrays.asList(plans));
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                this,R.layout.item_spinner_plan_profile,list_plans);
-        spinnerArrayAdapter.setDropDownViewResource(R.layout.item_spinner_plan_profile);
-        spinner_plan.setAdapter(spinnerArrayAdapter);
-        for(int i = 0; i < list_plans.size(); i++){
-            String name = list_plans.get(i).toString();
-            if(name.equals(name_plan.getText().toString().trim())){
-                spinnerArrayAdapter.remove(name);
-                spinnerArrayAdapter.notifyDataSetChanged();
-            }
-        }
-        spinner_plan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                switch (item){
-                    case "Free":
-                        layout_buttons_edit_plan_profile.setVisibility(View.VISIBLE);
-                        box_plan_plus_edit_plan_profile.setVisibility(View.GONE);
-                        button_edit_plan.setText("Alterar");
-                        break;
-
-                    case "Plus":
-                        layout_buttons_edit_plan_profile.setVisibility(View.VISIBLE);
-                        box_plan_plus_edit_plan_profile.setVisibility(View.VISIBLE);
-                        button_edit_plan.setText("Pagar");
-                        break;
-                    case "+200":
-                        layout_buttons_edit_plan_profile.setVisibility(View.VISIBLE);
-                        box_plan_plus_edit_plan_profile.setVisibility(View.GONE);
-                        button_edit_plan.setText("Solicitar");
-                        break;
-                    default:
-                        layout_buttons_edit_plan_profile.setVisibility(View.GONE);
-                        box_plan_plus_edit_plan_profile.setVisibility(View.GONE);
-                        break;
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-        terms_remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int TERMS = Integer.parseInt( qtd_terms.getText().toString().trim() );
-                TERMS--;
-                if(TERMS <= 10) {
-                    TERMS = 10;
-                }
-                qtd_terms.setText( String.valueOf( TERMS ) );
-                price_mensal_edit_plan_profile.setText(Price.real(CalcTerms.value_mensal(VALUE_TERNS, TERMS)));
-                price_anual_edit_plan_profile.setText(Price.real(CalcTerms.value_anual(VALUE_TERNS, TERMS)));
-            }
-        });
-
-        terms_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int TERMS = Integer.parseInt( qtd_terms.getText().toString().trim() );
-                TERMS++;
-                qtd_terms.setText( String.valueOf( TERMS ) );
-                price_mensal_edit_plan_profile.setText(Price.real(CalcTerms.value_mensal(VALUE_TERNS, TERMS)));
-                price_anual_edit_plan_profile.setText(Price.real(CalcTerms.value_anual(VALUE_TERNS, TERMS)));
-            }
-        });
-
-
+        Intent intent = new Intent(this, View_Payment.class);
+        intent.putExtra( "type_person",0);
+        intent.putExtra( "name", sharedPreferences.getString("name", null) );
+        intent.putExtra( "qtd_plan", "10");
+        intent.putExtra( "valor_termo", 4.99);
+        startActivity(intent);
 
     }
 

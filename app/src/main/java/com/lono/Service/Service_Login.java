@@ -92,7 +92,7 @@ public class Service_Login {
                         editor.putString("email", response.getJSONObject("usuario_info").getString("email"));
                         editor.putLong("created_at", response.getJSONObject("usuario_info").getLong("dat_cad"));
                         editor.putBoolean("admin", response.getJSONObject("usuario_info").getBoolean("admin"));
-                        editor.putBoolean("view_notifications", response.getJSONObject("usuario_info").getBoolean("exibir_notificacoes"));
+                        editor.putBoolean("exibir_notificacoes", response.getJSONObject("usuario_info").getBoolean("exibir_notificacoes"));
 
                         editor.putString("type_account", response.getJSONObject("conta_info").getString("tipo"));
                         editor.putString("name_plan", response.getJSONObject("conta_info").getString("nome_plano"));
@@ -110,7 +110,7 @@ public class Service_Login {
                         editor.putString("cidade", response.getJSONObject("conta_info").getString("cidade"));
                         editor.putString("estado", response.getJSONObject("conta_info").getString("uf"));
 
-                        editor.putString("situacao_cad", response.getJSONObject("conta_info").getString("sit_cad"));
+                        editor.putString("sit_cad", response.getJSONObject("conta_info").getString("sit_cad"));
                         editor.putInt("advogado", response.getJSONObject("conta_info").getInt("advogado"));
 
                         editor.commit();

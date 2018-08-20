@@ -43,7 +43,7 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
 
         switch_notifications_profile = (Switch) findViewById(R.id.switch_notifications_profile);
 
-        if(sharedPreferences.getBoolean("view_notifications", true)){
+        if(sharedPreferences.getBoolean("exibir_notificacoes", true)){
             switch_notifications_profile.setChecked(true);
         }else{
             switch_notifications_profile.setChecked(false);

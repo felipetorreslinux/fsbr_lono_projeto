@@ -121,6 +121,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/EditMYPlanProfile"/>
 
+        <activity android:name=".Views.TermsJornals.View_AddTerms"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
     </application>
 
 </manifest>

@@ -31,6 +31,7 @@ import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
 import com.lono.Views.Fragments.TermsJournals_Fragment;
+import com.lono.Views.TermsJornals.View_AddTerms;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -42,6 +43,8 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     SharedPreferences.Editor editor;
     Toolbar toolbar;
     MenuItem settings_profile;
+    MenuItem add_termos;
+    MenuItem add_journal;
 
     LinearLayout item_home;
     LinearLayout item_search;
@@ -94,6 +97,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         item_person.setAlpha(0.3f);
         TAB_INDEX = 0;
         getSupportActionBar().setTitle("Publicações");
+        getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
     }
 
     @Override
@@ -107,13 +111,21 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 drawable.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
             }
         }
-        settings_profile = menu.findItem(R.id.settings_profile);
+        add_journal = menu.findItem(R.id.add_journal).setVisible(false);
+        add_termos = menu.findItem(R.id.add_terms).setVisible(false);
+        settings_profile = menu.findItem(R.id.settings_profile).setVisible(false);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+
+            case R.id.add_terms:
+                Intent add_termos = new Intent(this, View_AddTerms.class);
+                startActivityForResult(add_termos, 1000);
+                break;
+
             case R.id.settings_profile:
                 Intent intent = new Intent(this, View_Settings_Profile.class);
                 startActivityForResult(intent, 1001);
@@ -196,15 +208,23 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
          switch (TAB_INDEX){
              case 0:
                  settings_profile.setVisible(false);
+                 add_termos.setVisible(false);
+                 add_journal.setVisible(false);
                  break;
              case 1:
                  settings_profile.setVisible(false);
+                 add_termos.setVisible(true);
+                 add_journal.setVisible(true);
                  break;
              case 2:
                  settings_profile.setVisible(false);
+                 add_termos.setVisible(false);
+                 add_journal.setVisible(false);
                  break;
              case 3:
                  settings_profile.setVisible(true);
+                 add_termos.setVisible(false);
+                 add_journal.setVisible(false);
                  break;
          }
     }
@@ -212,6 +232,12 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
+            case 1000:
+                if(resultCode == Activity.RESULT_OK){
+
+                }
+                break;
+
             case 1001:
                 if(resultCode == Activity.RESULT_OK){
                     Toast.makeText(this, "Informações atualizadas com sucesso",
@@ -219,6 +245,21 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             Image image = ImagePicker.getFirstImageOrNull(data);
             Picasso.with(this)

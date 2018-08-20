@@ -11,7 +11,6 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/status_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,15 +56,6 @@
 
                 <TextView
                     android:id="@+id/email_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:textSize="13dp"
-                    android:fontFamily="@font/roboto"/>
-
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/name_plan_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"

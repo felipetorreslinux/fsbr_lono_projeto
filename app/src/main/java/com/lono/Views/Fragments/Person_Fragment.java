@@ -1,14 +1,11 @@
 package com.lono.Views.Fragments;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -18,22 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.features.ReturnMode;
-import com.esafirm.imagepicker.features.imageloader.ImageLoader;
-import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
-import com.lono.Utils.TypePlanProfile;
 import com.lono.Views.View_Edit_Profile;
 import com.lono.Views.View_My_Plan_Profile;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.util.List;
-
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 
@@ -48,7 +36,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
     public static ImageView image_profile;
     TextView name_profile;
     TextView email_profile;
-    TextView name_plan_profile;
 
     LinearLayout item_edit_profile;
     LinearLayout item_my_plam;
@@ -80,7 +67,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         image_profile.setOnClickListener(this);
         name_profile = (TextView) rootview.findViewById(R.id.name_profile);
         email_profile = (TextView) rootview.findViewById(R.id.email_profile);
-        name_plan_profile = (TextView) rootview.findViewById(R.id.name_plan_profile);
 
         Picasso.with(getActivity())
                 .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.eu)))
@@ -91,8 +77,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         if(sharedPreferences != null){
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
-            name_plan_profile.setText("Plano "+TypePlanProfile.name(sharedPreferences.getString("type_account", null)));
-            String status = sharedPreferences.getString("situacao_cad", null);
+            String status = sharedPreferences.getString("sit_cad", null);
 
             if(status.equals("A")){
                 status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorGreenLight));
