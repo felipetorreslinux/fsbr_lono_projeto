@@ -51,6 +51,8 @@ dependencies {
     implementation 'jp.wasabeef:picasso-transformations:2.2.1'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
     implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
+
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

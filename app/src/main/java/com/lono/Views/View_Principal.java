@@ -19,13 +19,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
 import com.lono.Service.Service_Login;
+import com.lono.Service.Service_Profile;
+import com.lono.Utils.Alerts;
 import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
 import com.lono.Views.Fragments.TermsJournals_Fragment;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class View_Principal extends AppCompatActivity implements View.OnClickListener {
 
@@ -204,9 +214,21 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         switch (requestCode){
             case 1001:
                 if(resultCode == Activity.RESULT_OK){
-
+                    Toast.makeText(this, "Informações atualizadas com sucesso",
+                            Toast.LENGTH_SHORT).show();
                 }
                 break;
+        }
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            Image image = ImagePicker.getFirstImageOrNull(data);
+            Picasso.with(this)
+                .load(new File(image.getPath()))
+                .resize(150,150)
+                .transform(new CropCircleTransformation())
+                .into(Person_Fragment.image_profile);
+
+            Alerts.progress_open(this, null, "Carregando imagem\nAguarde...", false);
+            new Service_Profile(this).uploadImage(new File(image.getPath()));
         }
     }
 }

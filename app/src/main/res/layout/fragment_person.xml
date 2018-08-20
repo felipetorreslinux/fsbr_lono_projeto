@@ -34,7 +34,7 @@
                 android:id="@+id/image_profile"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="10dp"/>
@@ -64,6 +64,7 @@
                     android:fontFamily="@font/roboto"/>
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/name_plan_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

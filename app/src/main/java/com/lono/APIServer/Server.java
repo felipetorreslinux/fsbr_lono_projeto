@@ -29,8 +29,8 @@ public class Server {
     }
 
     public static String URL (){
-//        String url_p = "http://179.188.38.70:8888/";
-        String url_p = "http://192.168.15.220:80/";
+        String url_p = "http://179.188.38.70:8888/";
+//        String url_p = "http://192.168.15.220:80/";
         return url_p;
     };
 

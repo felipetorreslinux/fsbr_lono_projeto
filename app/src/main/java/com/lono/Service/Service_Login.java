@@ -95,6 +95,7 @@ public class Service_Login {
                         editor.putBoolean("view_notifications", response.getJSONObject("usuario_info").getBoolean("exibir_notificacoes"));
 
                         editor.putString("type_account", response.getJSONObject("conta_info").getString("tipo"));
+                        editor.putString("name_plan", response.getJSONObject("conta_info").getString("nome_plano"));
                         editor.putString("name_account", response.getJSONObject("conta_info").getString("nome"));
                         editor.putString("name_contact", response.getJSONObject("conta_info").getString("nome_contato"));
                         editor.putString("document", response.getJSONObject("conta_info").getString("docnum"));

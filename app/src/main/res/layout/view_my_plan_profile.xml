@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/actionbar_my_plan_profile"
@@ -14,6 +16,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/View_Principal"/>
 
+    <ViewStub
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/loading_pages"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,14 +29,12 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_bg_profile"
                 android:padding="10dp"
                 android:layout_marginBottom="5dp"
                 android:weightSum="1">
@@ -42,7 +48,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorGray"
+                        android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/roboto"
                         android:text="Plano"/>
 
@@ -71,65 +77,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:weightSum="2">
+                android:layout_marginRight="5dp"
+                android:padding="10dp">
 
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_bg_profile"
-                    android:layout_marginRight="5dp"
-                    android:padding="10dp">
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/roboto"
+                    android:text="Quantidade Termos"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorGray"
-                        android:fontFamily="@font/roboto"
-                        android:text="Quantidade Termos"/>
-
-                    <TextView
-                        android:id="@+id/terms_plan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/roboto"
-                        android:textSize="18dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/terms_plan"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/edittext_bg_profile"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorGray"
-                        android:fontFamily="@font/roboto"
-                        android:text="Termos Utilizados"/>
-
-                    <TextView
-                        android:id="@+id/termos_usados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorBlack"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/roboto"
-                        android:textSize="18dp"/>
-
-                </LinearLayout>
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18dp"/>
 
             </LinearLayout>
 
@@ -138,14 +107,38 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_bg_profile"
-                android:layout_marginRight="5dp"
                 android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorGray"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/roboto"
+                    android:text="Termos Utilizados"/>
+
+                <TextView
+                    android:id="@+id/termos_usados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/roboto"
                     android:text="Valor do Plano"/>
 
@@ -161,19 +154,18 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/item_pay_my_plan"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edittext_bg_profile"
-                android:layout_marginRight="5dp"
                 android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorGray"
+                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/roboto"
                     android:text="Tipo de cobrança"/>
 
@@ -183,6 +175,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
+                    android:inputType="textCapWords"
                     android:fontFamily="@font/roboto"
                     android:textSize="18dp"/>
 
@@ -191,6 +184,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>

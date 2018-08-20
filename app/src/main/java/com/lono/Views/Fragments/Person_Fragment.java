@@ -8,8 +8,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.features.ReturnMode;
+import com.esafirm.imagepicker.features.imageloader.ImageLoader;
+import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
 import com.lono.Utils.TypePlanProfile;
 import com.lono.Views.View_Edit_Profile;
 import com.lono.Views.View_My_Plan_Profile;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.util.List;
 
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
@@ -36,7 +45,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
     View rootview;
 
     TextView status_account;
-    ImageView image_profile;
+    public static ImageView image_profile;
     TextView name_profile;
     TextView email_profile;
     TextView name_plan_profile;
@@ -94,10 +103,10 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
             }
         }
 
-        if(sharedPreferences.getString("razao_social", null).equals("null")){
-            item_payment.setVisibility(View.GONE);
-        }else{
+        if(sharedPreferences.getString("name_plan", "").equals("Plus")){
             item_payment.setVisibility(View.VISIBLE);
+        }else{
+            item_payment.setVisibility(View.GONE);
         }
     }
 
@@ -105,7 +114,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.image_profile:
-
+                editImageProfile();
                 break;
 
             case R.id.item_edit_profile:
@@ -119,21 +128,23 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.item_payment:
-
+                Snackbar.make(getActivity().getWindow().getDecorView(), "Em Desenvolvimento", Snackbar.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case 1001:
-                if(requestCode == Activity.RESULT_OK){
-
-                }else{
-                    Toast.makeText(getActivity(), "Deu certo", Toast.LENGTH_LONG).show();
-                }
-                break;
-        }
+    private void editImageProfile(){
+        ImagePicker.create(getActivity())
+                .returnMode(ReturnMode.ALL)
+                .folderMode(true)
+                .toolbarFolderTitle("Albuns")
+                .toolbarImageTitle("Escolha")
+                .includeVideo(false)
+                .single()
+                .limit(1)
+                .showCamera(true)
+                .imageDirectory("Camera")
+                .enableLog(false)
+                .start();
     }
 }
