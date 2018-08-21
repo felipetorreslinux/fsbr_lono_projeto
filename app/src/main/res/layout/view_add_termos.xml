@@ -32,21 +32,38 @@
                 android:fontFamily="@font/roboto"
                 android:layout_marginBottom="16dp"/>
 
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/layout_add_terms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp">
-
-                <EditText
-                    android:id="@+id/text_add_terms"
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:hint="Termo para pesquisa"/>
+                    android:layout_height="wrap_content">
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/layout_add_terms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp">
+
+                        <EditText
+                            android:id="@+id/text_add_terms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:inputType="textAutoComplete"
+                            android:fontFamily="@font/roboto"
+                            android:hint="Termo para pesquisa"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/record_mic_terms"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_mic"
+                        android:tint="@color/colorGray"/>
+
+                </RelativeLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -73,23 +90,23 @@
                     android:layout_marginHorizontal="10dp"/>
 
             </LinearLayout>
-            
 
-            <TextView
+            <Button
+                android:id="@+id/button_save_term"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Termos cadastrados"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/roboto"/>
+                android:background="@drawable/ripple_blue"
+                android:textColor="@color/colorWhite"
+                android:text="Salvar termo"
+                android:layout_marginVertical="10dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/colorWhite">
 
                 <TextView

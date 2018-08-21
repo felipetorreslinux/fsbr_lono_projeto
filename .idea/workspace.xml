@@ -11,12 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c930cf30-a173-4ee1-b5d4-807138c2eac1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_remove_terms.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_mic.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
@@ -27,8 +22,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_add_termos.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_add_termos.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,30 +65,38 @@
       <file leaf-file-name="View_AddTerms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="69" column="55" lean-forward="false" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
+            <state relative-caret-position="326">
+              <caret line="129" column="49" lean-forward="false" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2401#2727#0" expanded="true" />
+                <element signature="e#2726#2727#0" expanded="true" />
+                <element signature="e#4512#4686#0" expanded="true" />
+                <element signature="e#4685#4686#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Adapter_List_Terms.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="item_list_terms.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Adapter_List_Terms.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="61" column="52" lean-forward="false" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1644#2389#0" expanded="true" />
-                <element signature="e#1770#1787#0" expanded="true" />
-                <element signature="e#1974#2266#0" expanded="true" />
-                <element signature="e#2265#2266#0" expanded="true" />
-                <element signature="e#2388#2389#0" expanded="true" />
-                <element signature="e#2444#2445#0" expanded="true" />
-                <element signature="e#2509#2510#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="64" column="78" lean-forward="false" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,11 +104,14 @@
       <file leaf-file-name="Service_Terms_Journals.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="48" column="67" lean-forward="false" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
+            <state relative-caret-position="442">
+              <caret line="154" column="44" lean-forward="false" selection-start-line="154" selection-start-column="44" selection-end-line="154" selection-end-column="44" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1510#1523#0" expanded="true" />
+                <element signature="method#listTerms#0;class#Service_Terms_Journals#0" expanded="false" />
+                <element signature="e#4165#4182#0" expanded="true" />
+                <element signature="e#4578#4595#0" expanded="true" />
+                <element signature="e#6013#6030#0" expanded="true" />
+                <element signature="e#6427#6444#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,22 +123,12 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="118" column="45" lean-forward="false" selection-start-line="112" selection-start-column="16" selection-end-line="118" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item_list_terms.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="348">
+              <caret line="100" column="55" lean-forward="false" selection-start-line="100" selection-start-column="55" selection-end-line="100" selection-end-column="55" />
+              <folding>
+                <element signature="e#1537#3055#0" expanded="false" />
+                <element signature="e#3069#4116#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,6 +152,8 @@
       <find>oradouro</find>
       <find>serviceProfile.detailsPlanProfile(infoPlanoProfileModel);serviceProfile.detailsPlanProfile(infoPlanoProfileModel);</find>
       <find>Type</find>
+      <find>terms_model</find>
+      <find>adapterListTerms</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2229,19 +2233,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_person.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_principal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_termos_journals.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_terms_journals.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/view_payment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_add_termos.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_add_termos.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_list_terms.xml" />
       </list>
     </option>
   </component>
@@ -2314,6 +2318,13 @@
             <path>
               <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
@@ -2341,6 +2352,7 @@
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Projetos/Lono/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -2535,7 +2547,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.74509805" sideWeight="0.5060514" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3721634" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3721634" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.65849674" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -2851,17 +2863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/TermsJournals_Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -2877,17 +2878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="68" lean-forward="false" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="125" column="47" lean-forward="false" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -2974,24 +2964,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="69" column="55" lean-forward="false" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
+        <state relative-caret-position="34">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1355#1373#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="83" lean-forward="false" selection-start-line="11" selection-start-column="83" selection-end-line="11" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="48" column="67" lean-forward="false" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1510#1523#0" expanded="true" />
-          </folding>
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3000,32 +3001,47 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="118" column="45" lean-forward="false" selection-start-line="112" selection-start-column="16" selection-end-line="118" selection-end-column="45" />
+        <state relative-caret-position="348">
+          <caret line="100" column="55" lean-forward="false" selection-start-line="100" selection-start-column="55" selection-end-line="100" selection-end-column="55" />
+          <folding>
+            <element signature="e#1537#3055#0" expanded="false" />
+            <element signature="e#3069#4116#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="154" column="44" lean-forward="false" selection-start-line="154" selection-start-column="44" selection-end-line="154" selection-end-column="44" />
+          <folding>
+            <element signature="method#listTerms#0;class#Service_Terms_Journals#0" expanded="false" />
+            <element signature="e#4165#4182#0" expanded="true" />
+            <element signature="e#4578#4595#0" expanded="true" />
+            <element signature="e#6013#6030#0" expanded="true" />
+            <element signature="e#6427#6444#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="64" column="78" lean-forward="false" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Models/Terms_Model.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/TermsJornals/View_AddTerms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="326">
+          <caret line="129" column="49" lean-forward="false" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
           <folding>
-            <element signature="e#553#554#0" expanded="false" />
-            <element signature="e#586#587#0" expanded="false" />
-            <element signature="e#614#615#0" expanded="false" />
-            <element signature="e#645#646#0" expanded="false" />
-            <element signature="e#672#673#0" expanded="false" />
-            <element signature="e#712#713#0" expanded="false" />
-            <element signature="e#744#745#0" expanded="false" />
-            <element signature="e#782#783#0" expanded="false" />
-            <element signature="e#816#817#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#917#918#0" expanded="false" />
-            <element signature="e#951#952#0" expanded="false" />
-            <element signature="e#981#982#0" expanded="false" />
-            <element signature="e#1028#1029#0" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2401#2727#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#4512#4686#0" expanded="true" />
+            <element signature="e#4685#4686#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3035,26 +3051,9 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="37" />
+        <state relative-caret-position="289">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_List_Terms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="61" column="52" lean-forward="false" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1644#2389#0" expanded="true" />
-            <element signature="e#1770#1787#0" expanded="true" />
-            <element signature="e#1974#2266#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-            <element signature="e#2388#2389#0" expanded="true" />
-            <element signature="e#2444#2445#0" expanded="true" />
-            <element signature="e#2509#2510#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

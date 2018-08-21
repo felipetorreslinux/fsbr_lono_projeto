@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.lono.Models.Terms_Model;
 import com.lono.R;
+import com.lono.Service.Service_Terms_Journals;
+import com.lono.Utils.Alerts;
 
 import org.w3c.dom.Text;
 
@@ -23,11 +25,13 @@ public class Adapter_List_Terms extends RecyclerView.Adapter<Adapter_List_Terms.
     Activity activity;
     List<Terms_Model> list_terms;
     AlertDialog.Builder builder;
+    Service_Terms_Journals serviceTermsJournals;
 
     public Adapter_List_Terms(Activity activity, List<Terms_Model> list_terms){
         this.activity = activity;
         this.list_terms = list_terms;
         this.builder = new AlertDialog.Builder(activity);
+        this.serviceTermsJournals = new Service_Terms_Journals(activity);
     }
 
     @NonNull
@@ -58,15 +62,15 @@ public class Adapter_List_Terms extends RecyclerView.Adapter<Adapter_List_Terms.
                 builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        list_terms.remove(position);
-                        notifyItemRemoved(position);
+                        Alerts.progress_open(activity, null, "Removendo termo", false);
+                        serviceTermsJournals.removeTerms(termsModel.getId());
+                        removeData(termsModel, position);
                     }
                 });
                 builder.setNegativeButton("Não", null);
                 builder.create().show();
             }
         });
-
     }
 
     @Override
@@ -82,10 +86,19 @@ public class Adapter_List_Terms extends RecyclerView.Adapter<Adapter_List_Terms.
 
         public TermsHolder(View itemView) {
             super(itemView);
-
             name_term = itemView.findViewById(R.id.name_term);
             literal_term = itemView.findViewById(R.id.literal_term);
             image_remove_terms = itemView.findViewById(R.id.image_remove_terms);
         }
+    }
+
+    public void addData(Terms_Model terms_model) {
+        list_terms.add(list_terms.size() - 1, terms_model);
+        notifyDataSetChanged();
+    }
+
+    public void removeData(Terms_Model terms_model, int position) {
+        list_terms.remove(terms_model);
+        notifyItemRemoved(position);
     }
 }

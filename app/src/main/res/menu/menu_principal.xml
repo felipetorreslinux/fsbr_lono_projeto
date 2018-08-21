@@ -12,12 +12,12 @@
 
     <item
         android:id="@+id/add_terms"
-        android:title="Adicionar Termos"
+        android:title="Termos"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/add_journal"
-        android:title="Adicionar Jornais"
+        android:title="Jornais"
         app:showAsAction="never"/>
 
 </menu>

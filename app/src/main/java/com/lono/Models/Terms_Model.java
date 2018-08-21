@@ -9,11 +9,11 @@ public class Terms_Model {
     boolean all_jornals;
     boolean literal;
 
-    public Terms_Model(JSONObject jsonObject) throws JSONException {
-        this.id = jsonObject.getInt("id_nome_pesquisa");
-        this.name = jsonObject.getString("nome_pesquisa");
-        this.all_jornals = jsonObject.getBoolean("todos_jornais");
-        this.literal = jsonObject.getBoolean("literal");
+    public Terms_Model(int id, String name, boolean all_jornals, boolean literal) {
+        this.id = id;
+        this.name = name;
+        this.all_jornals = all_jornals;
+        this.literal = literal;
     }
 
     public int getId() {

@@ -72,7 +72,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_remove_circle_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_mic_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -83,7 +83,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="181719" />
-                            <entry key="outputName" value="ic_remove_terms" />
+                            <entry key="outputName" value="ic_mic" />
                             <entry key="sourceFile" value="C:\Users\FelipeTorres\Downloads\newspaper.psd" />
                           </map>
                         </option>
