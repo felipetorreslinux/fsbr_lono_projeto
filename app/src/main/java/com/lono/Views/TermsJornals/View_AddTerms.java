@@ -11,12 +11,9 @@ import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,16 +21,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.lono.Adapter.Adapter_List_Terms;
-import com.lono.Models.Terms_Model;
 import com.lono.R;
 import com.lono.Service.Service_Terms_Journals;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Keyboard;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class View_AddTerms extends AppCompatActivity implements View.OnClickListener {
@@ -50,9 +43,6 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
     ImageView image_info_ad_termos;
     Button button_save_term;
 
-    Adapter_List_Terms adapterListTerms;
-    RecyclerView recycler_terms;
-
     Service_Terms_Journals serviceTermsJournals;
 
     boolean LITERAL = false;
@@ -63,7 +53,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.view_add_termos);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
         serviceTermsJournals = new Service_Terms_Journals(this);
-
+        serviceTermsJournals.listTerms();
         builder = new AlertDialog.Builder(this);
         createToolbar(toolbar);
 
@@ -76,7 +66,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     LITERAL = true;
-                }else{
+                }else {
                     LITERAL = false;
                 }
             }
@@ -97,28 +87,15 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(count > 0){
                     button_save_term.setVisibility(View.VISIBLE);
-                    if(s.length() > 4){
-                        check_termos_literal.setChecked(false);
-                        LITERAL = false;
-                    }else{
-                        check_termos_literal.setChecked(true);
-                        LITERAL = true;
-                    }
                 }else{
                     button_save_term.setVisibility(View.GONE);
-                    check_termos_literal.setChecked(true);
-                    LITERAL = true;
                 };
             }
             @Override
             public void afterTextChanged(Editable s) {}
         });
 
-        recycler_terms = findViewById(R.id.recycler_terms);
-        recycler_terms.setLayoutManager(new LinearLayoutManager(this));
-        recycler_terms.setHasFixedSize(true);
-        recycler_terms.setNestedScrollingEnabled(false);
-        serviceTermsJournals.listTerms(recycler_terms);
+        LITERAL = false;
 
     }
 
@@ -177,8 +154,8 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
 
     private void saveTerms() {
         String term = text_add_terms.getText().toString().trim();
-        Alerts.progress_open(this, null, "Adicionando termo", false);
-        serviceTermsJournals.addTerms(term, LITERAL, recycler_terms);
+        Alerts.progress_open(this, null, "Adicionando...", false);
+        serviceTermsJournals.addTerms(term, LITERAL);
         text_add_terms.setText(null);
     }
 

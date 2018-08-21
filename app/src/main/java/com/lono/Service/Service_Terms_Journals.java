@@ -2,7 +2,11 @@ package com.lono.Service;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -12,6 +16,7 @@ import com.lono.Adapter.Adapter_List_Terms;
 import com.lono.Models.Terms_Model;
 import com.lono.R;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.Keyboard;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,13 +29,22 @@ public class Service_Terms_Journals {
 
     Activity activity;
     AlertDialog.Builder builder;
+    TextView textView;
+    RecyclerView recyclerView;
 
     public Service_Terms_Journals(Activity activity){
         this.activity = activity;
         this.builder  = new AlertDialog.Builder(activity);
+        this.recyclerView = activity.findViewById(R.id.recycler_terms);
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        this.recyclerView.setHasFixedSize(true);
+        this.recyclerView.setNestedScrollingEnabled(false);
+        this.textView = activity.findViewById(R.id.text_info_terms);
     }
 
-    public void listTerms (final RecyclerView recyclerView){
+    public void listTerms (){
+        textView.setText("Carregando termos...");
+        textView.setVisibility(View.VISIBLE);
         AndroidNetworking.post(Server.URL()+"services/listar-termos-cliente")
             .addHeaders("token", Server.token(activity))
             .build()
@@ -56,8 +70,11 @@ public class Service_Terms_Journals {
                                     }
                                     Adapter_List_Terms adapterListTerms = new Adapter_List_Terms(activity, list_terms);
                                     recyclerView.setAdapter(adapterListTerms);
+                                    textView.setText(null);
+                                    textView.setVisibility(View.GONE);
                                 }else{
-
+                                    textView.setText("Você não tem termos cadastrados");
+                                    textView.setVisibility(View.VISIBLE);
                                 }
                                 break;
                             default:
@@ -74,7 +91,7 @@ public class Service_Terms_Journals {
             });
     }
 
-    public void addTerms (String terms, boolean literal, final RecyclerView recyclerView){
+    public void addTerms (String terms, boolean literal){
         try{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("nome_pesquisa", terms);
@@ -91,12 +108,10 @@ public class Service_Terms_Journals {
                         switch (status){
                             case "success":
                                 Alerts.progress_clode();
-                                Service_Terms_Journals serviceTermsJournals = new Service_Terms_Journals(activity);
-                                serviceTermsJournals.listTerms(recyclerView);
-                                builder.setTitle(R.string.app_name);
-                                builder.setMessage(response.getString("message"));
-                                builder.setPositiveButton("Ok", null);
-                                builder.create().show();
+                                listTerms();
+                                Snackbar.make(activity.getWindow().getDecorView(),
+                                        response.getString("message"), Snackbar.LENGTH_SHORT).show();
+                                Keyboard.close(activity, activity.getWindow().getDecorView());
                                 break;
                             default:
                                 Alerts.progress_clode();
@@ -133,18 +148,15 @@ public class Service_Terms_Journals {
                         switch (status){
                             case "success":
                                 Alerts.progress_clode();
-                                builder.setTitle(R.string.app_name);
-                                builder.setMessage(response.getString("message"));
-                                builder.setPositiveButton("Ok", null);
-                                builder.create().show();
+                                listTerms();
+                                Snackbar.make(activity.getWindow().getDecorView(),
+                                        response.getString("message"), Snackbar.LENGTH_SHORT).show();
                                 break;
 
                             default:
                                 Alerts.progress_clode();
-                                builder.setTitle(R.string.app_name);
-                                builder.setMessage(response.getString("message"));
-                                builder.setPositiveButton("Ok", null);
-                                builder.create().show();
+                                Snackbar.make(activity.getWindow().getDecorView(),
+                                        response.getString("message"), Snackbar.LENGTH_SHORT).show();
                                 break;
                         }
                     }catch (JSONException e){}
