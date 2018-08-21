@@ -22,7 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.lono.R;
-import com.lono.Service.Service_Terms_Journals;
+import com.lono.Service.Service_Terms;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Keyboard;
 
@@ -43,7 +43,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
     ImageView image_info_ad_termos;
     Button button_save_term;
 
-    Service_Terms_Journals serviceTermsJournals;
+    Service_Terms serviceTermsJournals;
 
     boolean LITERAL = false;
 
@@ -52,7 +52,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_add_termos);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
-        serviceTermsJournals = new Service_Terms_Journals(this);
+        serviceTermsJournals = new Service_Terms(this);
         serviceTermsJournals.listTerms();
         builder = new AlertDialog.Builder(this);
         createToolbar(toolbar);

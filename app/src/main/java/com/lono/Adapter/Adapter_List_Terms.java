@@ -13,10 +13,8 @@ import android.widget.TextView;
 
 import com.lono.Models.Terms_Model;
 import com.lono.R;
-import com.lono.Service.Service_Terms_Journals;
+import com.lono.Service.Service_Terms;
 import com.lono.Utils.Alerts;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -25,13 +23,13 @@ public class Adapter_List_Terms extends RecyclerView.Adapter<Adapter_List_Terms.
     Activity activity;
     List<Terms_Model> list_terms;
     AlertDialog.Builder builder;
-    Service_Terms_Journals serviceTermsJournals;
+    Service_Terms serviceTermsJournals;
 
     public Adapter_List_Terms(Activity activity, List<Terms_Model> list_terms){
         this.activity = activity;
         this.list_terms = list_terms;
         this.builder = new AlertDialog.Builder(activity);
-        this.serviceTermsJournals = new Service_Terms_Journals(activity);
+        this.serviceTermsJournals = new Service_Terms(activity);
     }
 
     @NonNull
@@ -62,7 +60,6 @@ public class Adapter_List_Terms extends RecyclerView.Adapter<Adapter_List_Terms.
                 builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Alerts.progress_open(activity, null, "Removendo termo", false);
                         serviceTermsJournals.removeTerms(termsModel.getId());
                         removeData(termsModel, position);
                     }
