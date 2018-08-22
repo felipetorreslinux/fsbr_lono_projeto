@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.lono.Models.All_Jorunals_Model;
 import com.lono.R;
+import com.lono.Service.Service_Terms_Journals;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,11 +27,12 @@ public class Adapter_All_Journals extends RecyclerView.Adapter<Adapter_All_Journ
 
     Activity activity;
     List<All_Jorunals_Model> list_journals;
-    private int lastCheckedPosition = -1;
+    Service_Terms_Journals serviceTermsJournals;
 
     public Adapter_All_Journals(Activity activity, List<All_Jorunals_Model> list_journals){
         this.activity = activity;
         this.list_journals = list_journals;
+        this.serviceTermsJournals = new Service_Terms_Journals(activity);
     }
 
     @NonNull
@@ -50,19 +52,7 @@ public class Adapter_All_Journals extends RecyclerView.Adapter<Adapter_All_Journ
             @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
-                try{
-                    JSONArray itens = new JSONArray();
-                    JSONObject jsonObject = new JSONObject();
-                    if(holder.select_journal.getVisibility() == View.VISIBLE){
-                        holder.select_journal.setVisibility(View.GONE);
-                        itens.remove(allJorunalsModel.getId());
-                    }else{
-                        holder.select_journal.setVisibility(View.VISIBLE);
-                        jsonObject.put("id", allJorunalsModel.getId());
-                        itens.put(jsonObject);
-                    }
-                }catch (JSONException e){}
-
+                serviceTermsJournals.addJournal(allJorunalsModel.getId(), allJorunalsModel.getName());
             }
         });
 

@@ -98,7 +98,7 @@ public class Adapter_Journals_Fragment extends RecyclerView.Adapter<Adapter_Jour
 
     public void removeJournals(final Journals_Model journalsModel, final int position){
         Snackbar.make(activity.getWindow().getDecorView(),
-                "Removendo jornal...", Snackbar.LENGTH_SHORT).show();
+                "Removendo " + journalsModel.getName(), Snackbar.LENGTH_SHORT).show();
         try{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("id_jornal", journalsModel.getId());
@@ -117,7 +117,7 @@ public class Adapter_Journals_Fragment extends RecyclerView.Adapter<Adapter_Jour
                                         notifyItemRemoved(position);
                                         notifyDataSetChanged();
                                         Snackbar.make(activity.getWindow().getDecorView(),
-                                                "Jornal removido com sucesso", Snackbar.LENGTH_SHORT).show();
+                                                journalsModel.getName() + " removido com sucesso", Snackbar.LENGTH_SHORT).show();
                                         break;
 
                                         default:

@@ -192,4 +192,42 @@ public class Service_Terms_Journals {
         }catch (JSONException e){}
     }
 
+    public void addJournal(int id, final String name){
+        Snackbar.make(activity.getWindow().getDecorView(),
+                "Adicionando " + name, Snackbar.LENGTH_SHORT).show();
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("id_jornal", id);
+            AndroidNetworking.post(Server.URL()+"services/adicionar-jornal-cliente")
+                .addHeaders("token", Server.token(activity))
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            String status = response.getString("status");
+                            switch (status){
+                                case "success":
+                                    Snackbar.make(activity.getWindow().getDecorView(),
+                                            name + " adicionado com sucesso", Snackbar.LENGTH_SHORT).show();
+                                    break;
+
+                                default:
+                                    Snackbar.make(activity.getWindow().getDecorView(),
+                                            response.getString("message"), Snackbar.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }catch (JSONException e){}
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Server.ErrorServer(activity, anError.getErrorCode());
+                    }
+                });
+        }catch (JSONException e){}
+    }
+
+
 }

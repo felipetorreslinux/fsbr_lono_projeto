@@ -38,7 +38,7 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
         progress_terms = rootview.findViewById(R.id.progress_terms);
 
         recycler_journals_fragment = rootview.findViewById(R.id.recycler_journals_fragment);
-        recycler_journals_fragment.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recycler_journals_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler_journals_fragment.setHasFixedSize(true);
         recycler_journals_fragment.setNestedScrollingEnabled(false);
 
