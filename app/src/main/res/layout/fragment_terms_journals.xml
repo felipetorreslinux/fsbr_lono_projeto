@@ -3,35 +3,83 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorFundo">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Termos"/>
-
+        android:layout_height="match_parent">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/progress_terms"
-            android:max="100"
-            android:indeterminateTint="@color/colorPrimary"
+            android:indeterminateTint="@color/colorBlack"
             android:indeterminate="true"/>
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_terms_fragment"
+        <!--Jornais-->
+        <LinearLayout
+            android:id="@+id/layout_box_jornais"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jornais"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+
+        <!--Termos-->
+        <LinearLayout
+            android:id="@+id/layout_box_termos"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Termos"
+                android:layout_marginBottom="7.5dp"/>
+
+            <LinearLayout
+                android:id="@+id/layout_info_terms"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="50dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_not_sentimental"
+                    android:layout_gravity="center"
+                    android:tint="@color/colorGray"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Não há termos cadastrados"
+                    android:textColor="@color/colorGray"
+                    android:gravity="center"
+                    android:padding="16dp"/>
+
+            </LinearLayout>
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_terms_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

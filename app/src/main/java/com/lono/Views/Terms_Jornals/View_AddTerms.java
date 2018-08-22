@@ -18,13 +18,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.lono.R;
-import com.lono.Service.Service_Terms;
+import com.lono.Service.Service_Terms_Journals;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Keyboard;
 
@@ -45,7 +44,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
     ImageView record_mic_terms;
     ImageView image_info_ad_termos;
 
-    Service_Terms serviceTermsJournals;
+    Service_Terms_Journals serviceTermsJournals;
 
     boolean LITERAL = false;
 
@@ -54,7 +53,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_add_termos);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
-        serviceTermsJournals = new Service_Terms(this);
+        serviceTermsJournals = new Service_Terms_Journals(this);
         builder = new AlertDialog.Builder(this);
         createToolbar(toolbar);
 
@@ -154,7 +153,6 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
             text_add_terms.requestFocus();
         }else{
             Keyboard.close(this, getWindow().getDecorView());
-            Alerts.progress_open(this, null, "Salvando termo", false);
             serviceTermsJournals.addTerms(text_term, LITERAL);
             text_add_terms.setText(null);
         }

@@ -24,7 +24,7 @@ import com.lono.Utils.Alerts;
 import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
-import com.lono.Views.Fragments.TermsJournals_Fragment;
+import com.lono.Views.Fragments.Terms_Journals_Fragment;
 import com.lono.Views.Terms_Jornals.View_AddTerms;
 import com.squareup.picasso.Picasso;
 
@@ -152,7 +152,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Termos e Jornais");
                     menuPrincipal();
-                    getFragmentManager().beginTransaction().replace(R.id.container, new TermsJournals_Fragment()).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Terms_Journals_Fragment()).commit();
                 }
                 break;
             case R.id.item_notifi:
@@ -227,9 +227,14 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
             case 1000:
-                if(resultCode == Activity.RESULT_OK){
-
-                }
+                TAB_INDEX = 1;
+                item_home.setAlpha(0.3f);
+                item_search.setAlpha(1.0f);
+                item_notifi.setAlpha(0.3f);
+                item_person.setAlpha(0.3f);
+                getSupportActionBar().setTitle("Termos e Jornais");
+                menuPrincipal();
+                getFragmentManager().beginTransaction().replace(R.id.container, new Terms_Journals_Fragment()).commit();
                 break;
 
             case 1001:

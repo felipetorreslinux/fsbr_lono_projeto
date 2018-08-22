@@ -1,8 +1,11 @@
 package com.lono.Service;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.androidnetworking.AndroidNetworking;
@@ -11,6 +14,8 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lono.APIServer.Server;
 import com.lono.Adapter.Adapter_Terms_Fragment;
 import com.lono.Models.Terms_Model;
+import com.lono.R;
+import com.lono.Utils.Alerts;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +32,9 @@ public class Service_Terms_Journals {
         this.activity = activity;
     }
 
-    public void listTerms (final RecyclerView recyclerView, final ProgressBar progress_terms){
+    public void listTerms (final RecyclerView recyclerView, final ProgressBar progress_terms, final LinearLayout layout_box_termos){
         progress_terms.setVisibility(View.VISIBLE);
+        layout_box_termos.setVisibility(View.GONE);
         AndroidNetworking.post(Server.URL()+"services/listar-termos-cliente")
                 .addHeaders("token", Server.token(activity))
                 .build()
@@ -55,8 +61,10 @@ public class Service_Terms_Journals {
                                         Adapter_Terms_Fragment adapterListTerms = new Adapter_Terms_Fragment(activity, list_terms);
                                         recyclerView.setAdapter(adapterListTerms);
                                         progress_terms.setVisibility(View.GONE);
+                                        layout_box_termos.setVisibility(View.VISIBLE);
                                     }else{
                                         progress_terms.setVisibility(View.VISIBLE);
+                                        layout_box_termos.setVisibility(View.GONE);
                                     }
                                     break;
                             }
@@ -69,4 +77,41 @@ public class Service_Terms_Journals {
                     }
                 });
     }
+
+    public void addTerms (String terms, boolean literal){
+        Snackbar.make(activity.getWindow().getDecorView(),
+                "Adicionando termo...", Snackbar.LENGTH_SHORT).show();
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("nome_pesquisa", terms);
+            jsonObject.put("literal", literal);
+            AndroidNetworking.post(Server.URL()+"services/adicionar-termo-cliente")
+                    .addHeaders("token", Server.token(activity))
+                    .addJSONObjectBody(jsonObject)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try{
+                                String status = response.getString("status");
+                                switch (status){
+                                    case "success":
+                                        Snackbar.make(activity.getWindow().getDecorView(),
+                                                "Termos adicionado com sucesso", Snackbar.LENGTH_SHORT).show();
+                                        break;
+                                    default:
+                                        Snackbar.make(activity.getWindow().getDecorView(),
+                                                response.getString("message"), Snackbar.LENGTH_SHORT).show();
+                                        break;
+                                }
+                            }catch (JSONException e){}
+                        }
+                        @Override
+                        public void onError(ANError anError) {
+                            Server.ErrorServer(activity, anError.getErrorCode());
+                        }
+                    });
+        }catch (JSONException e){}
+    }
+
 }
