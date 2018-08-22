@@ -1,7 +1,9 @@
 package com.lono.Service;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -29,9 +31,11 @@ import java.util.List;
 public class Service_Terms_Journals {
 
     Activity activity;
+    SharedPreferences.Editor editor;
 
     public Service_Terms_Journals(Activity activity){
         this.activity = activity;
+        this.editor = activity.getSharedPreferences("all_journals", Context.MODE_PRIVATE).edit();
     }
 
     public void listTerms (final RecyclerView recyclerView, final ProgressBar progress_terms, final LinearLayout layout_box_termos){
@@ -78,6 +82,36 @@ public class Service_Terms_Journals {
                         Server.ErrorServer(activity, anError.getErrorCode());
                     }
                 });
+    }
+
+    public void listAllJournals (){
+        AndroidNetworking.post(Server.URL()+"services/listar-todos-jornais")
+            .addHeaders("token", Server.token(activity))
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try{
+                        String status = response.getString("status");
+                        switch (status){
+                            case "success":
+                                JSONArray jsonArray = response.getJSONArray("jornais");
+                                editor.putString("journals", jsonArray.toString());
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("journals", "");
+                                editor.commit();
+                                break;
+                        }
+                    }catch (JSONException e){}
+                }
+
+                @Override
+                public void onError(ANError anError) {
+
+                }
+            });
     }
 
     public void listJournals (final RecyclerView recyclerView, final LinearLayout layout_box_jornais){

@@ -127,7 +127,12 @@
 
         <activity android:name=".Views.Terms_Jornals.View_Add_Terms"
             android:screenOrientation="portrait"
-            android:theme="@style/ViewAddTerm"/>
+            android:theme="@style/ViewTermsJournals"/>
+
+        <activity android:name=".Views.Terms_Jornals.View_Add_Journal"
+            android:screenOrientation="portrait"
+            android:theme="@style/ViewTermsJournals"/>
+
 
     </application>
 

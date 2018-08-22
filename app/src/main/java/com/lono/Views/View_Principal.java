@@ -20,11 +20,13 @@ import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Service.Service_Profile;
+import com.lono.Service.Service_Terms_Journals;
 import com.lono.Utils.Alerts;
 import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
 import com.lono.Views.Fragments.Terms_Journals_Fragment;
+import com.lono.Views.Terms_Jornals.View_Add_Journal;
 import com.lono.Views.Terms_Jornals.View_Add_Terms;
 import com.squareup.picasso.Picasso;
 
@@ -46,11 +48,15 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     LinearLayout item_person;
     static int TAB_INDEX;
 
+    Service_Terms_Journals serviceTermsJournals;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_principal);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
+        serviceTermsJournals = new Service_Terms_Journals(this);
+        serviceTermsJournals.listAllJournals();
 
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
 
@@ -120,9 +126,14 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 startActivityForResult(add_termos, 1000);
                 break;
 
+            case R.id.add_journal:
+                Intent add_journal = new Intent(this, View_Add_Journal.class);
+                startActivityForResult(add_journal, 1000);
+                break;
+
             case R.id.settings_profile:
                 Intent intent = new Intent(this, View_Settings_Profile.class);
-                startActivityForResult(intent, 1001);
+                startActivityForResult(intent, 2000);
                 break;
         }
         return true;
@@ -237,7 +248,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 getFragmentManager().beginTransaction().replace(R.id.container, new Terms_Journals_Fragment()).commit();
                 break;
 
-            case 1001:
+            case 2000:
                 if(resultCode == Activity.RESULT_OK){
                     Toast.makeText(this, "Informações atualizadas com sucesso",
                             Toast.LENGTH_SHORT).show();

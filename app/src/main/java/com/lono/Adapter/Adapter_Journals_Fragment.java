@@ -76,7 +76,6 @@ public class Adapter_Journals_Fragment extends RecyclerView.Adapter<Adapter_Jour
             text_info_journals.setVisibility(View.GONE);
         }else{
             text_info_journals.setVisibility(View.VISIBLE);
-            text_info_journals.setText("Não há jornais cadastrados");
         }
         return list_journals != null ? list_journals.size() : 0;
     }
