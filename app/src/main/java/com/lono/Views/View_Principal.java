@@ -1,23 +1,17 @@
 package com.lono.Views;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -31,7 +25,7 @@ import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
 import com.lono.Views.Fragments.TermsJournals_Fragment;
-import com.lono.Views.TermsJornals.View_AddTerms;
+import com.lono.Views.Terms_Jornals.View_AddTerms;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;

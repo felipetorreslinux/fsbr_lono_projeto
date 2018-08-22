@@ -1,20 +1,16 @@
 package com.lono.Service;
 
 import android.app.Activity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lono.APIServer.Server;
-import com.lono.Adapter.Adapter_List_Terms;
 import com.lono.Adapter.Adapter_Terms_Fragment;
 import com.lono.Models.Terms_Model;
-import com.lono.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

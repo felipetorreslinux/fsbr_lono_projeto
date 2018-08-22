@@ -72,6 +72,13 @@
         <item name="actionOverflowButtonStyle">@style/ButtonMenuWhite</item>
     </style>
 
+    <style name="ViewAddTerm" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="actionOverflowButtonStyle">@style/ButtonMenuWhite</item>
+    </style>
+
+
     <style name="ButtonMenuWhite" parent="@style/Widget.AppCompat.ActionButton.Overflow" >
         <item name="android:tint">@color/colorWhite</item>
     </style>
