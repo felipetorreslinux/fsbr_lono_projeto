@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="16dp">
 
     <TextView
         android:id="@+id/text_add_terms"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Adicionar Termos"
         android:textSize="16dp"
-        android:paddingVertical="10dp"/>
+        android:paddingVertical="16dp"/>
 
     <TextView
         android:id="@+id/text_add_journals"
@@ -20,6 +21,6 @@
         android:layout_height="wrap_content"
         android:text="Adicionar Jornais"
         android:textSize="16dp"
-        android:paddingVertical="10dp"/>
+        android:paddingVertical="16dp"/>
 
 </LinearLayout>

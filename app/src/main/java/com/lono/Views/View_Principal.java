@@ -127,7 +127,8 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             case R.id.add_terms_journals:
                 View view = getLayoutInflater().inflate(R.layout.dialog_add_terms_journals, null);
                 builder.setView(view);
-                builder.create().show();
+                final AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
                 TextView text_add_terms = view.findViewById(R.id.text_add_terms);
                 TextView text_add_journals = view.findViewById(R.id.text_add_journals);
@@ -135,6 +136,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 text_add_terms.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        alertDialog.dismiss();
                         Intent add_termos = new Intent(View_Principal.this, View_Add_Terms.class);
                         startActivityForResult(add_termos, 1000);
                     }
@@ -143,6 +145,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 text_add_journals.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        alertDialog.dismiss();
                         Intent add_journal = new Intent(View_Principal.this, View_Add_Journal.class);
                         startActivityForResult(add_journal, 1000);
                     }
