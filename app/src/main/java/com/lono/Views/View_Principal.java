@@ -1,6 +1,7 @@
 package com.lono.Views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esafirm.imagepicker.features.ImagePicker;
@@ -36,11 +38,11 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class View_Principal extends AppCompatActivity implements View.OnClickListener {
 
+    AlertDialog.Builder builder;
     SharedPreferences.Editor editor;
     Toolbar toolbar;
     MenuItem settings_profile;
-    MenuItem add_termos;
-    MenuItem add_journal;
+    MenuItem add_terms_journals;
 
     LinearLayout item_home;
     LinearLayout item_search;
@@ -58,6 +60,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         serviceTermsJournals = new Service_Terms_Journals(this);
         serviceTermsJournals.listAllJournals();
 
+        builder = new AlertDialog.Builder(this);
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
 
         infoUserProfile();
@@ -111,9 +114,9 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 drawable.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
             }
         }
-        add_journal = menu.findItem(R.id.add_journal).setVisible(false);
-        add_termos = menu.findItem(R.id.add_terms).setVisible(false);
+
         settings_profile = menu.findItem(R.id.settings_profile).setVisible(false);
+        add_terms_journals = menu.findItem(R.id.add_terms_journals).setVisible(false);
         return true;
     }
 
@@ -121,14 +124,30 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
 
-            case R.id.add_terms:
-                Intent add_termos = new Intent(this, View_Add_Terms.class);
-                startActivityForResult(add_termos, 1000);
-                break;
+            case R.id.add_terms_journals:
+                View view = getLayoutInflater().inflate(R.layout.dialog_add_terms_journals, null);
+                builder.setView(view);
+                builder.create().show();
 
-            case R.id.add_journal:
-                Intent add_journal = new Intent(this, View_Add_Journal.class);
-                startActivityForResult(add_journal, 1000);
+                TextView text_add_terms = view.findViewById(R.id.text_add_terms);
+                TextView text_add_journals = view.findViewById(R.id.text_add_journals);
+
+                text_add_terms.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent add_termos = new Intent(View_Principal.this, View_Add_Terms.class);
+                        startActivityForResult(add_termos, 1000);
+                    }
+                });
+
+                text_add_journals.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent add_journal = new Intent(View_Principal.this, View_Add_Journal.class);
+                        startActivityForResult(add_journal, 1000);
+                    }
+                });
+
                 break;
 
             case R.id.settings_profile:
@@ -213,23 +232,19 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
          switch (TAB_INDEX){
              case 0:
                  settings_profile.setVisible(false);
-                 add_termos.setVisible(false);
-                 add_journal.setVisible(false);
+                 add_terms_journals.setVisible(false);
                  break;
              case 1:
                  settings_profile.setVisible(false);
-                 add_termos.setVisible(true);
-                 add_journal.setVisible(true);
+                 add_terms_journals.setVisible(true);
                  break;
              case 2:
                  settings_profile.setVisible(false);
-                 add_termos.setVisible(false);
-                 add_journal.setVisible(false);
+                 add_terms_journals.setVisible(false);
                  break;
              case 3:
                  settings_profile.setVisible(true);
-                 add_termos.setVisible(false);
-                 add_journal.setVisible(false);
+                 add_terms_journals.setVisible(false);
                  break;
          }
     }

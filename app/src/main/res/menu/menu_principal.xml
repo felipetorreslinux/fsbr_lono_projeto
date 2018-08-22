@@ -11,13 +11,11 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/add_terms"
-        android:title="Termos"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/add_journal"
-        android:title="Jornais"
-        app:showAsAction="never"/>
+        android:id="@+id/add_terms_journals"
+        android:visible="false"
+        android:icon="@drawable/ic_add_plus"
+        android:title="Configurações"
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="always"/>
 
 </menu>
