@@ -2,15 +2,51 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="150dp"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp">
 
-    <TextView
-        android:id="@+id/name_journal"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:maxLines="3"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/sigle_journal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/name_journal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:singleLine="true"
+                android:textColor="@color/colorGray"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_remove_journals"
+            android:layout_width="30dp"
+            android:layout_height="24dp"
+            android:paddingHorizontal="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:src="@drawable/trash_red"/>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>
