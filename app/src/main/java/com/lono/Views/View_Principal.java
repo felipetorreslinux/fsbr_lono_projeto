@@ -25,7 +25,7 @@ import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
 import com.lono.Views.Fragments.Terms_Journals_Fragment;
-import com.lono.Views.Terms_Jornals.View_AddTerms;
+import com.lono.Views.Terms_Jornals.View_Add_Terms;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -116,7 +116,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         switch (item.getItemId()){
 
             case R.id.add_terms:
-                Intent add_termos = new Intent(this, View_AddTerms.class);
+                Intent add_termos = new Intent(this, View_Add_Terms.class);
                 startActivityForResult(add_termos, 1000);
                 break;
 

@@ -125,7 +125,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/EditMYPlanProfile"/>
 
-        <activity android:name=".Views.Terms_Jornals.View_AddTerms"
+        <activity android:name=".Views.Terms_Jornals.View_Add_Terms"
             android:screenOrientation="portrait"
             android:theme="@style/ViewAddTerm"/>
 

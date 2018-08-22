@@ -24,13 +24,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import com.lono.R;
 import com.lono.Service.Service_Terms_Journals;
-import com.lono.Utils.Alerts;
 import com.lono.Utils.Keyboard;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class View_AddTerms extends AppCompatActivity implements View.OnClickListener {
+public class View_Add_Terms extends AppCompatActivity implements View.OnClickListener {
 
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
@@ -84,7 +83,7 @@ public class View_AddTerms extends AppCompatActivity implements View.OnClickList
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Keyboard.close(View_AddTerms.this, getWindow().getDecorView());
+                Keyboard.close(View_Add_Terms.this, getWindow().getDecorView());
             }
         }, 100);
         super.onResume();
