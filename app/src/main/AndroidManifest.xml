@@ -133,6 +133,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ViewTermsJournals"/>
 
+        <activity android:name=".Views.Terms_Jornals.View_Search_Journals"
+            android:screenOrientation="portrait"
+            android:theme="@style/ViewTermsJournals"/>
+
 
     </application>
 
