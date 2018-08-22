@@ -12,7 +12,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lono.APIServer.Server;
+import com.lono.Adapter.Adapter_Journals_Fragment;
 import com.lono.Adapter.Adapter_Terms_Fragment;
+import com.lono.Models.Journals_Model;
 import com.lono.Models.Terms_Model;
 import com.lono.R;
 import com.lono.Utils.Alerts;
@@ -76,6 +78,48 @@ public class Service_Terms_Journals {
                         Server.ErrorServer(activity, anError.getErrorCode());
                     }
                 });
+    }
+
+    public void listJournals (final RecyclerView recyclerView, final LinearLayout layout_box_jornais){
+        layout_box_jornais.setVisibility(View.GONE);
+        AndroidNetworking.post(Server.URL()+"services/listar-jornais-cliente")
+            .addHeaders("token", Server.token(activity))
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try{
+                        String status = response.getString("status");
+                        switch (status){
+                            case "success":
+                                JSONArray jsonArray = response.getJSONArray("jornais");
+                                if(jsonArray.length() > 0){
+                                    List<Journals_Model> list_journals = new ArrayList<Journals_Model>();
+                                    list_journals.clear();
+                                    for (int i= 0; i < jsonArray.length(); i++){
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                        Journals_Model journalsModel = new Journals_Model(
+                                                jsonObject.getInt("id_jornal"),
+                                                jsonObject.getString("sigla_jornal"),
+                                                jsonObject.getString("nome_jornal"),
+                                                jsonObject.getString("nome_orgao"),
+                                                jsonObject.getString("sigla_orgao"));
+                                        list_journals.add(journalsModel);
+                                    }
+                                    Adapter_Journals_Fragment adapterJournalsFragment = new Adapter_Journals_Fragment(activity, list_journals);
+                                    recyclerView.setAdapter(adapterJournalsFragment);
+                                }
+                                layout_box_jornais.setVisibility(View.VISIBLE);
+                                break;
+                        }
+                    }catch (JSONException e){}
+                }
+
+                @Override
+                public void onError(ANError anError) {
+                    Server.ErrorServer(activity, anError.getErrorCode());
+                }
+            });
     }
 
     public void addTerms (String terms, boolean literal){

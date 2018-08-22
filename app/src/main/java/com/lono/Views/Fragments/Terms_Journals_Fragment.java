@@ -23,7 +23,8 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
     LinearLayout layout_box_jornais;
     LinearLayout layout_box_termos;
 
-    RecyclerView recyclerView;
+    RecyclerView recycler_terms_fragment;
+    RecyclerView recycler_journals_fragment;
 
     @Nullable
     @Override
@@ -34,14 +35,20 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
         layout_box_jornais = rootview.findViewById(R.id.layout_box_jornais);
         layout_box_termos = rootview.findViewById(R.id.layout_box_termos);
 
-        recyclerView = rootview.findViewById(R.id.recycler_terms_fragment);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(true);
-
         progress_terms = rootview.findViewById(R.id.progress_terms);
 
-        serviceTermsJournals.listTerms(recyclerView, progress_terms, layout_box_termos);
+        recycler_journals_fragment = rootview.findViewById(R.id.recycler_journals_fragment);
+        recycler_journals_fragment.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recycler_journals_fragment.setHasFixedSize(true);
+        recycler_journals_fragment.setNestedScrollingEnabled(false);
+
+        recycler_terms_fragment = rootview.findViewById(R.id.recycler_terms_fragment);
+        recycler_terms_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recycler_terms_fragment.setHasFixedSize(true);
+        recycler_terms_fragment.setNestedScrollingEnabled(false);
+
+        serviceTermsJournals.listJournals(recycler_journals_fragment, layout_box_jornais);
+        serviceTermsJournals.listTerms(recycler_terms_fragment, progress_terms, layout_box_termos);
 
         return rootview;
     }

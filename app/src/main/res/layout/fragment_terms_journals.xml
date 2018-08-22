@@ -30,7 +30,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Jornais"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="7.5dp"/>
+
+            <TextView
+                android:id="@+id/text_info_journals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorGray"
+                android:layout_marginVertical="16dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_journals_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -71,8 +84,6 @@
                     android:padding="16dp"/>
 
             </LinearLayout>
-
-
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_terms_fragment"
