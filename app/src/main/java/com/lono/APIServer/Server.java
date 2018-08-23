@@ -3,6 +3,7 @@ package com.lono.APIServer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -23,6 +24,7 @@ public class Server {
     public static String sessionPayment = null;
     public static String tokenCard = null;
 
+
     public static String payment (){
         return "http://179.188.38.70:8888";
 //        return "http://192.168.15.220";
@@ -39,13 +41,27 @@ public class Server {
         return sharedPreferences.getString( "token", "" );
     }
 
-    public static void ErrorServer (Activity activity, int code){
+    public static void ErrorServer (final Activity activity, int code){
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);
         switch (code){
             case 0:
                 builder.setTitle("Ops!!!");
                 builder.setMessage("Aparelho sem conexão com a internet");
                 builder.setPositiveButton("Ok", null);
+                builder.create().show();
+                break;
+            case 300:
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Token inválido.\nFaça seu login novamente");
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences.Editor editor = activity.getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
+                        editor.putString("token", "");
+                        editor.commit();
+                        activity.finishAffinity();
+                    }
+                });
                 builder.create().show();
                 break;
             case 401:

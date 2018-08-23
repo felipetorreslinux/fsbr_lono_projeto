@@ -8,7 +8,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -23,43 +24,57 @@
             android:id="@+id/layout_box_termos"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/open_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Termos de pesquisa"
-                android:layout_marginBottom="7.5dp"/>
+                android:text="Termos"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="10dp"
+                android:textSize="16dp"
+                android:layout_marginBottom="7.5dp"
+                android:background="@drawable/ripple_white"
+                android:elevation="2dp"/>
 
             <LinearLayout
-                android:id="@+id/layout_info_terms"
+                android:id="@+id/box_list_terms"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="50dp">
+                android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_not_sentimental"
-                    android:layout_gravity="center"
-                    android:tint="@color/colorGray"/>
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/layout_info_terms"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Não há termos cadastrados"
-                    android:textColor="@color/colorGray"
-                    android:gravity="center"
-                    android:padding="16dp"/>
+                    android:paddingVertical="50dp">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_not_sentimental"
+                        android:layout_gravity="center"
+                        android:tint="@color/colorGray"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Não há termos cadastrados"
+                        android:textColor="@color/colorGray"
+                        android:gravity="center"
+                        android:padding="16dp"/>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_terms_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_terms_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -68,28 +83,42 @@
             android:id="@+id/layout_box_jornais"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/open_journals"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Jornais"
-                android:layout_marginBottom="7.5dp"/>
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="10dp"
+                android:textSize="16dp"
+                android:layout_marginBottom="7.5dp"
+                android:background="@drawable/ripple_white"
+                android:elevation="2dp"/>
 
-            <TextView
-                android:id="@+id/text_info_journals"
+            <LinearLayout
+                android:id="@+id/box_list_journals"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Não há jornais cadastrados"
-                android:textColor="@color/colorGray"
-                android:layout_marginVertical="16dp"/>
+                android:padding="10dp">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_journals_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/text_info_journals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Não há jornais cadastrados"
+                    android:textColor="@color/colorGray"
+                    android:layout_marginVertical="16dp"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_journals_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

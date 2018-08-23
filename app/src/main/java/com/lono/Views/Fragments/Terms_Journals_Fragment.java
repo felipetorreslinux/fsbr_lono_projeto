@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.lono.R;
 import com.lono.Service.Service_Terms_Journals;
@@ -19,6 +20,11 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
     View rootview;
     Service_Terms_Journals serviceTermsJournals;
     ProgressBar progress_terms;
+
+    TextView open_terms;
+    TextView open_journals;
+    LinearLayout box_list_journals;
+    LinearLayout box_list_terms;
 
     LinearLayout layout_box_jornais;
     LinearLayout layout_box_termos;
@@ -36,6 +42,18 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
         layout_box_termos = rootview.findViewById(R.id.layout_box_termos);
 
         progress_terms = rootview.findViewById(R.id.progress_terms);
+
+        open_terms = rootview.findViewById(R.id.open_terms);
+        open_terms.setOnClickListener(this);
+
+        open_journals = rootview.findViewById(R.id.open_journals);
+        open_journals.setOnClickListener(this);
+
+        box_list_terms = rootview.findViewById(R.id.box_list_terms);
+        box_list_terms.setVisibility(View.GONE);
+
+        box_list_journals = rootview.findViewById(R.id.box_list_journals);
+        box_list_journals.setVisibility(View.GONE);
 
         recycler_journals_fragment = rootview.findViewById(R.id.recycler_journals_fragment);
         recycler_journals_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -55,6 +73,22 @@ public class Terms_Journals_Fragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.open_journals:
+                if (box_list_journals.getVisibility() == View.GONE) {
+                    box_list_journals.setVisibility(View.VISIBLE);
+                } else {
+                    box_list_journals.setVisibility(View.GONE);
+                }
+                break;
 
+            case R.id.open_terms:
+                if (box_list_terms.getVisibility() == View.GONE) {
+                    box_list_terms.setVisibility(View.VISIBLE);
+                } else {
+                    box_list_terms.setVisibility(View.GONE);
+                }
+                break;
+        }
     }
 }

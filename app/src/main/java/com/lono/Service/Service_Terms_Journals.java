@@ -229,5 +229,4 @@ public class Service_Terms_Journals {
         }catch (JSONException e){}
     }
 
-
 }

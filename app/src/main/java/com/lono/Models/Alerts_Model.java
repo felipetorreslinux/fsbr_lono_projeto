@@ -6,12 +6,14 @@ public class Alerts_Model {
     String message;
     String assunt;
     String recurring_time;
+    boolean read;
 
-    public Alerts_Model(int id, String message, String assunt, String recurring_time) {
+    public Alerts_Model(int id, String message, String assunt, String recurring_time, boolean read) {
         this.id = id;
         this.message = message;
         this.assunt = assunt;
         this.recurring_time = recurring_time;
+        this.read = read;
     }
 
     public int getId() {
@@ -44,5 +46,13 @@ public class Alerts_Model {
 
     public void setRecurring_time(String recurring_time) {
         this.recurring_time = recurring_time;
+    }
+
+    public boolean isRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
     }
 }

@@ -49,10 +49,10 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     LinearLayout item_search;
     LinearLayout item_notifi;
     LinearLayout item_person;
+
     static int TAB_INDEX;
 
     Service_Terms_Journals serviceTermsJournals;
-    Service_Alerts serviceAlerts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -73,8 +73,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     }
 
     private void servicesAPI(){
-        serviceAlerts = new Service_Alerts(this);
-        serviceAlerts.list_alerts();
 
         serviceTermsJournals = new Service_Terms_Journals(this);
         serviceTermsJournals.listAllJournals();
@@ -193,7 +191,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_search.setAlpha(1.0f);
                     item_notifi.setAlpha(0.3f);
                     item_person.setAlpha(0.3f);
-                    getSupportActionBar().setTitle("Termos e Jornais");
+                    getSupportActionBar().setTitle("Termos / Jornais");
                     menuPrincipal();
                     getFragmentManager().beginTransaction().replace(R.id.container, new Terms_Journals_Fragment()).commit();
                 }
@@ -280,6 +278,19 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 if(resultCode == Activity.RESULT_OK){
                     Toast.makeText(this, "Informações atualizadas com sucesso",
                             Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case 3000:
+                if(resultCode == Activity.RESULT_OK){
+                    TAB_INDEX = 0;
+                    item_home.setAlpha(1.0f);
+                    item_search.setAlpha(0.3f);
+                    item_notifi.setAlpha(0.3f);
+                    item_person.setAlpha(0.3f);
+                    getSupportActionBar().setTitle("Publicações");
+                    menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
                 }
                 break;
         }

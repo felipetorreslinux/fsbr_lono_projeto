@@ -11,7 +11,7 @@
         android:id="@+id/text_add_terms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Adicionar Termos"
+        android:text="Termos"
         android:textSize="16dp"
         android:paddingVertical="16dp"/>
 
@@ -19,7 +19,7 @@
         android:id="@+id/text_add_journals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Adicionar Jornais"
+        android:text="Jornais"
         android:textSize="16dp"
         android:paddingVertical="16dp"/>
 
