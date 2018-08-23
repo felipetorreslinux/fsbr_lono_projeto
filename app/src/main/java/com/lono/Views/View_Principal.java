@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
+import com.lono.Service.Service_Alerts;
 import com.lono.Service.Service_Login;
 import com.lono.Service.Service_Profile;
 import com.lono.Service.Service_Terms_Journals;
@@ -51,14 +52,15 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     static int TAB_INDEX;
 
     Service_Terms_Journals serviceTermsJournals;
+    Service_Alerts serviceAlerts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_principal);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
-        serviceTermsJournals = new Service_Terms_Journals(this);
-        serviceTermsJournals.listAllJournals();
+
+        servicesAPI();
 
         builder = new AlertDialog.Builder(this);
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
@@ -68,6 +70,14 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         createToolbar(toolbar);
 
         createBottomBar();
+    }
+
+    private void servicesAPI(){
+        serviceAlerts = new Service_Alerts(this);
+        serviceAlerts.list_alerts();
+
+        serviceTermsJournals = new Service_Terms_Journals(this);
+        serviceTermsJournals.listAllJournals();
     }
 
     private void infoUserProfile(){
