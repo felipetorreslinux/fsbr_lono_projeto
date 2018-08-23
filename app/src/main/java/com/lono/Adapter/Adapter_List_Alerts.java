@@ -36,6 +36,7 @@ public class Adapter_List_Alerts extends RecyclerView.Adapter<Adapter_List_Alert
 
         holder.assunt.setText(alertsModel.getAssunt());
         holder.message.setText(alertsModel.getMessage());
+        holder.recurring_time.setText(alertsModel.getRecurring_time());
     }
 
     @Override
@@ -47,12 +48,14 @@ public class Adapter_List_Alerts extends RecyclerView.Adapter<Adapter_List_Alert
 
         TextView assunt;
         TextView message;
+        TextView recurring_time;
 
         public AlertsHolder(View itemView) {
             super(itemView);
 
             assunt = itemView.findViewById(R.id.assunt);
             message = itemView.findViewById(R.id.message);
+            recurring_time = itemView.findViewById(R.id.recurring_time);
 
         }
     }

@@ -34,7 +34,6 @@ public class Alerts_Fragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_alerts, container, false);
 
-
         recycler_alerts = rootview.findViewById(R.id.recycler_alerts);
         recycler_alerts.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler_alerts.setHasFixedSize(true);
@@ -56,10 +55,8 @@ public class Alerts_Fragment extends Fragment implements View.OnClickListener {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     Alerts_Model alertsModel = new Alerts_Model(
                             jsonObject.getInt("id_notificacao"),
-                            jsonObject.getInt("id_cliente"),
                             jsonObject.getString("mensagem"),
                             jsonObject.getString("assunto"),
-                            jsonObject.getString("dat_cad"),
                             jsonObject.getString("elapsed_time"));
                     list_alerts.add(alertsModel);
                 }
