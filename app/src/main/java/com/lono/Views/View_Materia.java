@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.lono.R;
 
-public class View_Pub_Materia extends AppCompatActivity implements View.OnClickListener {
+public class View_Materia extends AppCompatActivity implements View.OnClickListener {
 
     Toolbar toolbar;
 

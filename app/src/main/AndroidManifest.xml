@@ -137,7 +137,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/ViewTermsJournals"/>
 
-        <activity android:name=".Views.View_Pub_Materia"
+        <activity android:name=".Views.View_Materia"
             android:screenOrientation="portrait"
             android:theme="@style/ViewTermsJournals"/>
 

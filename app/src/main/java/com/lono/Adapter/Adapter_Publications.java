@@ -2,12 +2,8 @@ package com.lono.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +11,7 @@ import android.widget.TextView;
 
 import com.lono.Models.Publicacao_Model;
 import com.lono.R;
-import com.lono.Views.View_Pub_Materia;
+import com.lono.Views.View_Materia;
 
 import java.util.List;
 
@@ -50,7 +46,7 @@ public class Adapter_Publications extends RecyclerView.Adapter<Adapter_Publicati
         holder.id_pub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, View_Pub_Materia.class);
+                Intent intent = new Intent(activity, View_Materia.class);
                 intent.putExtra("id_materia", String.valueOf(publicacaoModel.getId_materia()));
                 intent.putExtra("nome_termo", publicacaoModel.getNome_pesquisa());
                 intent.putExtra("materia", publicacaoModel.getMateria());
