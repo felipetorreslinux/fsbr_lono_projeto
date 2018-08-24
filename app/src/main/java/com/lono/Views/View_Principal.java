@@ -42,8 +42,10 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     AlertDialog.Builder builder;
     SharedPreferences.Editor editor;
     Toolbar toolbar;
+
     MenuItem settings_profile;
     MenuItem add_terms_journals;
+    MenuItem search_pub;
 
     LinearLayout item_home;
     LinearLayout item_search;
@@ -68,12 +70,9 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         infoUserProfile();
 
         createToolbar(toolbar);
-
-        createBottomBar();
     }
 
     private void servicesAPI(){
-
         serviceTermsJournals = new Service_Terms_Journals(this);
         serviceTermsJournals.listAllJournals();
     }
@@ -108,6 +107,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         item_person.setAlpha(0.3f);
         TAB_INDEX = 0;
         getSupportActionBar().setTitle("Publicações");
+        menuPrincipal();
         getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
     }
 
@@ -125,12 +125,20 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
 
         settings_profile = menu.findItem(R.id.settings_profile).setVisible(false);
         add_terms_journals = menu.findItem(R.id.add_terms_journals).setVisible(false);
+        search_pub = menu.findItem(R.id.search_pub).setVisible(false);
+
+        createBottomBar();
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+
+            case R.id.search_pub:
+                startActivityForResult(new Intent(this, View_Search_Publications.class), 4000);
+                break;
 
             case R.id.add_terms_journals:
                 View view = getLayoutInflater().inflate(R.layout.dialog_add_terms_journals, null);
@@ -242,18 +250,22 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     private void menuPrincipal(){
          switch (TAB_INDEX){
              case 0:
+                 search_pub.setVisible(true);
                  settings_profile.setVisible(false);
                  add_terms_journals.setVisible(false);
                  break;
              case 1:
+                 search_pub.setVisible(false);
                  settings_profile.setVisible(false);
                  add_terms_journals.setVisible(true);
                  break;
              case 2:
+                 search_pub.setVisible(false);
                  settings_profile.setVisible(false);
                  add_terms_journals.setVisible(false);
                  break;
              case 3:
+                 search_pub.setVisible(false);
                  settings_profile.setVisible(true);
                  add_terms_journals.setVisible(false);
                  break;
@@ -291,6 +303,12 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     getSupportActionBar().setTitle("Publicações");
                     menuPrincipal();
                     getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
+                }
+                break;
+
+            case 4000:
+                if(resultCode == Activity.RESULT_OK){
+
                 }
                 break;
         }

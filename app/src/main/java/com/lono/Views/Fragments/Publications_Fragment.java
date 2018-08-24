@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.lono.R;
 import com.lono.Service.Service_Publications;
@@ -21,6 +23,7 @@ public class Publications_Fragment extends Fragment implements View.OnClickListe
     View rootview;
     ProgressBar progress_publications;
 
+    TextView info_response_pub;
     RecyclerView recycler_pubs;
 
     Service_Publications servicePublications;
@@ -35,12 +38,14 @@ public class Publications_Fragment extends Fragment implements View.OnClickListe
 
         progress_publications = rootview.findViewById(R.id.progress_publications);
 
+        info_response_pub = rootview.findViewById(R.id.info_response_pub);
+
         recycler_pubs = rootview.findViewById(R.id.recycler_pubs);
         recycler_pubs.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler_pubs.setHasFixedSize(true);
         recycler_pubs.setNestedScrollingEnabled(false);
 
-        servicePublications.listOcorrencyToday(recycler_pubs, progress_publications);
+        servicePublications.listOcorrencyToday(recycler_pubs, progress_publications, info_response_pub);
 
         return rootview;
     }

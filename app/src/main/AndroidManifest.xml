@@ -141,6 +141,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/ViewTermsJournals"/>
 
+        <activity android:name=".Views.View_Search_Publications"
+            android:screenOrientation="portrait"
+            android:theme="@style/ViewTermsJournals"/>
+
     </application>
 
 </manifest>

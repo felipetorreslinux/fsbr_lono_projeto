@@ -3,7 +3,9 @@ package com.lono.Service;
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -27,7 +29,7 @@ public class Service_Publications {
         this.activity = activity;
     }
 
-    public void listOcorrencyToday(final RecyclerView recyclerView, final ProgressBar progressBar){
+    public void listOcorrencyToday(final RecyclerView recyclerView, final ProgressBar progressBar, final TextView info_response_pub){
         progressBar.setVisibility(View.VISIBLE);
         AndroidNetworking.post(Server.URL()+"services/obter-todas-materias")
             .addHeaders("token", Server.token(activity))
@@ -84,8 +86,11 @@ public class Service_Publications {
                                     Adapter_Publications adapterPublications = new Adapter_Publications(activity, list);
                                     recyclerView.setAdapter(adapterPublications);
                                     progressBar.setVisibility(View.GONE);
+                                    info_response_pub.setVisibility(View.GONE);
                                 }else{
-                                    progressBar.setVisibility(View.VISIBLE);
+                                    progressBar.setVisibility(View.GONE);
+                                    info_response_pub.setVisibility(View.VISIBLE);
+                                    info_response_pub.setText("Não há publicações para hoje");
                                 }
                                 break;
 

@@ -7,8 +7,10 @@ import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -154,6 +156,42 @@ public class Service_Terms_Journals {
                     Server.ErrorServer(activity, anError.getErrorCode());
                 }
             });
+    }
+
+    public void listJournalsSpinner (final Spinner spinner, final List<String> list){
+        AndroidNetworking.post(Server.URL()+"services/listar-jornais-cliente")
+                .addHeaders("token", Server.token(activity))
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            String status = response.getString("status");
+                            switch (status){
+                                case "success":
+                                    JSONArray jsonArray = response.getJSONArray("jornais");
+                                    if(jsonArray.length() > 0){
+                                        for (int i= 0; i < jsonArray.length(); i++){
+                                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                            list.add(jsonObject.getString("sigla_jornal"));
+                                        }
+                                    }else{
+                                        list.add("Não há jornais cadastrados");
+                                    }
+                                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_dropdown_item_1line, list);
+                                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                                    spinner.setAdapter(arrayAdapter);
+                                    list.remove(0);
+                                    break;
+                            }
+                        }catch (JSONException e){}
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Server.ErrorServer(activity, anError.getErrorCode());
+                    }
+                });
     }
 
     public void addTerms (String terms, boolean literal){

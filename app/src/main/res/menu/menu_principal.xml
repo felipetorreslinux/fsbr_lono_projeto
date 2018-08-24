@@ -6,7 +6,6 @@
         android:id="@+id/settings_profile"
         android:visible="false"
         android:icon="@drawable/ic_settings"
-        android:title="Configurações"
         android:iconTint="@color/colorWhite"
         app:showAsAction="always"/>
 
@@ -14,7 +13,13 @@
         android:id="@+id/add_terms_journals"
         android:visible="false"
         android:icon="@drawable/ic_add_plus"
-        android:title="Configurações"
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/search_pub"
+        android:visible="false"
+        android:icon="@drawable/ic_search"
         android:iconTint="@color/colorWhite"
         app:showAsAction="always"/>
 
