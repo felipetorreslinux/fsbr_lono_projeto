@@ -308,7 +308,14 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
 
             case 4000:
                 if(resultCode == Activity.RESULT_OK){
-
+                    TAB_INDEX = 0;
+                    item_home.setAlpha(1.0f);
+                    item_search.setAlpha(0.3f);
+                    item_notifi.setAlpha(0.3f);
+                    item_person.setAlpha(0.3f);
+                    getSupportActionBar().setTitle("Publicações");
+                    menuPrincipal();
+                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
                 }
                 break;
         }

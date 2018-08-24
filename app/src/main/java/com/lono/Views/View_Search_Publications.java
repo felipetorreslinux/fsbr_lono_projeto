@@ -65,13 +65,17 @@ public class View_Search_Publications extends AppCompatActivity implements View.
         list_status.add("Não Lidas");
         list_status.add("Lidas e Não Lidas");
         list_status.add("Ignoradas");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list_status);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner_status.setAdapter(arrayAdapter);
+        ArrayAdapter<String> adapter_status = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list_status);
+        adapter_status.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_status.setAdapter(adapter_status);
 
         spinner_jornais = findViewById(R.id.spinner_jornais);
         list_journals.clear();
         list_journals.add("Carregando jornais...");
+        ArrayAdapter<String> adapter_journals = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list_journals);
+        adapter_journals.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner_jornais.setAdapter(adapter_journals);
+
         serviceTermsJournals.listJournalsSpinner(spinner_jornais, list_journals);
 
         number_process = findViewById(R.id.number_process);

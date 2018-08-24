@@ -14,123 +14,124 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status de Publicação"
-                android:layout_marginBottom="5dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Jornais"
-                android:layout_marginBottom="5dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_jornais"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Número do Processo"
-                android:layout_marginBottom="5dp"/>
-
-            <EditText
-                android:id="@+id/number_process"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Período"
-                android:layout_marginBottom="5dp"/>
-
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2">
-
-                <LinearLayout
                     android:orientation="vertical"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Início"
+                        android:text="Status de Publicação"
                         android:layout_marginBottom="5dp"/>
 
-                    <EditText
-                        android:id="@+id/date_start"
+                    <Spinner
+                        android:id="@+id/spinner_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        android:paddingVertical="10dp"
+                        android:layout_marginBottom="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fim"
+                        android:text="Jornais"
+                        android:layout_marginBottom="5dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinner_jornais"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Número do Processo"
                         android:layout_marginBottom="5dp"/>
 
                     <EditText
-                        android:id="@+id/date_end"
+                        android:id="@+id/number_process"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"/>
+                        android:inputType="textFilter"
+                        android:layout_marginBottom="10dp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Período"
+                        android:layout_marginBottom="5dp"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Início"
+                                android:layout_marginBottom="5dp"/>
+
+                            <EditText
+                                android:id="@+id/date_start"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fim"
+                                android:layout_marginBottom="5dp"/>
+
+                            <EditText
+                                android:id="@+id/date_end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button_search_pub"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="16dp"
-            android:background="@drawable/ripple_blue"
-            android:text="Buscar"
-            android:textColor="@color/colorWhite"
-            android:fontFamily="@font/roboto"/>
+            <Button
+                android:id="@+id/button_search_pub"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginVertical="16dp"
+                android:background="@drawable/ripple_blue"
+                android:text="Buscar"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/roboto"/>
 
     </RelativeLayout>
-
 
 </LinearLayout>
