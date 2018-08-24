@@ -1,18 +1,23 @@
 package com.lono.Views;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.lono.Firebase.PhoneNumberSMS.PhoneNumberFirebase;
 import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Utils.Alerts;
@@ -22,6 +27,7 @@ import com.lono.Utils.Valitations;
 
 public class View_Login extends AppCompatActivity implements View.OnClickListener{
 
+    AlertDialog.Builder builder;
     Toolbar toolbar;
 
     TextInputLayout layout_email_login;
@@ -41,6 +47,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_login);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
+        builder = new AlertDialog.Builder(this);
 
         createToolbar(toolbar);
 
@@ -57,6 +64,8 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
         button_access_login = (Button) findViewById(R.id.button_access_login);
         button_access_login.setOnClickListener(this);
+
+        loadCellphoneNumber();
 
     }
 
@@ -157,6 +166,43 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         switch (requestCode){
             case 1000:
                 break;
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void loadCellphoneNumber(){
+        TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+        final String number = tm.getLine1Number();
+        if(!number.isEmpty() || number == null){
+            builder.setMessage("Acessar pelo número?");
+            View view = getLayoutInflater().inflate(R.layout.dialog_cellphone_login, null);
+            builder.setCancelable(false);
+            builder.setView(view);
+            builder.setPositiveButton("Não sou cadastrado", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                    startActivity(new Intent(View_Login.this, View_Plans_List.class));
+                }
+            });
+            builder.setNegativeButton("Acessar por email", null);
+            final AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+            TextView number_cellphone = view.findViewById(R.id.number_cellphone);
+            number_cellphone.setText(number.substring(3));
+            number_cellphone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    Alerts.progress_open(View_Login.this, null, "Autorizando", false);
+                    serviceLogin.check_cellphone(number.substring(3));
+                }
+            });
+
+        }else{
+            email_login.setText(null);
+            email_login.requestFocus();
         }
     }
 }

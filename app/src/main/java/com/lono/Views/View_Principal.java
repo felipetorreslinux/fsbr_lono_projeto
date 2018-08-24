@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -20,11 +22,11 @@ import android.widget.Toast;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
 import com.lono.R;
-import com.lono.Service.Service_Alerts;
 import com.lono.Service.Service_Login;
 import com.lono.Service.Service_Profile;
 import com.lono.Service.Service_Terms_Journals;
 import com.lono.Utils.Alerts;
+import com.lono.Utils.Valitations;
 import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.Fragments.Publications_Fragment;
@@ -40,6 +42,7 @@ import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 public class View_Principal extends AppCompatActivity implements View.OnClickListener {
 
     AlertDialog.Builder builder;
+    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Toolbar toolbar;
 
@@ -55,31 +58,28 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     static int TAB_INDEX;
 
     Service_Terms_Journals serviceTermsJournals;
+    Service_Login serviceLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_principal);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
-
-        servicesAPI();
-
         builder = new AlertDialog.Builder(this);
+        sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
-
+        servicesAPI();
         infoUserProfile();
-
         createToolbar(toolbar);
     }
 
     private void servicesAPI(){
         serviceTermsJournals = new Service_Terms_Journals(this);
+        serviceLogin = new Service_Login(this);
         serviceTermsJournals.listAllJournals();
     }
 
     private void infoUserProfile(){
-        SharedPreferences sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
-        Service_Login serviceLogin = new Service_Login(this);
         if(sharedPreferences != null){
             String token = sharedPreferences.getString("token", null);
             serviceLogin.info_profile(token);
@@ -108,7 +108,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         TAB_INDEX = 0;
         getSupportActionBar().setTitle("Publicações");
         menuPrincipal();
-        getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
     }
 
     @Override
@@ -189,7 +189,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Publicações");
                     menuPrincipal();
-                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
                 }
                 break;
             case R.id.item_search:
@@ -241,7 +241,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             item_person.setAlpha(0.3f);
             getSupportActionBar().setTitle("Publicações");
             menuPrincipal();
-            getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
         }else{
             finish();
         }
@@ -275,6 +275,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
+
             case 1000:
                 TAB_INDEX = 1;
                 item_home.setAlpha(0.3f);
@@ -286,6 +287,8 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 getFragmentManager().beginTransaction().replace(R.id.container, new Terms_Journals_Fragment()).commit();
                 break;
 
+
+            //Editing Profile
             case 2000:
                 if(resultCode == Activity.RESULT_OK){
                     Toast.makeText(this, "Informações atualizadas com sucesso",
@@ -293,6 +296,7 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
 
+            //Read Materia
             case 3000:
                 if(resultCode == Activity.RESULT_OK){
                     TAB_INDEX = 0;
@@ -302,33 +306,38 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                     item_person.setAlpha(0.3f);
                     getSupportActionBar().setTitle("Publicações");
                     menuPrincipal();
-                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
                 }
                 break;
 
+            //Search Publications
             case 4000:
-                if(resultCode == Activity.RESULT_OK){
-                    TAB_INDEX = 0;
-                    item_home.setAlpha(1.0f);
-                    item_search.setAlpha(0.3f);
-                    item_notifi.setAlpha(0.3f);
-                    item_person.setAlpha(0.3f);
-                    getSupportActionBar().setTitle("Publicações");
-                    menuPrincipal();
-                    getFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commit();
-                }
+
+                TAB_INDEX = 0;
+                item_home.setAlpha(1.0f);
+                item_search.setAlpha(0.3f);
+                item_notifi.setAlpha(0.3f);
+                item_person.setAlpha(0.3f);
+                getSupportActionBar().setTitle("Publicações");
+                menuPrincipal();
+
+                String status = Valitations.convertSpinnerStatusPub(data.getExtras().getString("status"));
+                String process = data.getExtras().getString("number_process");
+                String data_start = data.getExtras().getString("date_start");
+                String date_end = data.getExtras().getString("date_end");
+
+                Fragment fragment = new Publications_Fragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("status", status);
+                bundle.putString("process", process);
+                bundle.putString("data_start", data_start);
+                bundle.putString("date_end", date_end);
+                fragment.setArguments(bundle);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+
                 break;
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -346,4 +355,5 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             new Service_Profile(this).uploadImage(new File(image.getPath()));
         }
     }
+
 }

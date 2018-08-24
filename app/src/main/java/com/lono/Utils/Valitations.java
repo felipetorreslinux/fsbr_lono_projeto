@@ -31,5 +31,31 @@ public class Valitations {
         return name_pro;
     }
 
+    public static String convertSpinnerStatusPub(String status){
+        String response = null;
+        switch (status){
+            case "Todos":
+                response = "";
+                break;
+
+            case "Lidas":
+                response = "L";
+                break;
+
+            case "Não Lidas":
+                response = "N";
+                break;
+
+            case "Lidas e Não Lidas":
+                response = "LN";
+                break;
+
+            case "Ignoradas":
+                response = "I";
+                break;
+        }
+        return response;
+    }
+
 
 }

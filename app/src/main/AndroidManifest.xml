@@ -53,6 +53,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 
+        <activity android:name=".Views.View_Validation_SMS"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"
+            android:windowSoftInputMode="stateHidden"/>
+
         <activity android:name=".Views.View_Recovery_Pass"
             android:theme="@style/View_Intro"
             android:screenOrientation="portrait"/>

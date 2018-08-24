@@ -1,25 +1,27 @@
 package com.lono.Views.Fragments;
 
-import android.app.Fragment;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.lono.R;
 import com.lono.Service.Service_Publications;
 
-import java.util.List;
 
 public class Publications_Fragment extends Fragment implements View.OnClickListener {
 
+    SharedPreferences sharedPreferences;
     View rootview;
     ProgressBar progress_publications;
 
@@ -28,11 +30,11 @@ public class Publications_Fragment extends Fragment implements View.OnClickListe
 
     Service_Publications servicePublications;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_publications, container, false);
+        sharedPreferences = getActivity().getSharedPreferences("search_pub", Context.MODE_PRIVATE);
 
         servicePublications = new Service_Publications(getActivity());
 
@@ -47,8 +49,14 @@ public class Publications_Fragment extends Fragment implements View.OnClickListe
 
         servicePublications.listOcorrencyToday(recycler_pubs, progress_publications, info_response_pub);
 
+        savedInstanceState = getArguments();
+        if(savedInstanceState != null){
+            String status = savedInstanceState.getString("status");
+        }
+
         return rootview;
     }
+
 
     @Override
     public void onResume() {

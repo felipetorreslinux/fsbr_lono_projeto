@@ -117,6 +117,8 @@ public class Service_Terms_Journals {
     }
 
     public void listJournals (final RecyclerView recyclerView, final LinearLayout layout_box_jornais){
+        final List<Journals_Model> list_journals = new ArrayList<Journals_Model>();
+        list_journals.clear();
         layout_box_jornais.setVisibility(View.GONE);
         AndroidNetworking.post(Server.URL()+"services/listar-jornais-cliente")
             .addHeaders("token", Server.token(activity))
@@ -130,8 +132,6 @@ public class Service_Terms_Journals {
                             case "success":
                                 JSONArray jsonArray = response.getJSONArray("jornais");
                                 if(jsonArray.length() > 0){
-                                    List<Journals_Model> list_journals = new ArrayList<Journals_Model>();
-                                    list_journals.clear();
                                     for (int i= 0; i < jsonArray.length(); i++){
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                                         Journals_Model journalsModel = new Journals_Model(

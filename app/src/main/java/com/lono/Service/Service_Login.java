@@ -11,8 +11,12 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.lono.APIServer.Server;
+import com.lono.Firebase.PhoneNumberSMS.PhoneNumberFirebase;
 import com.lono.Utils.Alerts;
+import com.lono.Views.View_Login;
+import com.lono.Views.View_Plans_List;
 import com.lono.Views.View_Principal;
+import com.lono.Views.View_Validation_SMS;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +29,50 @@ public class Service_Login {
     public Service_Login(Activity activity){
         this.activity = activity;
         this.builder = new AlertDialog.Builder(activity);
+    }
+
+    public void check_cellphone (final String cellphone){
+
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("telefone", cellphone);
+            AndroidNetworking.post(Server.URL()+"services/telefone-cadastrado")
+                .addJSONObjectBody(jsonObject)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            String status = response.getString("status");
+                            switch (status){
+                                case "success":
+                                    Alerts.progress_clode();
+                                    Intent intent = new Intent(activity, View_Validation_SMS.class);
+                                    intent.putExtra("cellphone", cellphone);
+                                    intent.putExtra("token", response.getString("authcode"));
+                                    activity.startActivity(intent);
+                                    break;
+                                default:
+                                    Alerts.progress_clode();
+                                    Intent new_ac = new Intent(activity, View_Plans_List.class);
+                                    new_ac.putExtra("cellphone", cellphone);
+                                    activity.startActivity(new_ac);
+                                    break;
+                            }
+                        }catch (JSONException e){}
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Alerts.progress_clode();
+                        Server.ErrorServer(activity, anError.getErrorCode());
+                    }
+
+                });
+
+        }catch (JSONException e){}
+
     }
 
     public void check(String email, String password){

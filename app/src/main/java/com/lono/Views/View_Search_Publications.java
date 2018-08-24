@@ -111,7 +111,6 @@ public class View_Search_Publications extends AppCompatActivity implements View.
         switch (v.getId()) {
 
             case R.id.date_start:
-
                 new DatePickerDialog(this, start, calendar
                         .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
