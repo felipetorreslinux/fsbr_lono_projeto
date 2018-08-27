@@ -65,8 +65,6 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         button_access_login = (Button) findViewById(R.id.button_access_login);
         button_access_login.setOnClickListener(this);
 
-        loadCellphoneNumber();
-
     }
 
     private void createToolbar(Toolbar toolbar) {
@@ -81,6 +79,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onResume(){
+        loadCellphoneNumber();
         super.onResume();
     }
 
@@ -174,18 +173,18 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
         TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         final String number = tm.getLine1Number();
         if(!number.isEmpty() || number == null){
-            builder.setMessage("Acessar pelo número?");
+            builder.setMessage("Fazer login com");
             View view = getLayoutInflater().inflate(R.layout.dialog_cellphone_login, null);
             builder.setCancelable(false);
             builder.setView(view);
-            builder.setPositiveButton("Não sou cadastrado", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Cadastre-se", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
                     startActivity(new Intent(View_Login.this, View_Plans_List.class));
                 }
             });
-            builder.setNegativeButton("Acessar por email", null);
+            builder.setNegativeButton("Por email", null);
             final AlertDialog alertDialog = builder.create();
             alertDialog.show();
 
@@ -195,7 +194,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void onClick(View v) {
                     alertDialog.dismiss();
-                    Alerts.progress_open(View_Login.this, null, "Autorizando", false);
+                    Alerts.progress_open(View_Login.this, null, "Autorizando...", false);
                     serviceLogin.check_cellphone(number.substring(3));
                 }
             });

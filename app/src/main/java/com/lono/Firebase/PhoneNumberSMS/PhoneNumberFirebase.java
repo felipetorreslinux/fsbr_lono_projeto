@@ -15,6 +15,6 @@ public class PhoneNumberFirebase {
                 60,
                 TimeUnit.SECONDS,
                 activity,
-                new CallBackPhoneNumberValid(activity));
+                new CallBackPhoneNumberValid());
     }
 }

@@ -8,10 +8,11 @@
     android:padding="16dp">
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/place_profile"
+        android:src="@drawable/ic_phone_login"
+        android:tint="@color/colorGray"
         android:layout_marginRight="10dp"/>
 
     <TextView
@@ -19,7 +20,7 @@
         android:id="@+id/number_cellphone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textColor="@android:color/black"
         android:paddingVertical="10dp"
         android:clickable="true"
