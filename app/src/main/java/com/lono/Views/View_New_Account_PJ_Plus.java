@@ -91,15 +91,12 @@ public class View_New_Account_PJ_Plus extends AppCompatActivity{
             public void onFocusChange(View v, boolean hasFocus) {
                 String cnpf = cnpj_pj.getText().toString().trim();
                 if((!cnpf.isEmpty()) && (cnpf.length() > 17)){
-                    if(ValidaCNPF.check(cnpf) == false){
+                    if(ValidaCNPF.check(MaskCNPJ.unmask(cnpf)) == false){
                         layout_cnpj_pj.setErrorEnabled(true);
-                        layout_razao_social.setErrorEnabled(false);
-                        layout_name_pj.setErrorEnabled(false);
-                        layout_email_pj.setErrorEnabled(false);
-                        layout_callphone_pj.setErrorEnabled(false);
-                        layout_password_pj.setErrorEnabled(false);
-                        layout_conf_password_pj.setErrorEnabled(false);
                         layout_cnpj_pj.setError("CNPJ inválido");
+                    }else{
+                        layout_cnpj_pj.setErrorEnabled(false);
+                        layout_cnpj_pj.setError(null);
                     }
                 }
             }

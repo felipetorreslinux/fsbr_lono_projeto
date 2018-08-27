@@ -52,8 +52,6 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     TextInputLayout layout_cidade_creditcard;
     TextInputLayout layout_estado_creditcard;
 
-
-
     EditText number_creditcard;
     EditText validate_creditcard;
     EditText cvv_creditcard;
@@ -73,7 +71,6 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     Button button_pay_creditcard;
 
     String TYPE_PLAM;
-    String HASH;
     int QTC_PARCELAS;
     String QTD_TERMS;
     double PRICE;
@@ -205,16 +202,27 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     }
 
     private void parcelas(double price){
-        List<String> list_parcells = new ArrayList<>();
-        list_parcells.clear();
-        list_parcells.add("Escolha sua parcela");
-        for(int i = 1; i < 6; i++){
-            list_parcells.add(i + "x de " + (Price.real(price / i)) );
+        if(TYPE_PLAM.equals("Anual")){
+            List<String> list_parcells = new ArrayList<>();
+            list_parcells.clear();
+            list_parcells.add("Escolha sua parcela");
+            for(int i = 1; i < 6; i++){
+                list_parcells.add(i + "x de " + (Price.real(price / i)) );
+            }
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, list_parcells);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            parcelas_creditcard.setAdapter(dataAdapter);
+        }else{
+            List<String> list_parcells = new ArrayList<>();
+            list_parcells.clear();
+            list_parcells.add("Escolha sua parcela");
+            list_parcells.add( 1 + "x de " + (Price.real(price / 1) ) );
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, list_parcells);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            parcelas_creditcard.setAdapter(dataAdapter);
         }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, list_parcells);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        parcelas_creditcard.setAdapter(dataAdapter);
     }
 
     @Override
