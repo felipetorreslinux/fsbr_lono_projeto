@@ -1,5 +1,6 @@
 package com.lono.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -40,6 +41,7 @@ public class Adapter_List_Alerts extends RecyclerView.Adapter<Adapter_List_Alert
         return new Adapter_List_Alerts.AlertsHolder(view);
     }
 
+    @SuppressLint("NewApi")
     @Override
     public void onBindViewHolder(@NonNull AlertsHolder holder, int position) {
         final Alerts_Model alertsModel = list_alert.get(position);
@@ -51,6 +53,7 @@ public class Adapter_List_Alerts extends RecyclerView.Adapter<Adapter_List_Alert
         if(alertsModel.isRead()){
             holder.item_alerts.setBackgroundColor(activity.getResources().getColor(R.color.colorFundo));
             holder.image_read.setVisibility(View.VISIBLE);
+            holder.item_alerts.setElevation(0.0f);
         }else{
             holder.item_alerts.setBackgroundColor(activity.getResources().getColor(R.color.colorWhite));
             holder.image_read.setVisibility(View.GONE);

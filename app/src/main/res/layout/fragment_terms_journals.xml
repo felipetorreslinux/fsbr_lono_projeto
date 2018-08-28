@@ -51,29 +51,24 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="50dp">
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/ic_not_sentimental"
-                        android:layout_gravity="center"
-                        android:tint="@color/colorGray"/>
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Não há termos cadastrados"
                         android:textColor="@color/colorGray"
-                        android:gravity="center"
-                        android:padding="16dp"/>
+                        android:layout_marginVertical="16dp"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_terms_fragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycler_terms_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+
 
             </LinearLayout>
 
