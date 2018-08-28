@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.lono.PagSeguro.LonoPagamentoUtils;
+import com.lono.R;
 import com.lono.Utils.Alerts;
 
 import java.io.IOException;
@@ -45,8 +46,8 @@ public class Server {
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);
         switch (code){
             case 0:
-                builder.setTitle("Ops!!!");
-                builder.setMessage("Aparelho sem conexão com a internet");
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Aparelho sem conexão com a internet ou nosso servidor está em manutenção.\nTente novamente");
                 builder.setPositiveButton("Ok", null);
                 builder.create().show();
                 break;

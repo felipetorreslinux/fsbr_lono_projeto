@@ -33,6 +33,25 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBlWhMjgZxACUYhCbwXYF30wysdFJx7_dk"/>
 
+        <service
+            android:name=".Firebase.Notifications">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/icon_app" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/channel_notifications"/>
+
         <activity
             android:name=".Splash"
             android:theme="@style/Splash">

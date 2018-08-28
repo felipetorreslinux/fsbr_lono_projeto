@@ -45,6 +45,7 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_person, container, false);
+        sharedPreferences = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE);
         editor = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
         builder = new AlertDialog.Builder(getActivity());
 
@@ -56,25 +57,23 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         item_payment.setOnClickListener(this);
 
         infoProfile();
-
         return rootview;
     }
 
     private void infoProfile() {
-        sharedPreferences = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE);
+
         status_account = (TextView) rootview.findViewById(R.id.status_account);
         image_profile = (ImageView) rootview.findViewById(R.id.image_profile);
         image_profile.setOnClickListener(this);
         name_profile = (TextView) rootview.findViewById(R.id.name_profile);
         email_profile = (TextView) rootview.findViewById(R.id.email_profile);
 
-        Picasso.with(getActivity())
-                .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.eu)))
+        if(sharedPreferences != null){
+            Picasso.with(getActivity())
+                .load(sharedPreferences.getString("avatar_url", String.valueOf(R.drawable.place_profile)))
                 .resize(150,150)
                 .transform(new CropCircleTransformation())
                 .into(image_profile);
-
-        if(sharedPreferences != null){
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
             String status = sharedPreferences.getString("sit_cad", null);

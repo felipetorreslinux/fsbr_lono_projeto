@@ -1,5 +1,6 @@
 package com.lono.Service;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.support.design.widget.BottomSheetDialog;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -32,7 +34,9 @@ import java.io.File;
 public class Service_Profile {
 
     Activity activity;
+    View view;
     AlertDialog.Builder builder;
+    AlertDialog alertDialog;
     SharedPreferences.Editor editor;
 
     public Service_Profile(Activity activity){
@@ -146,14 +150,27 @@ public class Service_Profile {
     }
 
     public void uploadImage (File file){
+
+        view = activity.getLayoutInflater().inflate(R.layout.dialog_progress_upload, null);
+        builder.setView(view);
+        builder.setCancelable(false);
+        alertDialog = builder.create();
+        alertDialog.show();
+
+        final ProgressBar progressBar = view.findViewById(R.id.progress_upload);
+
         AndroidNetworking.upload(Server.URL()+"services/enviar-avatar-usuario")
             .addMultipartFile("avatar",file)
             .addMultipartParameter("token",Server.token(activity))
             .build()
             .setUploadProgressListener(new UploadProgressListener() {
+                @SuppressLint("NewApi")
                 @Override
                 public void onProgress(long bytesUploaded, long totalBytes) {
-                    System.out.println(totalBytes / bytesUploaded);
+
+                    progressBar.setMax((int) totalBytes);
+                    progressBar.setProgress((int) bytesUploaded);
+
                 }
             })
             .getAsJSONObject(new JSONObjectRequestListener() {
@@ -164,12 +181,24 @@ public class Service_Profile {
                         String status = response.getString("status");
                         switch (status){
                             case "success":
-                                Alerts.progress_clode();
-
+                                editor.putString("avatar_url", response.getString("url"));
+                                editor.commit();
+                                if(editor.commit()){
+                                    alertDialog.dismiss();
+                                    builder = new AlertDialog.Builder(activity);
+                                    builder.setTitle(R.string.app_name);
+                                    builder.setMessage("Foto atualizada com sucesso");
+                                    builder.setPositiveButton("Ok", null);
+                                    builder.create().show();
+                                }
                                 break;
                             default:
-                                Alerts.progress_clode();
-
+                                alertDialog.dismiss();
+                                builder = new AlertDialog.Builder(activity);
+                                builder.setTitle("Ops!!!");
+                                builder.setMessage("Não foi possível atualizar seu foto no momento");
+                                builder.setPositiveButton("Ok", null);
+                                builder.create().show();
                                 break;
                         }
                     }catch (JSONException e){}
@@ -177,9 +206,8 @@ public class Service_Profile {
 
                 @Override
                 public void onError(ANError anError) {
-                    Alerts.progress_clode();
+                    alertDialog.dismiss();
                     Server.ErrorServer(activity, anError.getErrorCode());
-                    System.out.println(anError.getMessage());
                 }
             });
     }

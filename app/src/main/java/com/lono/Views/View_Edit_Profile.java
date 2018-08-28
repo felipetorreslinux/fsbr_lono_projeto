@@ -37,6 +37,8 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
     TextView box_erro_profile;
 
     EditText document_profile_edit;
+    LinearLayout layout_razao_social;
+    EditText razao_social_profile_edit;
     TextView name_profile_edit;
     EditText email_profile_edit;
     EditText cellphone_profile_edit;
@@ -66,7 +68,24 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
         box_erro_profile = (TextView) findViewById(R.id.box_erro_profile);
         box_erro_profile.setVisibility(View.GONE);
 
+        TypeProfile();
+
     }
+
+    private void TypeProfile(){
+        TextView textView = findViewById(R.id.text_type_profile);
+        String document = sharedPreferences.getString("document", "");
+        if(document.length() > 14){
+            textView.setText("CNPJ");
+            layout_razao_social.setVisibility(View.VISIBLE);
+            razao_social_profile_edit.setText(sharedPreferences.getString("razao_social", ""));
+        }else{
+            textView.setText("CPF");
+            layout_razao_social.setVisibility(View.GONE);
+            razao_social_profile_edit.setText(null);
+        }
+    }
+
 
     private void createToolbar(Toolbar toolbar) {
         Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
@@ -84,6 +103,11 @@ public class View_Edit_Profile extends AppCompatActivity implements View.OnClick
         email_profile_edit = findViewById(R.id.email_profile_edit);
         cellphone_profile_edit = findViewById(R.id.cellphone_profile_edit);
         document_profile_edit.setText(sharedPreferences.getString("document", null));
+
+        layout_razao_social = findViewById(R.id.layout_razao_social);
+        layout_razao_social.setVisibility(View.GONE);
+        razao_social_profile_edit = findViewById(R.id.razao_social_profile_edit);
+
         name_profile_edit.setText(sharedPreferences.getString("name", null));
         email_profile_edit.setText(sharedPreferences.getString("email", null));
         cellphone_profile_edit.setText(sharedPreferences.getString("cellphone_account", null));

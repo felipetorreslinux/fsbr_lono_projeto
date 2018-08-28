@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -64,26 +63,19 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_principal);
+        serviceLogin = new Service_Login(this);
+        serviceTermsJournals = new Service_Terms_Journals(this);
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
         builder = new AlertDialog.Builder(this);
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
-        servicesAPI();
-        infoUserProfile();
         createToolbar(toolbar);
+        servicesAPI();
     }
 
     private void servicesAPI(){
-        serviceTermsJournals = new Service_Terms_Journals(this);
-        serviceLogin = new Service_Login(this);
         serviceTermsJournals.listAllJournals();
-    }
-
-    private void infoUserProfile(){
-        if(sharedPreferences != null){
-            String token = sharedPreferences.getString("token", null);
-            serviceLogin.info_profile(token);
-        }
+        serviceLogin.info_profile();
     }
 
     private void createToolbar(Toolbar toolbar) {
@@ -340,9 +332,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
         }
 
 
-
-
-
         if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             Image image = ImagePicker.getFirstImageOrNull(data);
             Picasso.with(this)
@@ -350,8 +339,6 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 .resize(150,150)
                 .transform(new CropCircleTransformation())
                 .into(Person_Fragment.image_profile);
-
-            Alerts.progress_open(this, null, "Carregando imagem\nAguarde...", false);
             new Service_Profile(this).uploadImage(new File(image.getPath()));
         }
     }

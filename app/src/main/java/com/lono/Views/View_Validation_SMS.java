@@ -85,7 +85,7 @@ public class View_Validation_SMS extends AppCompatActivity implements View.OnCli
         count_time_sms = findViewById(R.id.count_time_sms);
         new CountDownTimer(60000, 1000) {
             public void onTick(long millisUntilFinished) {
-                count_time_sms.setText("Aguarde 00:" + millisUntilFinished / 1000);
+                count_time_sms.setText("Aguarde " + millisUntilFinished / 1000);
             }
             public void onFinish() {
                 count_time_sms.setText("Reenviar código");

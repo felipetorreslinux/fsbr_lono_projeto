@@ -46,6 +46,7 @@
                         android:layout_marginBottom="5dp">
 
                         <TextView
+                            android:id="@+id/text_type_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CPF"
@@ -55,6 +56,33 @@
 
                         <EditText
                             android:id="@+id/document_profile_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/roboto"
+                            android:textColor="@color/colorBlack"
+                            android:enabled="false"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_razao_social"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Razão Social"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/roboto"
+                            android:layout_marginBottom="5dp"/>
+
+                        <EditText
+                            android:id="@+id/razao_social_profile_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"

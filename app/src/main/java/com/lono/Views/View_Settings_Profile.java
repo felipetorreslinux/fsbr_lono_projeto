@@ -40,14 +40,16 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         builder = new AlertDialog.Builder(this);
 
         createToolbar(toolbar);
-
         switch_notifications_profile = (Switch) findViewById(R.id.switch_notifications_profile);
-
-        if(sharedPreferences.getBoolean("exibir_notificacoes", true)){
+        boolean notifications = sharedPreferences.getBoolean("exibir_notificacoes", false);
+        if(notifications == true){
             switch_notifications_profile.setChecked(true);
         }else{
             switch_notifications_profile.setChecked(false);
         }
+
+
+
 
         item_termos_de_uso = (LinearLayout) findViewById(R.id.item_termos_de_uso);
         item_politic_privacy = (LinearLayout) findViewById(R.id.item_politic_privacy);

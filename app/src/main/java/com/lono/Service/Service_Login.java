@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.lono.APIServer.Server;
 import com.lono.Firebase.PhoneNumberSMS.PhoneNumberFirebase;
 import com.lono.Utils.Alerts;
@@ -25,10 +27,12 @@ public class Service_Login {
 
     Activity activity;
     AlertDialog.Builder builder;
+    String token_firebase;
 
     public Service_Login(Activity activity){
         this.activity = activity;
         this.builder = new AlertDialog.Builder(activity);
+        this.token_firebase = FirebaseInstanceId.getInstance().getToken();
     }
 
     public void check_cellphone (final String cellphone){
@@ -120,11 +124,12 @@ public class Service_Login {
 
     }
 
-    public void info_profile(String token){
+    public void info_profile(){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("token", token);
+            jsonObject.put("firebase_token", token_firebase);
             AndroidNetworking.post(Server.URL()+"services/check-token")
+            .addHeaders("token", Server.token(activity))
             .addJSONObjectBody(jsonObject)
             .build()
             .getAsJSONObject(new JSONObjectRequestListener() {

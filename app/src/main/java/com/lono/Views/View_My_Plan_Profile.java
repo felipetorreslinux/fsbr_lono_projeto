@@ -56,7 +56,6 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
 
     Service_Profile serviceProfile;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,12 +114,18 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
 
     private void editPlanProfile() {
 
-        Intent intent = new Intent(this, View_Payment.class);
-        intent.putExtra( "type_person",0);
-        intent.putExtra( "name", sharedPreferences.getString("name", null) );
-        intent.putExtra( "qtd_plan", "10");
-        intent.putExtra( "valor_termo", 4.99);
-        startActivity(intent);
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("Para alterar seu plano você deve entrar pelo gerenciador Lono de seu computador ou notebook." +
+                "\nAcesse\nwww.lono.com.br");
+        builder.setPositiveButton("Ok", null);
+        builder.create().show();
+
+//        Intent intent = new Intent(this, View_Payment.class);
+//        intent.putExtra( "type_person",0);
+//        intent.putExtra( "name", sharedPreferences.getString("name", null) );
+//        intent.putExtra( "qtd_plan", "10");
+//        intent.putExtra( "valor_termo", 4.99);
+//        startActivity(intent);
 
     }
 
