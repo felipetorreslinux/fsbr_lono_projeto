@@ -24,7 +24,6 @@ import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Service.Service_Profile;
 import com.lono.Service.Service_Terms_Journals;
-import com.lono.Utils.Alerts;
 import com.lono.Utils.Valitations;
 import com.lono.Views.Fragments.Alerts_Fragment;
 import com.lono.Views.Fragments.Person_Fragment;

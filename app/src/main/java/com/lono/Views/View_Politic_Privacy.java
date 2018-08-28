@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.lono.R;
 
 public class View_Politic_Privacy extends AppCompatActivity {
 
     Toolbar toolbar;
+
+    PDFView pdf_termos;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,6 +23,9 @@ public class View_Politic_Privacy extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
 
         createToolbar(toolbar);
+
+        pdf_termos = findViewById(R.id.pdf_termos);
+        pdf_termos.fromAsset("privacy.pdf").load();
     }
 
     private void createToolbar(Toolbar toolbar) {

@@ -56,6 +56,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
 
     implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.1'
+
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

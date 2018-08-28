@@ -122,6 +122,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.1.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-storage-15.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.barteksc:pdfium-android-1.7.1" level="project" />
     <orderEntry type="library" name="Gradle: com.amitshekhar.android:android-networking-1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-database-connection-15.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.github.bumptech.glide:glide-4.5.0" level="project" />
@@ -156,6 +157,7 @@
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-analytics-impl-16.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-base-11.6.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.barteksc:android-pdf-viewer-2.8.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:transition-27.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-auth-16.0.1" level="project" />
