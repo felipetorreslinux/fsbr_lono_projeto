@@ -304,28 +304,40 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
             //Search Publications
             case 4000:
 
-                TAB_INDEX = 0;
-                item_home.setAlpha(1.0f);
-                item_search.setAlpha(0.3f);
-                item_notifi.setAlpha(0.3f);
-                item_person.setAlpha(0.3f);
-                getSupportActionBar().setTitle("Publicações");
-                menuPrincipal();
+                if(resultCode == Activity.RESULT_OK){
+                    TAB_INDEX = 0;
+                    item_home.setAlpha(1.0f);
+                    item_search.setAlpha(0.3f);
+                    item_notifi.setAlpha(0.3f);
+                    item_person.setAlpha(0.3f);
+                    getSupportActionBar().setTitle("Publicações");
+                    menuPrincipal();
 
-                String status = Valitations.convertSpinnerStatusPub(data.getExtras().getString("status"));
-                String process = data.getExtras().getString("number_process");
-                String data_start = data.getExtras().getString("date_start");
-                String date_end = data.getExtras().getString("date_end");
+                    String status = Valitations.convertSpinnerStatusPub(data.getExtras().getString("status") != null ? data.getExtras().getString("status") : "Todos");
+                    String process = data.getExtras().getString("number_process") != null ? data.getExtras().getString("number_process") : "";
+                    String data_start = data.getExtras().getString("date_start") != null ? data.getExtras().getString("date_start") : "";
+                    String date_end = data.getExtras().getString("date_end") != null ? data.getExtras().getString("date_end") : "";
 
-                Fragment fragment = new Publications_Fragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("status", status);
-                bundle.putString("process", process);
-                bundle.putString("data_start", data_start);
-                bundle.putString("date_end", date_end);
-                fragment.setArguments(bundle);
+                    Fragment fragment = new Publications_Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("status", status);
+                    bundle.putString("process", process);
+                    bundle.putString("data_start", data_start);
+                    bundle.putString("date_end", date_end);
+                    fragment.setArguments(bundle);
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+                }else{
+                    TAB_INDEX = 0;
+                    item_home.setAlpha(1.0f);
+                    item_search.setAlpha(0.3f);
+                    item_notifi.setAlpha(0.3f);
+                    item_person.setAlpha(0.3f);
+                    getSupportActionBar().setTitle("Publicações");
+                    menuPrincipal();
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Publications_Fragment()).commitAllowingStateLoss();
+                }
 
                 break;
         }

@@ -90,7 +90,7 @@ public class Service_Publications {
                                 }else{
                                     progressBar.setVisibility(View.GONE);
                                     info_response_pub.setVisibility(View.VISIBLE);
-                                    info_response_pub.setText("Não há publicações para hoje");
+                                    info_response_pub.setText("Não há publicações");
                                 }
                                 break;
 
