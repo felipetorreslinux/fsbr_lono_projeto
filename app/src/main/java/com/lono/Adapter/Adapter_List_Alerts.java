@@ -53,7 +53,7 @@ public class Adapter_List_Alerts extends RecyclerView.Adapter<Adapter_List_Alert
         if(alertsModel.isRead()){
             holder.item_alerts.setBackgroundColor(activity.getResources().getColor(R.color.colorFundo));
             holder.image_read.setVisibility(View.VISIBLE);
-            holder.item_alerts.setElevation(0.0f);
+            holder.item_alerts.setElevation(0f);
         }else{
             holder.item_alerts.setBackgroundColor(activity.getResources().getColor(R.color.colorWhite));
             holder.image_read.setVisibility(View.GONE);

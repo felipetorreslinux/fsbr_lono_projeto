@@ -1,9 +1,11 @@
 package com.lono.Views;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -115,9 +117,14 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     private void editPlanProfile() {
 
         builder.setTitle(R.string.app_name);
-        builder.setMessage("Para alterar seu plano você deve entrar pelo gerenciador Lono de seu computador ou notebook." +
-                "\nAcesse\nwww.lono.com.br");
-        builder.setPositiveButton("Ok", null);
+        builder.setMessage("Para alterar seu plano você deve entrar no gerenciador do Lono.");
+        builder.setPositiveButton("Ir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                serviceProfile.editPlanProfile();
+            }
+        });
+        builder.setNegativeButton("Voltar", null);
         builder.create().show();
 
 //        Intent intent = new Intent(this, View_Payment.class);

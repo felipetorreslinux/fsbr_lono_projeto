@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.design.widget.BottomSheetDialog;
 import android.view.View;
 import android.view.ViewStub;
@@ -263,5 +264,32 @@ public class Service_Profile {
                 }
             });
     }
+
+    public void editPlanProfile (){
+        AndroidNetworking.post(Server.URL()+"services/open-edit-plan")
+            .addHeaders("token", Server.token(activity))
+            .build()
+            .getAsJSONObject(new JSONObjectRequestListener() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try{
+                        String status = response.getString("status");
+                        switch (status){
+                            case "success":
+                                Uri uri = Uri.parse(response.getString("url"));
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                activity.startActivity(intent);
+                                break;
+                        }
+                    }catch (JSONException e){};
+                }
+
+                @Override
+                public void onError(ANError anError) {
+
+                }
+            });
+    }
+
 
 }
