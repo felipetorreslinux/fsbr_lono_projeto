@@ -26,7 +26,7 @@ public class View_Termos_de_Uso extends AppCompatActivity {
         createToolbar(toolbar);
 
         pdf_termos = findViewById(R.id.pdf_termos);
-        pdf_termos.fromAsset("privacy.pdf").load();
+        pdf_termos.fromAsset("termos.pdf").load();
 
     }
 

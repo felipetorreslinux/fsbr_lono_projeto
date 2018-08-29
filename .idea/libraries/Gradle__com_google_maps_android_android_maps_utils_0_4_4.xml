@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.maps.android:android-maps-utils-0.4.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.4.4.aar/5cce4f9a40c36fa202e2ed9648cd956b/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.4.4.aar/5cce4f9a40c36fa202e2ed9648cd956b/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.4.4.aar/c39b7677119a1b289d3980a97c01f981/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-maps-utils-0.4.4.aar/c39b7677119a1b289d3980a97c01f981/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

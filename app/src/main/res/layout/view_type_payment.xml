@@ -263,7 +263,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="*Parcele em até 5x o valor do plano"
+                        android:text="Pague agora mesmo com seu cartão de crédito"
                         android:textColor="@color/colorGray" />
 
                 </LinearLayout>

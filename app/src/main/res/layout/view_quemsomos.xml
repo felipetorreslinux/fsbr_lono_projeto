@@ -39,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:text="@string/info_quems_somos"
-                android:textColor="@color/colorGray"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto"/>
 
@@ -56,7 +55,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:textColor="@color/colorGray"
                 android:textSize="16dp"
                 android:fontFamily="@font/roboto"
                 android:text="@string/info2_label_view_quemsomos"/>

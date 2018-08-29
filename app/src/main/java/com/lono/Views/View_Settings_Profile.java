@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
@@ -22,6 +23,7 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
     AlertDialog.Builder builder;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
+
     Toolbar toolbar;
     Switch switch_notifications_profile;
 
@@ -29,27 +31,36 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
     LinearLayout item_politic_privacy;
     LinearLayout item_exitapp;
 
+    boolean notifi;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_settings_profile);
-        overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
+
         editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
         builder = new AlertDialog.Builder(this);
 
         createToolbar(toolbar);
-        switch_notifications_profile = (Switch) findViewById(R.id.switch_notifications_profile);
-        boolean notifications = sharedPreferences.getBoolean("exibir_notificacoes", false);
-        if(notifications == true){
-            switch_notifications_profile.setChecked(true);
-        }else{
-            switch_notifications_profile.setChecked(false);
-        }
 
+        notifi = sharedPreferences.getBoolean("exibir_notificacoes", true);
 
+        switch_notifications_profile = findViewById(R.id.switch_notifications_profile);
+        switch_notifications_profile.setChecked(notifi);
 
+        switch_notifications_profile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    editor.putBoolean("exibir_notificacoes", true);
+                    editor.commit();
+                }else{
+                    editor.putBoolean("exibir_notificacoes", false);
+                    editor.commit();
+                }
+            }
+        });
 
         item_termos_de_uso = (LinearLayout) findViewById(R.id.item_termos_de_uso);
         item_politic_privacy = (LinearLayout) findViewById(R.id.item_politic_privacy);
@@ -58,6 +69,12 @@ public class View_Settings_Profile extends AppCompatActivity implements View.OnC
         item_politic_privacy.setOnClickListener(this);
         item_exitapp.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     private void createToolbar(Toolbar toolbar) {

@@ -276,6 +276,7 @@ public class Service_Profile {
                         String status = response.getString("status");
                         switch (status){
                             case "success":
+                                Alerts.progress_clode();
                                 Uri uri = Uri.parse(response.getString("url"));
                                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                 activity.startActivity(intent);
@@ -286,7 +287,8 @@ public class Service_Profile {
 
                 @Override
                 public void onError(ANError anError) {
-
+                    Alerts.progress_clode();
+                    Server.ErrorServer(activity, anError.getErrorCode());
                 }
             });
     }

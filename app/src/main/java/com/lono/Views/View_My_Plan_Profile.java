@@ -121,6 +121,7 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
         builder.setPositiveButton("Ir", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Alerts.progress_open(View_My_Plan_Profile.this, null, "Carregando...", false);
                 serviceProfile.editPlanProfile();
             }
         });

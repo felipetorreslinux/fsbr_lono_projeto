@@ -69,7 +69,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
 
     private void createToolbar(Toolbar toolbar) {
         Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
-        toolbar = (Toolbar) findViewById(R.id.actionbar_login);
+        toolbar = findViewById(R.id.actionbar_login);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
