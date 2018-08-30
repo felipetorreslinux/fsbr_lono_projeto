@@ -199,7 +199,7 @@ public class Service_Payment {
                                     button_pay.setVisibility(View.GONE);
                                     textView.setText(null);
                                     builder.setTitle("Ops!!!");
-                                    builder.setMessage(response.toString());
+                                    builder.setMessage(response.getString("message"));
                                     builder.setCancelable(false);
                                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                         @Override

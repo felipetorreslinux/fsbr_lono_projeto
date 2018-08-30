@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class View_My_Plan_Profile extends AppCompatActivity implements View.OnClickListener{
+public class View_My_Plan_Profile extends AppCompatActivity{
 
     AlertDialog.Builder builder;
     SharedPreferences sharedPreferences;
@@ -56,8 +56,6 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     LinearLayout item_pay_my_plan;
     TextView type_pay_plan;
 
-    Service_Profile serviceProfile;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +64,10 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
         sharedPreferences = getSharedPreferences("profile", MODE_PRIVATE);
         loading = findViewById(R.id.loading);
         loading.setVisibility(View.VISIBLE);
-        serviceProfile = new Service_Profile(this);
         builder = new AlertDialog.Builder(this);
         createToolbar(toolbar);
         infoPlan();
-        serviceProfile.detailsPlanProfile(value_terms, name_plan, terms_plan, termos_usados, price_plan, date_expira_plan, type_pay_plan, item_pay_my_plan, loading);
+        new Service_Profile(this).detailsPlanProfile(value_terms, name_plan, terms_plan, termos_usados, price_plan, date_expira_plan, type_pay_plan, item_pay_my_plan, loading);
     }
 
     private void infoPlan(){
@@ -115,33 +112,17 @@ public class View_My_Plan_Profile extends AppCompatActivity implements View.OnCl
     }
 
     private void editPlanProfile() {
-
         builder.setTitle(R.string.app_name);
         builder.setMessage("Para alterar seu plano você deve entrar no gerenciador do Lono.");
         builder.setPositiveButton("Ir", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Alerts.progress_open(View_My_Plan_Profile.this, null, "Carregando...", false);
-                serviceProfile.editPlanProfile();
+                new Service_Profile(View_My_Plan_Profile.this).editPlanProfile();
             }
         });
         builder.setNegativeButton("Voltar", null);
         builder.create().show();
-
-//        Intent intent = new Intent(this, View_Payment.class);
-//        intent.putExtra( "type_person",0);
-//        intent.putExtra( "name", sharedPreferences.getString("name", null) );
-//        intent.putExtra( "qtd_plan", "10");
-//        intent.putExtra( "valor_termo", 4.99);
-//        startActivity(intent);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-
-        }
     }
 
     @Override

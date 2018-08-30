@@ -139,6 +139,8 @@ public class Service_Login {
 
                         SharedPreferences.Editor editor = activity.getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
 
+                        editor.clear();
+
                         editor.putInt("id", response.getJSONObject("usuario_info").getInt("id"));
                         editor.putString("name", response.getJSONObject("usuario_info").getString("nome"));
                         editor.putString("avatar_url", response.getJSONObject("usuario_info").getString("avatar_url") != null ? response.getJSONObject("usuario_info").getString("avatar_url") : "");

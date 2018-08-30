@@ -182,16 +182,12 @@ public class Service_Profile {
                         String status = response.getString("status");
                         switch (status){
                             case "success":
-                                editor.putString("avatar_url", response.getString("url"));
-                                editor.commit();
-                                if(editor.commit()){
-                                    alertDialog.dismiss();
-                                    builder = new AlertDialog.Builder(activity);
-                                    builder.setTitle(R.string.app_name);
-                                    builder.setMessage("Foto atualizada com sucesso");
-                                    builder.setPositiveButton("Ok", null);
-                                    builder.create().show();
-                                }
+                                alertDialog.dismiss();
+                                builder = new AlertDialog.Builder(activity);
+                                builder.setTitle(R.string.app_name);
+                                builder.setMessage("Foto atualizada com sucesso");
+                                builder.setPositiveButton("Ok", null);
+                                builder.create().show();
                                 break;
                             default:
                                 alertDialog.dismiss();
@@ -251,7 +247,6 @@ public class Service_Profile {
 
                             default:
                                 loading.setVisibility(View.VISIBLE);
-
                                 break;
                         }
                     }catch (JSONException e){}

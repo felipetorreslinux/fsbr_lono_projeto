@@ -20,7 +20,8 @@
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout="@layout/loading_pages"/>
+        android:layout="@layout/loading_pages"
+        android:layout_margin="10dp"/>
 
     <ScrollView
         android:layout_width="match_parent"

@@ -85,7 +85,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
                 status_account.setText("Sua conta pendente");
                 status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorRed));
             }
-            status_account.setVisibility(View.GONE);
         }
 
         if(sharedPreferences.getString("name_plan", "").equals("Plus")){
