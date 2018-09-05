@@ -58,7 +58,7 @@
                     android:id="@+id/razao_social_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textAutoComplete"
                     android:fontFamily="@font/roboto"
                     android:hint="Razão Social"/>
 
@@ -74,7 +74,7 @@
                     android:id="@+id/name_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textCapWords"
                     android:fontFamily="@font/roboto"
                     android:hint="Nome"/>
 
@@ -90,7 +90,7 @@
                     android:id="@+id/email_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textEmailAddress"
                     android:fontFamily="@font/roboto"
                     android:hint="Email"/>
 
@@ -122,7 +122,7 @@
                     android:id="@+id/password_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textNoSuggestions"
                     android:fontFamily="@font/roboto"
                     android:hint="Senha"/>
 
@@ -138,7 +138,7 @@
                     android:id="@+id/conf_password_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="textNoSuggestions"
                     android:fontFamily="@font/roboto"
                     android:hint="Confirmar senha"/>
 
@@ -148,15 +148,15 @@
                 android:id="@+id/layout_genre_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Gênero"
-                app:hintEnabled="true"
-                app:hintAnimationEnabled="true"
                 android:layout_marginBottom="10dp">
 
-                <AutoCompleteTextView
+                <EditText
+                    android:id="@+id/genre_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/genre_register"/>
+                    android:fontFamily="@font/roboto"
+                    android:focusable="false"
+                    android:hint="Gênero"/>
 
             </android.support.design.widget.TextInputLayout>
 

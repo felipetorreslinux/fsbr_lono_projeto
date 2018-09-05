@@ -3,19 +3,25 @@ package com.lono.Views;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lono.R;
+import com.lono.Utils.Alerts;
+import com.lono.Utils.Keyboard;
 import com.lono.Utils.MaskCNPJ;
 import com.lono.Utils.MaskCPF;
 
@@ -45,15 +51,16 @@ public class View_NewAccount extends AppCompatActivity implements View.OnClickLi
     EditText cellphone_register;
     EditText password_register;
     EditText conf_password_register;
-    AutoCompleteTextView genre_register;
+    EditText genre_register;
 
+    @SuppressLint({"NewApi", "WrongViewCast"})
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_newaccount);
         createToolbar(toolbar);
 
-        TYPE_PERSON_REGISTER = 2;
+        TYPE_PERSON_REGISTER = 1;
 
         layout_document_register = findViewById(R.id.layout_document_register);
         layout_razao_social_register = findViewById(R.id.layout_razao_social_register);
@@ -72,20 +79,38 @@ public class View_NewAccount extends AppCompatActivity implements View.OnClickLi
         password_register = findViewById(R.id.password_register);
         conf_password_register = findViewById(R.id.conf_password_register);
         genre_register = findViewById(R.id.genre_register);
-
-        List<String> genre = new ArrayList<>();
-        genre.clear();
-        genre.add("Masculino");
-        genre.add("Feminino");
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, genre);
-        genre_register.setAdapter(arrayAdapter);
         genre_register.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                genre_register.showDropDown();
+            public void onClick(final View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(View_NewAccount.this);
+                View view = getLayoutInflater().inflate(R.layout.dialog_genre, null);
+                builder.setView(view);
+                final AlertDialog alertDialog = builder.create();
+                final List<String> genre = new ArrayList<>();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Keyboard.close(View_NewAccount.this, v);
+                    }
+                }, 30);
+
+                alertDialog.show();
+                ListView listView = view.findViewById(R.id.list_genre);
+                genre.clear();
+                genre.add("Masculino");
+                genre.add("Feminino");
+                ArrayAdapter arrayAdapter = new ArrayAdapter(View_NewAccount.this, android.R.layout.simple_list_item_1, genre);
+                listView.setAdapter(arrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        genre_register.setText(parent.getItemAtPosition(position).toString());
+                        alertDialog.dismiss();
+                    }
+                });
             }
         });
+
 
         switch (TYPE_PERSON_REGISTER){
             case 1:
