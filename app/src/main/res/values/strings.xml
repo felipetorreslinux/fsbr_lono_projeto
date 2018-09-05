@@ -5,4 +5,5 @@
     <string name="not_connected">Aparelho sem conexão com a internet.</string>
     <string name="lono_pagamento_utils_route"></string>
     <string name="channel_notifications">lono</string>
+    <string name="title_new_acoount">Novo Cadastro</string>
 </resources>

@@ -23,11 +23,7 @@ import com.lono.Views.View_My_Plan_Profile;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.File;
-
 import jp.wasabeef.picasso.transformations.CropCircleTransformation;
-
 import static android.app.Activity.RESULT_OK;
 
 

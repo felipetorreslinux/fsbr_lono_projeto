@@ -29,4 +29,5 @@
     <string name="title_new_acoount_free">Plano Free</string>
     <string name="label_info_new_account_pf_plus">Informe seus dados abaixo</string>
     <string name="info_cfp_new_account">Informe seu cpf para que possamos validar seus dados</string>
+    <string name="info_label_newaccount">Preencha suas informações abaixo com total veracidade</string>
 </resources>
