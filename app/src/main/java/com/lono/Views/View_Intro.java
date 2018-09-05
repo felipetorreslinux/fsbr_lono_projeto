@@ -60,7 +60,7 @@ public class View_Intro extends AppCompatActivity implements View.OnClickListene
                 break;
 
             case R.id.button_intro_register:
-                Intent plans = new Intent(this, View_Plans_List.class);
+                Intent plans = new Intent(this, View_List_Plans.class);
                 startActivity(plans);
                 break;
 

@@ -92,7 +92,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Contact"/>
 
-        <activity android:name=".Views.View_Plans_List"
+        <activity android:name=".Views.View_List_Plans"
             android:theme="@style/ListPlans"
             android:screenOrientation="portrait"/>
 

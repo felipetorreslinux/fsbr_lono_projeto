@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class View_Plans_List extends AppCompatActivity{
+public class View_List_Plans extends AppCompatActivity{
 
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
@@ -44,20 +44,26 @@ public class View_Plans_List extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_plans_list);
+
         sharedPreferences = getSharedPreferences("plans", MODE_PRIVATE);
         createToolbar(toolbar);
         serviceListPlans = new Service_List_Plans( this );
 
-        recyclerview_plans = (RecyclerView) findViewById(R.id.recyclerview_plans);
+        recyclerview_plans = findViewById(R.id.recyclerview_plans);
         recyclerview_plans.setLayoutManager(new LinearLayoutManager(this));
         recyclerview_plans.setNestedScrollingEnabled(false);
-        recyclerview_plans.setHasFixedSize(true);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                listPlans();
+            }
+        }, 50);
 
     }
 
     @Override
     protected void onResume() {
-        listPlans();
         super.onResume();
     }
 
@@ -79,7 +85,7 @@ public class View_Plans_List extends AppCompatActivity{
 
     private void createToolbar(Toolbar toolbar) {
         Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
-        toolbar = (Toolbar) findViewById(R.id.actionbar_list_plans);
+        toolbar = findViewById(R.id.actionbar_list_plans);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_list_plans);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

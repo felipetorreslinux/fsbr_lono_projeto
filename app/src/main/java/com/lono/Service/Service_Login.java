@@ -5,18 +5,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.lono.APIServer.Server;
-import com.lono.Firebase.PhoneNumberSMS.PhoneNumberFirebase;
 import com.lono.Utils.Alerts;
-import com.lono.Views.View_Login;
-import com.lono.Views.View_Plans_List;
+import com.lono.Views.View_List_Plans;
 import com.lono.Views.View_Principal;
 import com.lono.Views.View_Validation_SMS;
 
@@ -59,7 +55,7 @@ public class Service_Login {
                                     break;
                                 default:
                                     Alerts.progress_clode();
-                                    Intent new_ac = new Intent(activity, View_Plans_List.class);
+                                    Intent new_ac = new Intent(activity, View_List_Plans.class);
                                     new_ac.putExtra("cellphone", cellphone);
                                     activity.startActivity(new_ac);
                                     break;

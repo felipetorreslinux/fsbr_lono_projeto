@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.lono.Firebase.PhoneNumberSMS.PhoneNumberFirebase;
 import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Utils.Alerts;
@@ -181,7 +179,7 @@ public class View_Login extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
-                    startActivity(new Intent(View_Login.this, View_Plans_List.class));
+                    startActivity(new Intent(View_Login.this, View_List_Plans.class));
                 }
             });
             builder.setNegativeButton("Por email", null);
