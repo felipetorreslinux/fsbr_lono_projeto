@@ -2,6 +2,7 @@ package com.lono.Views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.lono.Adapter.List_Plans_Adapter;
 import com.lono.Models.List_Plans_Model;
 import com.lono.R;
 import com.lono.Service.Service_List_Plans;
@@ -22,11 +25,16 @@ import com.lono.Utils.Alerts;
 import com.lono.Utils.Conexao;
 import com.tmall.ultraviewpager.UltraViewPager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class View_Plans_List extends AppCompatActivity{
 
+    SharedPreferences sharedPreferences;
     Toolbar toolbar;
 
     RecyclerView recyclerview_plans;
@@ -36,7 +44,7 @@ public class View_Plans_List extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_plans_list);
-
+        sharedPreferences = getSharedPreferences("plans", MODE_PRIVATE);
         createToolbar(toolbar);
         serviceListPlans = new Service_List_Plans( this );
 
@@ -44,14 +52,29 @@ public class View_Plans_List extends AppCompatActivity{
         recyclerview_plans.setLayoutManager(new LinearLayoutManager(this));
         recyclerview_plans.setNestedScrollingEnabled(false);
         recyclerview_plans.setHasFixedSize(true);
-        Alerts.progress_open(this, null, "Listando planos...", false);
 
     }
 
     @Override
     protected void onResume() {
-        serviceListPlans.list(recyclerview_plans);
+        listPlans();
         super.onResume();
+    }
+
+    private void listPlans(){
+        try{
+            JSONArray plans = new JSONArray(sharedPreferences.getString("list", ""));
+            if(plans.length() > 0){
+                List<List_Plans_Model> list_plans = new ArrayList<>();
+                for (int i = 0; i < plans.length(); i++){
+                    JSONObject jsonObject = plans.getJSONObject(i);
+                    List_Plans_Model list_plans_model = new List_Plans_Model(jsonObject);
+                    list_plans.add(list_plans_model);
+                }
+                List_Plans_Adapter list_plans_adapter = new List_Plans_Adapter(this, list_plans);
+                recyclerview_plans.setAdapter(list_plans_adapter);
+            }
+        }catch (JSONException e){}
     }
 
     private void createToolbar(Toolbar toolbar) {

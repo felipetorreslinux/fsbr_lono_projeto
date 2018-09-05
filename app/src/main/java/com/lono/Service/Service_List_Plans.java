@@ -2,7 +2,9 @@ package com.lono.Service;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -23,14 +25,14 @@ import java.util.List;
 
 public class Service_List_Plans {
 
-    static Activity activity;
-    static AlertDialog.Builder builder;
+    Activity activity;
+    SharedPreferences.Editor editor;
     public Service_List_Plans(Activity activity){
         this.activity = activity;
-        builder = new AlertDialog.Builder( activity );
+        this.editor = activity.getSharedPreferences("plans", Context.MODE_PRIVATE).edit();
     }
 
-    public void list (final RecyclerView recyclerView) {
+    public void list() {
         AndroidNetworking.post(Server.URL()+"services/obter-lista-planos")
         .build()
         .getAsJSONObject(new JSONObjectRequestListener() {
@@ -42,57 +44,17 @@ public class Service_List_Plans {
                     switch (status){
                         case "success":
                             JSONArray plans = response.getJSONArray("planos");
-                            if(plans.length() > 0){
-                                List<List_Plans_Model> list_plans = new ArrayList<>();
-                                for (int i = 0; i < plans.length(); i++){
-                                    JSONObject jsonObject = plans.getJSONObject(i);
-                                    List_Plans_Model list_plans_model = new List_Plans_Model(jsonObject);
-                                    list_plans.add(list_plans_model);
-                                }
-                                List_Plans_Adapter list_plans_adapter = new List_Plans_Adapter(activity, list_plans);
-                                recyclerView.setAdapter(list_plans_adapter);
-                                Alerts.progress_clode();
-                            }
+                            editor.putString("list", plans.toString());
+                            editor.commit();
                             break;
-                        default:
-                            System.out.println(response);
-                            Alerts.progress_clode();
-                            builder.setTitle( "Ops!!!" );
-                            builder.setMessage( response.toString());
-                            builder.setCancelable( false );
-                            builder.setPositiveButton( "Ok", null );
-                            builder.create().show();
                     }
                 }catch (JSONException e){}catch (NullPointerException e){}
             }
 
             @Override
             public void onError(ANError anError) {
-                System.out.println(anError.getMessage());
                 Alerts.progress_clode();
-                if(anError.getErrorCode() == 0){
-                    builder.setTitle( "Ops!!!" );
-                    builder.setMessage( R.string.not_connected );
-                    builder.setCancelable( false );
-                    builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            activity.finish();
-                        }
-                    } );
-                    builder.create().show();
-                }else{
-                    builder.setTitle( "Ops!!!" );
-                    builder.setMessage( anError.getMessage() );
-                    builder.setCancelable( false );
-                    builder.setPositiveButton( "Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            activity.finish();
-                        }
-                    } );
-                    builder.create().show();
-                }
+                Server.ErrorServer(activity, anError.getErrorCode());
             }
         });
     }

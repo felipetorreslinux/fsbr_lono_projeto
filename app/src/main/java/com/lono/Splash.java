@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.androidnetworking.AndroidNetworking;
 import com.lono.Views.View_Intro;
 import com.lono.Views.View_Intro_Slide;
-import com.lono.Views.View_NewAccount;
 import com.lono.Views.View_Principal;
 
 import java.security.cert.CertificateException;
@@ -42,9 +41,7 @@ public class Splash extends Activity {
     @Override
     public void onResume(){
         super.onResume();
-//        loadView();
-        startActivity(new Intent(this, View_NewAccount.class));
-        finish();
+        loadView();
     };
 
     private void loadView(){

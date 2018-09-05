@@ -26,7 +26,7 @@ public class View_Intro extends AppCompatActivity implements View.OnClickListene
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_intro);
-
+        new Service_List_Plans(this).list();
         Permissions.request(this);
 
         button_login = (Button) findViewById(R.id.button_intro_login);
@@ -38,6 +38,8 @@ public class View_Intro extends AppCompatActivity implements View.OnClickListene
         button_quem_somos.setOnClickListener(this);
         button_contact = (LinearLayout) findViewById(R.id.button_contact);
         button_contact.setOnClickListener(this);
+
+
 
     }
 

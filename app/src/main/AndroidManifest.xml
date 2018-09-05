@@ -100,11 +100,6 @@
             android:theme="@style/NewAccountPlanMore200"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".Views.View_NewAccount"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/NewAccountFree"/>
-
         <activity android:name=".Views.View_New_Account_Free"
             android:screenOrientation="portrait"
             android:theme="@style/NewAccountFree"/>

@@ -34,8 +34,8 @@ public class Server {
         AlertDialog.Builder builder  = new AlertDialog.Builder(activity);
         switch (code){
             case 0:
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Aparelho sem conexão com a internet ou nosso servidor está em manutenção.\nTente novamente");
+                builder.setTitle("Ops!!!");
+                builder.setMessage("Aparelho sem conexão com a internet ou nosso servidor está em manutenção.");
                 builder.setPositiveButton("Ok", null);
                 builder.create().show();
                 break;
