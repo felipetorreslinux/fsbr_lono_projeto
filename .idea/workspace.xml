@@ -6,30 +6,69 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="661d39da-1650-4b6f-a377-f60a9012d038" name="Default" comment="">
+    <list default="true" id="a697e348-b089-435c-bf06-62ce961cb4b6" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_exifinterface_27_1_1.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_10_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0_jar.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_theartofdev_edmodo_android_image_cropper_2_7_0.xml" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/resourceHashesCache.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/jarAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___C__Projetos_Lono_app_libs_pagseguro_api_2_6_0_jar_unspecified_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_2_0_0_alpha2.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_2_0_0_alpha2_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_0.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_5_0_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_5_0_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_5_0.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_5_0.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_esafirm_android_image_picker_imagepicker_1_13_1.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_9_1_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_13_0_jar.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_5_2_jar.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" afterPath="$PROJECT_DIR$/app/release/app-release.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/app/libs/pagseguro-api-2.6.0.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/release/output.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_InfoWindow.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_InfoWindow.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_Slide_Plans_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_Slide_Plans_Payment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/PagSeguro/LonoPagamentoUtils.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Alerts.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Alerts.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Splash.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Splash.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_My_Plan_Profile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_My_Plan_Profile.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_my_plan_profile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_my_plan_profile.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_payment_creditcard.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_payment_creditcard.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Publications_Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Publications_Fragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment_CreditCard.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment_CreditCard.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/constraint/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/test/espresso/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/android/support/test/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/google/android/gms/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/com/google/firebase/group-index.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/intermediates/lint-cache/maven.google/master-index.xml" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,27 +82,85 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Service_Payment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java">
+      <file leaf-file-name="Person_Fragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="201" column="82" lean-forward="false" selection-start-line="201" selection-start-column="82" selection-end-line="201" selection-end-column="82" />
+            <state relative-caret-position="391">
+              <caret line="147" column="42" lean-forward="false" selection-start-line="147" selection-start-column="42" selection-end-line="147" selection-end-column="42" />
               <folding>
-                <element signature="method#checkCEP#0;class#Service_Payment#0" expanded="false" />
-                <element signature="method#paymentCard#0;class#Service_Payment#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalcTerms.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Utils/CalcTerms.java">
+      <file leaf-file-name="Service_Profile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="430">
+              <caret line="271" column="141" lean-forward="false" selection-start-line="271" selection-start-column="141" selection-end-line="271" selection-end-column="141" />
+              <folding>
+                <element signature="method#resetEmailCellphoe#0;class#Service_Profile#0" expanded="false" />
+                <element signature="method#resetPassword#0;class#Service_Profile#0" expanded="false" />
+                <element signature="e#5648#5665#0" expanded="true" />
+                <element signature="e#5897#6669#0" expanded="true" />
+                <element signature="e#6668#6669#0" expanded="true" />
+                <element signature="e#6931#6948#0" expanded="true" />
+                <element signature="method#detailsPlanProfile#0;class#Service_Profile#0" expanded="false" />
+                <element signature="method#editPlanProfile#0;class#Service_Profile#0" expanded="false" />
+                <element signature="e#12566#13577#0" expanded="true" />
+                <element signature="e#12985#13527#0" expanded="true" />
+                <element signature="e#13526#13527#0" expanded="true" />
+                <element signature="e#13576#13577#0" expanded="true" />
+                <element signature="e#13621#14121#0" expanded="true" />
+                <element signature="e#14120#14121#0" expanded="true" />
+                <element signature="e#14166#14618#0" expanded="true" />
+                <element signature="e#14617#14618#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_principal.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_principal.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="34" />
               <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="59" column="68" lean-forward="false" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View_Principal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="355" column="46" lean-forward="false" selection-start-line="355" selection-start-column="46" selection-end-line="355" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,51 +168,9 @@
       <file leaf-file-name="Service_Login.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="147" column="71" lean-forward="false" selection-start-line="147" selection-start-column="71" selection-end-line="147" selection-end-column="71" />
+            <state relative-caret-position="227">
+              <caret line="143" column="52" lean-forward="false" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="52" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Permissions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Permissions/Permissions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-              <folding>
-                <element signature="e#1355#1373#0" expanded="true" />
-                <element signature="e#2317#2348#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Service_Profile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="211" column="277" lean-forward="false" selection-start-line="211" selection-start-column="277" selection-end-line="211" selection-end-column="277" />
-              <folding>
-                <element signature="method#resetEmailCellphoe#0;class#Service_Profile#0" expanded="false" />
-                <element signature="method#resetPassword#0;class#Service_Profile#0" expanded="false" />
-                <element signature="method#uploadImage#0;class#Service_Profile#0" expanded="false" />
-                <element signature="method#detailsPlanProfile#0;class#Service_Profile#0" expanded="false" />
-                <element signature="method#editPlanProfile#0;class#Service_Profile#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -2156,18 +2211,25 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Login.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_type_payment.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_quemsomos.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_plan_more_200.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_plans_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_payment_creditcard.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/view_my_plan_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_My_Plan_Profile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Splash.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/PagSeguro/LonoPagamentoUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_InfoWindow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Publications_Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_publications.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment_CreditCard.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_Slide_Plans_Payment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java" />
       </list>
     </option>
   </component>
@@ -2176,6 +2238,9 @@
     <option name="y" value="20" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
@@ -2192,10 +2257,25 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+              <item name="app" type="cbb8eebc:String" user="app" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2216,21 +2296,7 @@
             </path>
             <path>
               <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="lono" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Permissions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="Lono" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -2241,8 +2307,8 @@
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="device.picker.selection" value="192.168.15.11:5555" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../CheckBill" />
-    <property name="device.picker.selection" value="3300976f4aa22397" />
     <property name="ExportApk.ApkPath" value="C:\Projetos\Lono\app" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
@@ -2405,11 +2471,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="661d39da-1650-4b6f-a377-f60a9012d038" name="Default" comment="" />
-      <created>1535554089667</created>
+      <changelist id="a697e348-b089-435c-bf06-62ce961cb4b6" name="Default" comment="" />
+      <created>1535718527467</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1535554089667</updated>
+      <updated>1535718527467</updated>
     </task>
     <servers />
   </component>
@@ -2424,17 +2490,17 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7222222" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5816994" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23600605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33006537" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2447,13 +2513,53 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5816994" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33006537" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2397882" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Publications.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2462,7 +2568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="62" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="16" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2473,7 +2578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2481,7 +2585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="72" column="37" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2489,7 +2592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2500,7 +2602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2511,7 +2612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2522,7 +2622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="76" column="76" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2530,7 +2629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2125">
           <caret line="149" column="5" lean-forward="false" selection-start-line="137" selection-start-column="4" selection-end-line="149" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2538,7 +2636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="19" column="5" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2546,34 +2643,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="62" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="16" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Materia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" column="76" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_type_payment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="265" column="81" lean-forward="false" selection-start-line="265" selection-start-column="81" selection-end-line="265" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2584,7 +2663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="72" column="37" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2592,7 +2670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2603,7 +2680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2614,7 +2690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2625,7 +2700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2125">
           <caret line="149" column="5" lean-forward="false" selection-start-line="137" selection-start-column="4" selection-end-line="149" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2633,15 +2707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="19" column="5" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment_CreditCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2649,48 +2714,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="291" column="59" lean-forward="false" selection-start-line="291" selection-start-column="59" selection-end-line="291" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4859">
-          <caret line="39" column="13" lean-forward="false" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_person.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="86" column="13" lean-forward="false" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
-          <folding>
-            <element signature="method#onClick#0;class#Person_Fragment#0" expanded="false" />
-            <element signature="method#editImageProfile#0;class#Person_Fragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_my_plan_profile.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2701,18 +2744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="120" column="61" lean-forward="false" selection-start-line="120" selection-start-column="61" selection-end-line="120" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="201" column="82" lean-forward="false" selection-start-line="201" selection-start-column="82" selection-end-line="201" selection-end-column="82" />
-          <folding>
-            <element signature="method#checkCEP#0;class#Service_Payment#0" expanded="false" />
-            <element signature="method#paymentCard#0;class#Service_Payment#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2720,29 +2751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="211" column="277" lean-forward="false" selection-start-line="211" selection-start-column="277" selection-end-line="211" selection-end-column="277" />
-          <folding>
-            <element signature="method#resetEmailCellphoe#0;class#Service_Profile#0" expanded="false" />
-            <element signature="method#resetPassword#0;class#Service_Profile#0" expanded="false" />
-            <element signature="method#uploadImage#0;class#Service_Profile#0" expanded="false" />
-            <element signature="method#detailsPlanProfile#0;class#Service_Profile#0" expanded="false" />
-            <element signature="method#editPlanProfile#0;class#Service_Profile#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="147" column="71" lean-forward="false" selection-start-line="147" selection-start-column="71" selection-end-line="147" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2750,22 +2758,298 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Terms_Journals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="73" column="84" lean-forward="false" selection-start-line="73" selection-start-column="84" selection-end-line="73" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="112" column="19" lean-forward="false" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Payment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="161" column="187" lean-forward="false" selection-start-line="161" selection-start-column="187" selection-end-line="161" selection-end-column="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Publications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding>
+            <element signature="e#758#759#0" expanded="false" />
+            <element signature="e#798#799#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Alerts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Splash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="86" column="56" lean-forward="false" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
+          <folding>
+            <element signature="method#onCreate#0;class#Splash#0" expanded="false" />
+            <element signature="method#onResume#0;class#Splash#0" expanded="false" />
+            <element signature="method#loadView#0;class#Splash#0" expanded="false" />
+            <element signature="method#openIntroSlide#0;class#Splash#0" expanded="false" />
+            <element signature="method#openCentral#0;class#Splash#0" expanded="false" />
+            <element signature="method#openIntro#0;class#Splash#0" expanded="false" />
+            <element signature="method#getUnsafeOkHttpClient#0;class#Splash#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_InfoWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="86" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="70" column="76" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Materia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Models/Alerts_Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Payment_CreditCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="693" column="14" lean-forward="false" selection-start-line="693" selection-start-column="14" selection-end-line="693" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#10274#10275#0" expanded="false" />
+            <element signature="e#10306#10307#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Type_Payment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/PagSeguro/LonoPagamentoUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="89" column="23" lean-forward="false" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/APIServer/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_publications.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Publications_Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding>
+            <element signature="e#2028#2029#0" expanded="false" />
+            <element signature="e#2060#2061#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Adapter/Adapter_Slide_Plans_Payment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PF_Plus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="120" column="5" lean-forward="false" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+          <folding>
+            <element signature="e#4559#4560#0" expanded="false" />
+            <element signature="e#4591#4592#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_New_Account_PJ_Plus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+          <folding>
+            <element signature="e#4618#4619#0" expanded="false" />
+            <element signature="e#4650#4651#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#5254#5421#0" expanded="false" />
+            <element signature="e#5420#5421#0" expanded="false" />
+            <element signature="e#5684#5701#0" expanded="false" />
+            <element signature="e#5946#6264#0" expanded="false" />
+            <element signature="e#6263#6264#0" expanded="false" />
+            <element signature="e#6827#6849#0" expanded="false" />
+            <element signature="e#8006#9849#0" expanded="false" />
+            <element signature="e#9848#9849#0" expanded="false" />
+            <element signature="e#9940#15430#0" expanded="false" />
+            <element signature="e#15429#15430#0" expanded="false" />
+            <element signature="e#15536#15544#0" expanded="false" />
+            <element signature="e#20088#20356#0" expanded="false" />
+            <element signature="e#20355#20356#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-          <folding>
-            <element signature="e#1355#1373#0" expanded="true" />
-            <element signature="e#2317#2348#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="249">
+          <caret line="64" column="57" lean-forward="false" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-manifest">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="1152" column="16" lean-forward="false" selection-start-line="1152" selection-start-column="16" selection-end-line="1152" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="59" column="68" lean-forward="false" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="143" column="52" lean-forward="false" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/View_Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="355" column="46" lean-forward="false" selection-start-line="355" selection-start-column="46" selection-end-line="355" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/view_principal.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Service/Service_Profile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="271" column="141" lean-forward="false" selection-start-line="271" selection-start-column="141" selection-end-line="271" selection-end-column="141" />
+          <folding>
+            <element signature="method#resetEmailCellphoe#0;class#Service_Profile#0" expanded="false" />
+            <element signature="method#resetPassword#0;class#Service_Profile#0" expanded="false" />
+            <element signature="e#5648#5665#0" expanded="true" />
+            <element signature="e#5897#6669#0" expanded="true" />
+            <element signature="e#6668#6669#0" expanded="true" />
+            <element signature="e#6931#6948#0" expanded="true" />
+            <element signature="method#detailsPlanProfile#0;class#Service_Profile#0" expanded="false" />
+            <element signature="method#editPlanProfile#0;class#Service_Profile#0" expanded="false" />
+            <element signature="e#12566#13577#0" expanded="true" />
+            <element signature="e#12985#13527#0" expanded="true" />
+            <element signature="e#13526#13527#0" expanded="true" />
+            <element signature="e#13576#13577#0" expanded="true" />
+            <element signature="e#13621#14121#0" expanded="true" />
+            <element signature="e#14120#14121#0" expanded="true" />
+            <element signature="e#14166#14618#0" expanded="true" />
+            <element signature="e#14617#14618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/lono/Views/Fragments/Person_Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="147" column="42" lean-forward="false" selection-start-line="147" selection-start-column="42" selection-end-line="147" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

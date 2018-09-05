@@ -117,7 +117,6 @@ public class View_New_Account_PJ_Plus extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        Server.hash_pagseguro(this);
     }
 
     @Override

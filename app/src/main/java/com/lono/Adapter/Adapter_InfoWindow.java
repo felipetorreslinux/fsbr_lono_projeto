@@ -18,7 +18,7 @@ public class Adapter_InfoWindow implements GoogleMap.InfoWindowAdapter {
     String[] start;
     String[] end;
 
-    public Adapter_InfoWindow(Activity activity, String distance,String time, String start, String end){
+    public Adapter_InfoWindow(Activity activity, String distance, String time, String start, String end){
         this.start = start.split("-");
         this.end = end.split("-");
         this.distance = distance.split(" ");

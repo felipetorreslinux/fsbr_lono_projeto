@@ -118,7 +118,6 @@ public class View_New_Account_PF_Plus extends AppCompatActivity implements View.
     @Override
     protected void onResume() {
         super.onResume();
-        Server.hash_pagseguro(this);
     }
 
     @Override

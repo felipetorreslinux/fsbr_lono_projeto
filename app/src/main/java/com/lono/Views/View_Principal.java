@@ -2,11 +2,15 @@ package com.lono.Views;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,8 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.esafirm.imagepicker.features.ImagePicker;
-import com.esafirm.imagepicker.model.Image;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.lono.R;
 import com.lono.Service.Service_Login;
 import com.lono.Service.Service_Profile;
@@ -32,6 +40,8 @@ import com.lono.Views.Fragments.Terms_Journals_Fragment;
 import com.lono.Views.Terms_Jornals.View_Add_Journal;
 import com.lono.Views.Terms_Jornals.View_Add_Terms;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 
@@ -340,18 +350,17 @@ public class View_Principal extends AppCompatActivity implements View.OnClickLis
                 }
 
                 break;
+
+            case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if (resultCode == RESULT_OK) {
+                    new Service_Profile(this).uploadImage(result.getUri());
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Exception error = result.getError();
+                }
+            break;
         }
 
-
-        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
-            Image image = ImagePicker.getFirstImageOrNull(data);
-            Picasso.with(this)
-                .load(new File(image.getPath()))
-                .resize(150,150)
-                .transform(new CropCircleTransformation())
-                .into(Person_Fragment.image_profile);
-            new Service_Profile(this).uploadImage(new File(image.getPath()));
-        }
     }
 
 }

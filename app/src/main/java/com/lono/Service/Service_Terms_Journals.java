@@ -68,9 +68,12 @@ public class Service_Terms_Journals {
                                         }
                                         Adapter_Terms_Fragment adapterListTerms = new Adapter_Terms_Fragment(activity, list_terms);
                                         recyclerView.setAdapter(adapterListTerms);
+                                        layout_box_termos.setVisibility(View.VISIBLE);
+                                        progress_terms.setVisibility(View.GONE);
+                                    }else{
+                                        layout_box_termos.setVisibility(View.VISIBLE);
+                                        progress_terms.setVisibility(View.GONE);
                                     }
-                                    layout_box_termos.setVisibility(View.VISIBLE);
-                                    progress_terms.setVisibility(View.GONE);
                                     break;
                             }
                         }catch (JSONException e){}

@@ -3,12 +3,15 @@ package com.lono.Service;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
@@ -19,10 +22,17 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.lono.APIServer.Server;
 import com.lono.R;
 import com.lono.Utils.Alerts;
 import com.lono.Utils.Price;
+import com.lono.Views.Fragments.Person_Fragment;
 import com.lono.Views.View_Login;
 import com.lono.Views.View_My_Plan_Profile;
 
@@ -38,12 +48,18 @@ public class Service_Profile {
     View view;
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
+    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     public Service_Profile(Activity activity){
         this.activity = activity;
         this.builder = new AlertDialog.Builder(activity);
+        this.sharedPreferences = activity.getSharedPreferences("profile", Context.MODE_PRIVATE);
         this.editor = activity.getSharedPreferences("profile", Context.MODE_PRIVATE).edit();
+        this.storage = FirebaseStorage.getInstance();
+        this.storageReference = storage.getReference();
     }
 
     public void resetEmailCellphoe(final String email, final String cellphone, final TextView erro){
@@ -150,65 +166,6 @@ public class Service_Profile {
 
     }
 
-    public void uploadImage (File file){
-
-        view = activity.getLayoutInflater().inflate(R.layout.dialog_progress_upload, null);
-        builder.setView(view);
-        builder.setCancelable(false);
-        alertDialog = builder.create();
-        alertDialog.show();
-
-        final ProgressBar progressBar = view.findViewById(R.id.progress_upload);
-
-        AndroidNetworking.upload(Server.URL()+"services/enviar-avatar-usuario")
-            .addMultipartFile("avatar",file)
-            .addMultipartParameter("token",Server.token(activity))
-            .build()
-            .setUploadProgressListener(new UploadProgressListener() {
-                @SuppressLint("NewApi")
-                @Override
-                public void onProgress(long bytesUploaded, long totalBytes) {
-
-                    progressBar.setMax((int) totalBytes);
-                    progressBar.setProgress((int) bytesUploaded);
-
-                }
-            })
-            .getAsJSONObject(new JSONObjectRequestListener() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    System.out.println(response);
-                    try{
-                        String status = response.getString("status");
-                        switch (status){
-                            case "success":
-                                alertDialog.dismiss();
-                                builder = new AlertDialog.Builder(activity);
-                                builder.setTitle(R.string.app_name);
-                                builder.setMessage("Foto atualizada com sucesso");
-                                builder.setPositiveButton("Ok", null);
-                                builder.create().show();
-                                break;
-                            default:
-                                alertDialog.dismiss();
-                                builder = new AlertDialog.Builder(activity);
-                                builder.setTitle("Ops!!!");
-                                builder.setMessage("Não foi possível atualizar seu foto no momento");
-                                builder.setPositiveButton("Ok", null);
-                                builder.create().show();
-                                break;
-                        }
-                    }catch (JSONException e){}
-                }
-
-                @Override
-                public void onError(ANError anError) {
-                    alertDialog.dismiss();
-                    Server.ErrorServer(activity, anError.getErrorCode());
-                }
-            });
-    }
-
     public void detailsPlanProfile(final TextView val_terms, final TextView namePlan, final TextView qtdTerms, final TextView qtdTermosUtil, final TextView pricePlan, final TextView datePlanExpire, final TextView typePayPlan, final LinearLayout typePay, final ViewStub loading){
        AndroidNetworking.post(Server.URL()+"services/informacoes-plano")
             .addHeaders("token", Server.token(activity))
@@ -288,5 +245,54 @@ public class Service_Profile {
             });
     }
 
+    public void uploadImage(Uri filePath) {
+        if(filePath != null){
+            final ProgressDialog progressDialog = new ProgressDialog(activity);
+            progressDialog.setTitle("Carregando...");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setCancelable(false);
+            progressDialog.setProgress(0);
+            progressDialog.setMax(100);
+            progressDialog.show();
+
+            final StorageReference ref = storageReference.child("images/"+sharedPreferences.getInt("id", 0)+".jpg");
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Snackbar.make(activity.getWindow().getDecorView(),
+                                    "Foto atualizada com sucesso", Snackbar.LENGTH_SHORT).show();
+
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    editor.putString("avatar_url", uri.toString());
+                                    editor.commit();
+                                    progressDialog.dismiss();
+                                    activity.getFragmentManager().beginTransaction().replace(R.id.container, new Person_Fragment()).commit();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Snackbar.make(activity.getWindow().getDecorView(),
+                                    ""+e.getMessage(), Snackbar.LENGTH_SHORT).show();
+                            editor.putString("image", "");
+                            editor.commit();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setProgress((int) progress);
+                        }
+                    });
+        }
+    }
 
 }

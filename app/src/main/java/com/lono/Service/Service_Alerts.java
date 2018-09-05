@@ -27,7 +27,6 @@ public class Service_Alerts {
 
     Activity activity;
 
-
     public Service_Alerts(Activity activity){
         this.activity = activity;
     }

@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.lono.APIServer.Server;
-import com.lono.PagSeguro.LonoPagamentoUtils;
 import com.lono.R;
 import com.lono.Service.Service_Payment;
 import com.lono.Utils.Alerts;
@@ -78,7 +77,6 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
     String DOCUMENT;
 
     Service_Payment servicePayment;
-    LonoPagamentoUtils lonoPagamentoUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,11 +84,8 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
         setContentView(R.layout.view_payment_creditcard);
 
         servicePayment = new Service_Payment(this);
-        lonoPagamentoUtils = new LonoPagamentoUtils(this, Server.payment());
-
 
         createToolbar(toolbar);
-
 
         layout_number_creditcard = (TextInputLayout) findViewById(R.id.layout_number_creditcard);
         layout_validate_creditcard = (TextInputLayout) findViewById(R.id.layout_validate_creditcard);
@@ -227,7 +222,6 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
 
     @Override
     public void onResume(){
-        Server.hash_pagseguro(this);
         super.onResume();
     }
 
@@ -698,33 +692,7 @@ public class View_Payment_CreditCard extends AppCompatActivity implements View.O
             estado_creditcard.requestFocus();
 
         }else{
-
             Alerts.progress_open(this, null, "Realizando pagamento", false);
-            lonoPagamentoUtils.GenerateCardToken(sessionPayment, number_card, cvv_card, monthCard, yearCard, new LonoPagamentoUtils.GenerateCardTokenListener() {
-                @Override
-                public void onSuccess(String cardToken) {
-                    servicePayment.paymentCard(
-                            token,
-                            qtd_terms,
-                            type_plan.toLowerCase(),
-                            hash,
-                            cardToken,
-                            cep, numero,
-                            cpf,
-                            name,
-                            data_nasc,
-                            cellphone,
-                            String.valueOf(QTC_PARCELAS));            }
-
-                @Override
-                public void onError(String errorMessage) {
-                    builder.setTitle("Ops!!!");
-                    builder.setMessage("Erro ao processar o cartão de crédito.\nTente novamente");
-                    builder.setCancelable(false);
-                    builder.setPositiveButton("Ok", null);
-                    builder.create().show();
-                }
-            });
         }
     }
 

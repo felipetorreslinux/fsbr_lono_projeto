@@ -1,37 +1,20 @@
 package com.lono.Views;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.lono.APIServer.Server;
-import com.lono.PagSeguro.LonoPagamentoUtils;
 import com.lono.R;
 import com.lono.Service.Service_Payment;
-import com.lono.Utils.MaskCPF;
-import com.lono.Utils.MaskNumberCreditCard;
-import com.lono.Utils.MaskValidateCreditCard;
-import com.lono.Utils.Price;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class View_Type_Payment extends AppCompatActivity implements View.OnClickListener {
 
@@ -66,15 +49,11 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     int TYPE_PAY;
 
     Service_Payment servicePayment;
-    LonoPagamentoUtils lonoPagamentoUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.view_type_payment );
-
-        servicePayment = new Service_Payment(this);
-
 
         createToolbar(toolbar);
 

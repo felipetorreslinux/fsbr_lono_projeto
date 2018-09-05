@@ -16,12 +16,7 @@ import com.lono.R;
 import com.lono.Utils.CalcTerms;
 import com.lono.Utils.Price;
 import com.lono.Views.View_Type_Payment;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
-
-import br.com.uol.pagseguro.domain.direct.Holder;
 
 public class Adapter_Slide_Plans_Payment extends PagerAdapter {
 
