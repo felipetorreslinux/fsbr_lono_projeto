@@ -66,14 +66,48 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
         return rootview;
     }
 
-    private void infoProfile() {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.image_profile:
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Escolha"), 72);
+                break;
 
+            case R.id.item_edit_profile:
+                Intent edit_profile = new Intent(getActivity(), View_Edit_Profile.class);
+                getActivity().startActivityForResult(edit_profile, 1001);
+                break;
+
+            case R.id.item_my_plam:
+                Intent my_plan = new Intent(getActivity(), View_My_Plan_Profile.class);
+                getActivity().startActivity(my_plan);
+                break;
+
+            case R.id.item_payment:
+                Snackbar.make(getActivity().getWindow().getDecorView(), "Em Desenvolvimento", Snackbar.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 72 && resultCode == RESULT_OK && data != null && data.getData() != null ) {
+            CropImage.activity(data.getData())
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(250,250)
+                    .start(getActivity());
+        }
+    }
+
+    private void infoProfile() {
         status_account = (TextView) rootview.findViewById(R.id.status_account);
         image_profile = (ImageView) rootview.findViewById(R.id.image_profile);
         image_profile.setOnClickListener(this);
         name_profile = (TextView) rootview.findViewById(R.id.name_profile);
         email_profile = (TextView) rootview.findViewById(R.id.email_profile);
-
         if(sharedPreferences != null){
             if(sharedPreferences.getString("avatar_url", "").isEmpty()){
                 Picasso.get()
@@ -105,47 +139,6 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
             }else{
                 item_payment.setVisibility(View.GONE);
             }
-
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.image_profile:
-                editImageProfile();
-                break;
-
-            case R.id.item_edit_profile:
-                Intent edit_profile = new Intent(getActivity(), View_Edit_Profile.class);
-                getActivity().startActivityForResult(edit_profile, 1001);
-                break;
-
-            case R.id.item_my_plam:
-                Intent my_plan = new Intent(getActivity(), View_My_Plan_Profile.class);
-                getActivity().startActivity(my_plan);
-                break;
-
-            case R.id.item_payment:
-                Snackbar.make(getActivity().getWindow().getDecorView(), "Em Desenvolvimento", Snackbar.LENGTH_SHORT).show();
-                break;
-        }
-    }
-
-    private void editImageProfile() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Escolha"), 72);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 72 && resultCode == RESULT_OK && data != null && data.getData() != null ) {
-            CropImage.activity(data.getData())
-                    .setGuidelines(CropImageView.Guidelines.ON)
-                    .setAspectRatio(250,250)
-                    .start(getActivity());
         }
     }
 }

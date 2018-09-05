@@ -268,8 +268,20 @@ public class Service_Profile {
                                 public void onSuccess(Uri uri) {
                                     editor.putString("avatar_url", uri.toString());
                                     editor.commit();
+                                    if (editor.commit()){
+                                        progressDialog.dismiss();
+                                        activity.getFragmentManager().beginTransaction().replace(R.id.container, new Person_Fragment()).commit();
+                                    }
+                                }
+                            });
+                            ref.getDownloadUrl().addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
                                     progressDialog.dismiss();
-                                    activity.getFragmentManager().beginTransaction().replace(R.id.container, new Person_Fragment()).commit();
+                                    Snackbar.make(activity.getWindow().getDecorView(),
+                                            ""+e.getMessage(), Snackbar.LENGTH_SHORT).show();
+                                    editor.putString("avatar_url", "");
+                                    editor.commit();
                                 }
                             });
                         }
@@ -280,7 +292,7 @@ public class Service_Profile {
                             progressDialog.dismiss();
                             Snackbar.make(activity.getWindow().getDecorView(),
                                     ""+e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                            editor.putString("image", "");
+                            editor.putString("avatar_url", "");
                             editor.commit();
                         }
                     })
