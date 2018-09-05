@@ -141,10 +141,6 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
                 TYPE_PAY=2;
                 payCreditCard();
                 break;
-
-            case R.id.button_pay_creditcard:
-                payCreditCard();
-                break;
                 
             case R.id.button_pay_boleto:
                 payBoleto();

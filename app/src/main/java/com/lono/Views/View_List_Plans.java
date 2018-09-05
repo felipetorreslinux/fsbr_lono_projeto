@@ -58,7 +58,7 @@ public class View_List_Plans extends AppCompatActivity{
             public void run() {
                 listPlans();
             }
-        }, 50);
+        }, 10);
 
     }
 
