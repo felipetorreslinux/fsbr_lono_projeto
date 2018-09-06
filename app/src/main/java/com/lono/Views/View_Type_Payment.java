@@ -1,4 +1,5 @@
 package com.lono.Views;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -130,29 +131,23 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
         switch (view.getId()){
             case R.id.item_boleto_pay:
                 TYPE_PAY=1;
-                check_boleto.setVisibility(View.VISIBLE);
-                check_cartao.setVisibility(View.GONE);
-                box_pay_boleto.setVisibility(View.VISIBLE);
-                box_codebar_boleto.setVisibility(View.GONE);
-                button_pay_boleto.setText("Gerar boleto");
+                payBoleto();
                 break;
 
             case R.id.item_cartao_pay:
                 TYPE_PAY=2;
                 payCreditCard();
                 break;
-                
-            case R.id.button_pay_boleto:
-                payBoleto();
-                break;
         }
     }
 
     private void payBoleto() {
-        button_pay_boleto.setText("Gerando boleto...");
-        String token = Server.token(this);
-        String hash = Server.hashSession;
-        servicePayment.paymentBoleto(token, QTD_PLAN, TYPE_PLAN.toLowerCase(), hash, box_codebar_boleto, text_codebar_boleto, button_pay_boleto );
+        Intent intent = new Intent(this, View_Payment_Boleto.class);
+        intent.putExtra("type_plan", TYPE_PLAN);
+        intent.putExtra("document", DOCUMENT);
+        intent.putExtra("name", NAME);
+        intent.putExtra("qtd_terms", QTD_PLAN);
+        startActivityForResult(intent, 1000);
     }
 
     private void payCreditCard() {
@@ -169,6 +164,23 @@ public class View_Type_Payment extends AppCompatActivity implements View.OnClick
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1000:
+                if(resultCode == Activity.RESULT_OK){
+
+                }
+                break;
+
+            case 1001:
+                if(resultCode == Activity.RESULT_OK){
+
+                }
+                break;
+        }
     }
 }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.androidnetworking.AndroidNetworking;
 import com.lono.Views.View_Intro;
 import com.lono.Views.View_Intro_Slide;
+import com.lono.Views.View_Payment_Boleto;
 import com.lono.Views.View_Payment_CreditCard;
 import com.lono.Views.View_Principal;
 
@@ -68,7 +69,7 @@ public class Splash extends Activity {
     }
 
     private void openCentral(){
-        Intent intent = new Intent(Splash.this, View_Payment_CreditCard.class);
+        Intent intent = new Intent(Splash.this, View_Principal.class);
         startActivity(intent);
         finish();
     };

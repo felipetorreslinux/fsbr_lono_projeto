@@ -16,7 +16,6 @@ public class PaymentCard_Model {
 
     public PaymentCard_Model(Context mContext){
         this.mContext = mContext;
-
     }
 
     @JavascriptInterface

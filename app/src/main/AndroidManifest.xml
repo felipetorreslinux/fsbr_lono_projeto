@@ -82,7 +82,8 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".Views.View_Intro_Slide"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Intro_Slide"/>
 
         <activity android:name=".Views.View_QuemSomos"
             android:screenOrientation="portrait"
@@ -121,6 +122,10 @@
             android:theme="@style/View_Intro"/>
 
         <activity android:name=".Views.View_Payment_CreditCard"
+            android:screenOrientation="portrait"
+            android:theme="@style/View_Intro"/>
+
+        <activity android:name=".Views.View_Payment_Boleto"
             android:screenOrientation="portrait"
             android:theme="@style/View_Intro"/>
 

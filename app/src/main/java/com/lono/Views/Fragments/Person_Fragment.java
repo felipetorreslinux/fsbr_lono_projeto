@@ -121,14 +121,14 @@ public class Person_Fragment extends Fragment implements View.OnClickListener{
             name_profile.setText(sharedPreferences.getString("name", null));
             email_profile.setText(sharedPreferences.getString("email", null));
             String status = sharedPreferences.getString("sit_cad", null);
-
-            if(status.equals("A")){
-                status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorGreenLight));
-                status_account.setText("Sua conta está ativa");
-            }else{
-                status_account.setText("Sua conta pendente");
-                status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorRed));
-            }
+            status_account.setVisibility(View.GONE);
+//            if(status.equals("A")){
+//                status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorGreenLight));
+//                status_account.setText("Sua conta está ativa");
+//            }else{
+//                status_account.setText("Sua conta pendente");
+//                status_account.setBackgroundColor(getActivity().getResources().getColor(R.color.colorRed));
+//            }
 
             if(sharedPreferences.getString("name_plan", "").equals("Plus")){
                 item_payment.setVisibility(View.GONE);

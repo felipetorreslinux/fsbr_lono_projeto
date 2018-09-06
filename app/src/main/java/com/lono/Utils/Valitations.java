@@ -28,7 +28,7 @@ public class Valitations {
         }else{
             name_pro = array[0] + " " + array[1];
         }
-        return name_pro;
+        return name;
     }
 
     public static String convertSpinnerStatusPub(String status){

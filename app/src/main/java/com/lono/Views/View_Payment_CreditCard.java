@@ -1,6 +1,8 @@
 package com.lono.Views;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -44,6 +46,7 @@ import java.util.TimerTask;
 public class View_Payment_CreditCard extends AppCompatActivity{
 
     Toolbar toolbar;
+    SharedPreferences.Editor editor;
 
     String TYPE_PLAM;
     String QTD_TERMS;
@@ -53,7 +56,7 @@ public class View_Payment_CreditCard extends AppCompatActivity{
 
     WebView webView;
 
-    Snackbar loadingPagWeb;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,13 +65,15 @@ public class View_Payment_CreditCard extends AppCompatActivity{
 
         createToolbar(toolbar);
 
-        loadingPagWeb = Snackbar.make(getWindow().getDecorView(),
-                "Conectando ao PagSeguro S/A\nAguarde...", Snackbar.LENGTH_INDEFINITE);
+        builder = new AlertDialog.Builder(this);
+        editor = getSharedPreferences("profile", MODE_PRIVATE).edit();
 
         try{
             PaymentCard_Model paymentCardModel = new PaymentCard_Model(this);
-            paymentCardModel.setQTD_TERMS("10");
-            paymentCardModel.setTYPE_PLAM("Anual");
+            paymentCardModel.setQTD_TERMS(getIntent().getExtras().getString("qtd_terms"));
+            paymentCardModel.setTYPE_PLAM(getIntent().getExtras().getString("type_plan"));
+            paymentCardModel.setTOKEN(Server.token(this));
+
             paymentCardModel.setTOKEN(Server.token(this));
 
             webView = findViewById(R.id.webview_payment_card);
@@ -77,29 +82,34 @@ public class View_Payment_CreditCard extends AppCompatActivity{
             webView.getSettings().setJavaScriptEnabled(true);
             webView.addJavascriptInterface(paymentCardModel, "Android");
 
-            webView.loadUrl("http://192.168.15.220/services/lono-pagamento-html-request");
+            webView.loadUrl("https://engine.lono.com.br/services/lono-pagamento-cartao");
 
             webView.setWebViewClient(new WebViewClient() {
-
-                @Override
-                public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                    loadingPagWeb.show();
-                };
-
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    if(url.contains("petrus")){
-                        Snackbar.make(getWindow().getDecorView(), "Pagemento realizado com sucesso",
-                                Snackbar.LENGTH_SHORT).show();
+                    if(url.contains("success")){
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage("Pagamento realizado com sucesso");
+                        builder.setCancelable(false);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                editor.putString("token", "");
+                                editor.commit();
+                                finishAffinity();
+                                Intent intent = new Intent(View_Payment_CreditCard.this, View_Login.class);
+                                startActivity(intent);
+                            }
+                        });
+                        builder.create().show();
+                    }else if(url.contains("error")){
+                        builder.setTitle("Ops!!!");
+                        builder.setMessage("Erro ao processar o pagamento.\nTente novamente");
+                        builder.setCancelable(false);
+                        builder.setPositiveButton("Ok", null);
+                        builder.create().show();
                     }
                     return true;
-                }
-
-                public void onPageFinished(WebView view, String url) {
-                    loadingPagWeb.dismiss();
-                    loadingPagWeb = Snackbar.make(getWindow().getDecorView(),
-                            "Conectado com sucesso.", Snackbar.LENGTH_SHORT);
-                    loadingPagWeb.show();
                 }
             });
 
@@ -111,7 +121,7 @@ public class View_Payment_CreditCard extends AppCompatActivity{
         Drawable backIconActionBar = getResources().getDrawable(R.drawable.ic_back_white);
         toolbar = findViewById(R.id.actionbar_pay_creditcard);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Pagar com Cartão de Crédito");
+        getSupportActionBar().setTitle("Pagar");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(backIconActionBar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
